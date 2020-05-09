@@ -1,0 +1,31 @@
+title: Pedro Simões
+description: > # this means to ignore newlines until "baseurl:"
+  Pedro Simões is a weirdo from Costa da Caparica Portugal. In love with software. Thriving for excellence @Worten.
+permalink: ':title/'
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://www.seomis.cc/" # the base hostname & protocol for your site, e.g. http://example.com
+site-twitter: "https://twitter.com/seomisw" #if your site has a twitter account, enter it here
+
+# Author Settings
+author: Pedro Simões # add your name
+author-img: pedro simões headshot.jpg # add your photo
+about-author: I'm a Portugal-based backend software developer.
+social-twitter: seomisw # add your Twitter handle
+social-github: psimoesSsimoes # ig handle
+# social-linkedin: rhipayne # add your Linkedin handle
+social-email: seomis@riseup.net # add your Email address
+
+# Tracker
+analytics: # Google Analytics
+
+# Build Settings
+markdown: kramdown
+plugins:
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jemoji
+
+paginate: 8
+paginate_path: "/page/:num"
+
+exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
