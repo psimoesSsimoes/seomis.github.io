@@ -7,17 +7,16 @@ url: "https://psimoesSsimoes.github.io" # the base hostname & protocol for your 
 site-twitter: "https://twitter.com/seomisw" #if your site has a twitter account, enter it here
 
 # Author Settings
-author: Rhiannon Payne # add your name
-author-img: rhiannon payne headshot.jpg # add your photo
-about-author: I'm a San Francisco-based entrepreneur, startup consultant, writer, speaker, & adventurer. In 2017 I founded Sea Foam Media & Tech to help startups tell their stories & build useful products. I am passionate about The New Distributed Workforce, with a book to be published in 2020. # add description
-social-twitter: rhiannon_io # add your Twitter handle
-social-facebook: rhiannonmarypayne # add your Facebook handle
-social-github: rhiannon-io # ig handle
-social-linkedin: rhipayne # add your Linkedin handle
-social-email: payne@rhiannon.io # add your Email address
+author: Pedro Simões # add your name
+author-img: simoes.jpg # add your photo
+about-author: I'm a Portuguese software developer. Simply following my passions. i try to make a difference, so i do my best every day.
+social-twitter: seomisw # add your Twitter handle
+social-github: psimoesSsimoes # ig handle
+social-linkedin: pedro-simões # add your Linkedin handle
+social-email: seomisw@gmail.com # add your Email address
 
 # Disqus
-discus-identifier: Rhiannon Payne # add your discus identifier
+discus-identifier: Pedro Simões # add your discus identifier
 
 # Tracker
 analytics: # Google Analytics
