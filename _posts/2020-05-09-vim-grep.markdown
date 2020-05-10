@@ -58,6 +58,8 @@ for that we need a mapping!  That is achieved with the following lines:
 
 > ```
 vnoremap <leader>z :<c-u>call <SID>GrepOperator()<cr>
+```
+```
 noremap <leader>z :<c-u>call <SID>GrepOperator()<cr>
 ```
 
@@ -67,6 +69,8 @@ To wrap it up, a fast way to navigate the result documents can be done with the 
 
 > ```
 nnoremap <leader>j :cnext<CR>
+```
+```
 nnoremap <leader>k :cprevious<CR>
 ```
 
