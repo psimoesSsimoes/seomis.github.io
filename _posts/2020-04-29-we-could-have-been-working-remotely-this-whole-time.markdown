@@ -1,12 +1,12 @@
 ---
 layout: post
-title: We Could Have Been Working Remotely This Whole Time
-date: 2020-04-29 01:00:00 +0300
-description: Is it time to fight for remote work & greater flexibilty as a worker's right? # Add post description (optional)
-img: remote-work-covid.jpeg # Add image post (optional)
-tags: [remote, remote work, remote jobs, work from home, COVID19] # add tag
+title: Vim grep operator
+date: 2020-05-09 01:00:00 +0300
+description: Search for current word in multiple files # Add post description (optional)
+img: vimgrep.gif # Add image post (optional)
+tags: [vim, ack, grep, searching, vimtip] # add tag
 ---
-How would your life change if you had a few extra hours each day to focus on your personal goals and wellbeing? What if you were able to manage your own schedule rather than being pigeonholed into working from 9 to 5?
+How would your ljjife change if you had a few extra hours each day to focus on your personal goals and wellbeing? What if you were able to manage your own schedule rather than being pigeonholed into working from 9 to 5?
 
 As the ability to work completely online has become more and more accessible, remote work advocates have been [asking](https://static1.squarespace.com/static/5a7cd54f80bd5eef27e9fe5b/t/5c13ad318a922d781ced24a5/1544793410946/SFM-Presentation-v3.pdf){:target="_blank"} workers and employers to consider these questions for the better part of this century.
 
