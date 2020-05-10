@@ -17,12 +17,10 @@ He wrote a small [vim function](https://learnvimscriptthehardway.stevelosh.com/c
 
 ```
 function! s:GrepOperator()
-
     let wordUnderCursor = expand("<cword>")
     silent execute "Ack! " . shellescape(wordUnderCursor) . " " . g:var_default
     copen
     redraw!
-
 endfunction
 ```
 
@@ -45,6 +43,7 @@ Let's understand how it works:
 **we force a screen refresh**
 
 Note that you could any grep-like tool you prefer instead of **Ack**.
+
 I also recomend reading **help cword** to get more options. For my vimrc, I needed **cWORD** to grab the whitespace delimited text under the cursor.
 
 ## How do you fill the global variable with the directory to search in?
@@ -57,15 +56,19 @@ In my case i find it useful to set it to the **current working directory**. That
 
 for that we need a mapping!  That is achieved with the following lines:
 
-> ```vnoremap <leader>z :<c-u>call <SID>GrepOperator()<cr>
-     noremap <leader>z :<c-u>call <SID>GrepOperator()<cr>```
+> ```
+vnoremap <leader>z :<c-u>call <SID>GrepOperator()<cr>
+noremap <leader>z :<c-u>call <SID>GrepOperator()<cr>
+```
 
 with these lines i can call the vim function in normal and visual mode. In my case, you can see that i map it for < leader > z.
 
 To wrap it up, a fast way to navigate the result documents can be done with the following mappings:
 
-> ```nnoremap <leader>j :cnext<CR>
-     nnoremap <leader>k :cprevious<CR>```
+> ```
+nnoremap <leader>j :cnext<CR>
+nnoremap <leader>k :cprevious<CR>
+```
 
 using **< leader >j** , we navigate to the next result.
 
