@@ -80,9 +80,10 @@ using < leader >j , we navigate to the next result.
 using < leader >k , we navigate to the previous result.
 
 
-## That's it! Now we have a quick and practical way of searching words in vim!
+**That's it! Now we have a quick and practical way of searching words in vim!**
 
-# Do you have a different/better way of achieving the same result? i would love to hear about it :)
+## Do you have a different/better way of achieving the same result?
+## i would love to hear about it :)
 
 
 This blog was originally posted on [Medium](https://mediumpostthat i didnt wrote yet){:target="_blank"}--be sure to follow and clap!
