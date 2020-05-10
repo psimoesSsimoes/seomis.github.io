@@ -35,6 +35,7 @@ endfunction
 Let's understand how it works:
 
 > ```let saved_unnamed_register = @@``` we start by declaring a variable which is set for the unnamed register
+
 > ```
     if a:type ==# 'v'
         normal! `<v`>y
