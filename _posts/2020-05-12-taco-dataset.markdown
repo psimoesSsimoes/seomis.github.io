@@ -4,6 +4,6 @@ title: TACO - Trash Annotations in Context
 date: 2020-05-12 01:00:00 +0300
 description: Open image dataset of waste in the wild. # Add post description (optional)
 img: taco.jpg # Add image post (optional)
-tags: [COCO, MachineLearning, Annotations, Dataset, Object Segmentation] # add tag
+tags: [COCO, MachineLearning, Annotations, Dataset, ObjectSegmentation, DeepLearning] # add tag
 ---
-# TACO - Trash Annotations in Context.
+# An image dataset for litter detection, similar to COCO object segmentation.
