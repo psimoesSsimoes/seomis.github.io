@@ -1,6 +1,6 @@
 ---
 layout: post
-title: An image dataset for litter detection, similar to COCO object segmentation
+title: An image dataset for Litter detection
 date: 2020-05-17 01:00:00 +0300
 description: Open image dataset of waste in the wild. # Add post description (optional)
 img: taco.gif # Add image post (optional)
