@@ -34,4 +34,4 @@ TACO  contains  high  resolution  images,  taken  mostly  by  mobile  phones.  T
    - Use dataset: If you are interested in machine learning, check out [our repo](https://github.com/pedropro/TACO) and start using this dataset in your experiments. We would love to hear about your results.
    - Feedback is appreciated. Let us know if you spot any issue with the dataset or our tools.
 
-This blog was originally posted on [Medium](https://link.medium.com/QyA2B23on6){:target="_blank"}--be sure to follow and clap!
+This blog was originally posted on [Medium](https://medium.com/@seomisw/image-dataset-for-litter-detection-7f1cab9e7fa1){:target="_blank"}--be sure to follow and clap!
