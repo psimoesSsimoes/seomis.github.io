@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Virtual Memory: Address Spaces
+title:  An Overview of Virtual Memory = Address Spaces
 date: 2020-12-06 09:00:00 +0300
 description: Notes on virtual memory. # Add post description (optional)
 img: addressspace.png # Add image post (optional)
