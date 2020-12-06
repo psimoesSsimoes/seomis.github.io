@@ -2,7 +2,7 @@
 layout: post
 title: Virtual Memory: Address Spaces
 date: 2020-12-06 09:00:00 +0300
-description: # Add post description (optional)
+description: Notes on virtual memory. # Add post description (optional)
 img: addressspace.png # Add image post (optional)
 tags: [OS,Memory,Virtual Memory, Address Spaces] # add tag
 ---
