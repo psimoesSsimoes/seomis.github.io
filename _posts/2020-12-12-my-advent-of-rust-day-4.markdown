@@ -121,7 +121,7 @@ the predicate could be similar to the second golang approach:
 	    })
 	}
 
-so again i ask for my new bff Iterator, which holds an [all](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.all) method that tests if every element of passport verifies a predicate.
+so again i ask for my new BFF **Iterator**, which holds an [all](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.all) method that tests if every element of passport verifies a predicate.
 
 The predicate we want is that for each [split_ascii_whitespace](https://doc.rust-lang.org/std/primitive.str.html#method.split_ascii_whitespace), any word starts with one of the values in vector fields.
 
