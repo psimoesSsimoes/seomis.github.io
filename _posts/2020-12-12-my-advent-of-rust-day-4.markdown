@@ -17,9 +17,7 @@ This is mainly because programming in **Rust requires you to think differently**
 
 Replicating patterns that are commom in other languages is tricky and sometimes quite hard or even impossible.
 
-I felt that day 4 was a good example, so let's examine the challenge:
-
-If you want please refer to https://adventofcode.com/2020/day/4, but i'll try to resume it for you:
+Day 4 was a good example, so let's examine the [challenge](https://adventofcode.com/2020/day/4), which i'll try to resume it for you:
 
  - You have a big string input, containing representations of passports.
  - On double newline, you have a passport.
