@@ -91,7 +91,7 @@ another way would be to split whitespace an find the strings starting with the d
 
 Using these patterns proved to be quite challenging in Rust. I kept fighting the compiler, and the compiler kept winning.
 
-##So i went back to sketching... what was i really trying to do?
+## So i went back to sketching... what was i really trying to do?
 
 ´I have a vector of references to strings to which i wanted to filter the ones containing the right values and then count the collected values.´
 
