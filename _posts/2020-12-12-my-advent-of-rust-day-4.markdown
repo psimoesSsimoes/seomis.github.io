@@ -121,7 +121,7 @@ the predicate could be similar to the second golang approach:
 
 so again i ask for my new BFF **Iterator**, which holds an [all](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.all) method that tests if every element of passport verifies a predicate.
 
-The predicate we want is that for each [split_ascii_whitespace](https://doc.rust-lang.org/std/primitive.str.html#method.split_ascii_whitespace), any word starts with one of the values in vector fields.
+The predicate we want is that for each [split_ascii_whitespace](https://doc.rust-lang.org/std/primitive.str.html#method.split_ascii_whitespace), [any](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.any) word starts with one of the values in vector fields.
 
 Voila!
 
@@ -143,7 +143,7 @@ this gives the correct input to the first challenge of the 4 day :)
 
 ---
 
-#Some lessons to myself: dont fight the compiler. If your approach/pattern is not working, it is probably because you probably cannot use this same pattern using Rust. Stop, re-evaluate, read the documentation, and surely you'll find a way of solving the problem.
+#Some lessons to myself: don't fight the compiler. If your approach/pattern is not working, it is probably because you probably cannot use this same pattern using Rust. Stop, re-evaluate, read the documentation, and surely you'll find a way of solving the problem.
 
-If it is the correct way... well, that should be re-evaluated, once you have a better knowledge of Rust :)
+If it is the correct way... well, that should be re-evaluated, once i have a better knowledge of Rust :)
 
