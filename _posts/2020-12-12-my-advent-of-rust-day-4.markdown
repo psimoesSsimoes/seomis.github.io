@@ -9,7 +9,7 @@ tags: [Rust,AdventOfCode] # add tag
 
 #I've always considered programming challenges a fun way of experimenting new languages.
 
-For this edition of advent of code (2020), i decided i would give **Rust** a try.
+For this edition of advent of code (2020), i decided i would give [Rust](https://www.rust-lang.org/) a try.
 
 Rust really makes your head spin a bit with supposeddly trivial problems (and this is a good thing!).
 
@@ -44,7 +44,7 @@ Well... because using **unwrap creates a temporary which is freed while still in
 
 So how do i verify which passports are valid?
 
-Using a language like go, i would probably loop the separated strings, find the index of `:` and then try to delete an entry using the index. Then i would assert if the len of the map was equal to zero. If yes, then it is a valid passport. That could be represented as such:
+Using a language like [Go](https://golang.org/), i would probably loop the separated strings, find the index of `:` and then try to delete an entry using the index. Then i would assert if the len of the map was equal to zero. If yes, then it is a valid passport. That could be represented as such:
 
 	validPassportCounter := 0
 	for _, passport := range passports {
@@ -91,7 +91,7 @@ another way would be to split whitespace an find the strings starting with the d
 
 Using these patterns proved to be quite challenging in Rust. I kept fighting the compiler, and the compiler kept winning.
 
-**So i went back to sketching... what was i really trying to do?**
+##So i went back to sketching... what was i really trying to do?
 
 ´I have a vector of references to strings to which i wanted to filter the ones containing the right values and then count the collected values.´
 
