@@ -11,13 +11,13 @@ tags: [Rust,AdventOfCode] # add tag
 
 For this edition of advent of code (2020), i decided i would give [Rust](https://www.rust-lang.org/) a try.
 
-Rust really makes your head spin a bit with supposeddly trivial problems (and this is a good thing!).
+Rust really makes your head spin a bit with supposedly trivial problems (and this is a good thing!).
 
 This is mainly because programming in **Rust requires you to think differently**.
 
-Replicating patterns that are commom in other languages is tricky and sometimes quite hard or even impossible.
+Replicating patterns that are common in other languages is tricky and sometimes quite hard or even impossible.
 
-Day 4 was a good example, so let's examine the [challenge](https://adventofcode.com/2020/day/4), which i'll try to resume it for you:
+Day 4 was a good example, so let's examine the [challenge](https://adventofcode.com/2020/day/4), which i will try to resume:
 
  - You have a big string input, containing representations of passports.
  - On double newline, you have a passport.
@@ -26,7 +26,7 @@ Day 4 was a good example, so let's examine the [challenge](https://adventofcode.
 
 We'll, first lets transform the input into something useful. This is the "similar" part of the Rust code to the rest of the other languages.
 
-I'm sure there would be many ways of doing this but i have choosen:
+I'm sure there would be many ways of doing this but i have chosen:
 
 
 ```rust
@@ -153,4 +153,5 @@ and this piece gives the correct input to the first challenge of the 4 day :)
 
 **If this was the optimal approach... well, that should be re-evaluated, once i have a better knowledge of Rust :)** 
 
+This blog was originally posted on [Medium](https://seomisw.medium.com/my-advent-of-rust-day-4-bc3a9e76a85b){:target="_blank"}--be sure to follow and clap!
 
