@@ -93,7 +93,7 @@ Using these patterns proved to be quite challenging in Rust. I kept fighting the
 
 ## So i went back to sketching... what was i really trying to do?
 
-´I have a vector of references to strings to which i wanted to filter the ones containing the right values and then count the collected values.´
+**I have a vector of references to strings to which i wanted to filter the ones containing the right values and then count the collected values.**
 
 
 Looking at [Iter]( https://doc.rust-lang.org/std/iter/struct.Filter.html#method.count ) i found that using an iterator i could **filter** elements with a predicate and then **count** the filtred entries.
