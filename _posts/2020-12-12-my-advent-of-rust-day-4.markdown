@@ -7,7 +7,7 @@ img: advent_of_rust.png # Add image post (optional)
 tags: [Rust,AdventOfCode] # add tag
 ---
 
-**I've always considered programming challenges a fun way of experimenting new languages**
+#I've always considered programming challenges a fun way of experimenting new languages.
 
 For this edition of advent of code (2020), i decided i would give **Rust** a try.
 
