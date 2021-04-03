@@ -1,7 +1,7 @@
 ---
 title: 'Image Dataset for Litter Detection'
 date: 2020-05-17 01:00:00
-featured_image: '/images/taco/taco.gif.gif'
+featured_image: '/images/taco/taco.gif'
 excerpt: Open image dataset of waste in the wild.
 ---
 

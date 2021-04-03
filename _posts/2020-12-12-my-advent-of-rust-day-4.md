@@ -1,11 +1,11 @@
 ---
 title: 'My Advent Of Rust, Day 4'
 date: 2020-12-13 01:00:00
-featured_image: '/images/advent-rust/adventofrust.png'
+featured_image: '/images/advent-of-rust/adventofrust.png'
 excerpt: Notes on day 4 of advent of code made in Rust.
 ---
 
-![](/images/adventofrust/adventofrust.png)
+![](/images/advent-of-rust/adventofrust.png)
 
 # I've always considered programming challenges a fun way of experimenting new languages.
 
