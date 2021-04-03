@@ -88,8 +88,8 @@ using **< leader >k** , we navigate to the previous result.
 
 That's it! Now we have a quick and practical way of searching words in vim!
 
-> Do you have a different/better way of achieving the same result?
-> I would love to hear about it :)
+### Do you have a different/better way of achieving the same result?
+### I would love to hear about it :)
 
 
 This blog was originally posted on [Medium](https://link.medium.com/QyA2B23on6){:target="_blank"}--be sure to follow and clap!
