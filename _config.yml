@@ -1,34 +1,57 @@
-title: Pedro Simões
-description: > # this means to ignore newlines until "baseurl:"
-  Pedro Simões is a weirdo from Costa da Caparica Portugal. Curious about all things. In love with software and giving its best @Worten
-permalink: ':title/'
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://seomis.cc" # the base hostname & protocol for your site, e.g. http://example.com
-site-twitter: "https://twitter.com/seomisw" #if your site has a twitter account, enter it here
+site: Simples Jekyll Theme
 
-# Author Settings
-author: Pedro Simões # add your name
-author-img: simoes.jpg # add your photo
-about-author: Simply following my passions. I try to make a difference, so i do my best every day.
-social-twitter: seomisw # add your Twitter handle
-social-github: psimoesSsimoes # ig handle
-social-linkedin: pedro-simões-909719151 # add your Linkedin handle
-social-email: seomisw@gmail.com # add your Email address
+url: 
+baseurl: 
 
-# Disqus
-discus-identifier: Pedro Simões # add your discus identifier
+collections:
+  pages:
+    output: true
+    permalink: /:name
+  posts:
+    output: true
+    permalink: /blog/:slug
+  projects:
+    output: true
+    permalink: /project/:slug
 
-# Tracker
-analytics: # Google Analytics
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  -
+    scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
 
-# Build Settings
 markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  
+sass:
+  style: compressed
+
 plugins:
-  - jekyll-sitemap
   - jekyll-paginate
-  - jemoji
+  - jekyll-sitemap
 
-paginate: 8
-paginate_path: "/page/:num"
-
-exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
+paginate: 6
+paginate_path: "/blog/page:num/"
+  
