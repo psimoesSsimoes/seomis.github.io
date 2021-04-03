@@ -149,9 +149,9 @@ and this piece gives the correct input to the first challenge of the 4 day :)
 
 ---
 
-## Some lessons to myself: don't fight the compiler. If your approach/pattern is not working, it is probably because you probably cannot use this same pattern using Rust. Stop, re-evaluate, read the documentation, and surely you'll find a way of solving the problem.
+> Some lessons to myself: don't fight the compiler. If your approach/pattern is not working, it is probably because you probably cannot use this same pattern using Rust. Stop, re-evaluate, read the documentation, and surely you'll find a way of solving the problem.
 
-**If this was the optimal approach... well, that should be re-evaluated, once i have a better knowledge of Rust :)** 
+### If this was the optimal approach... well, that should be re-evaluated, once i have a better knowledge of Rust :)
 
 This blog was originally posted on [Medium](https://seomisw.medium.com/my-advent-of-rust-day-4-bc3a9e76a85b){:target="_blank"}--be sure to follow and clap!
 
