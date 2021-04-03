@@ -1,10 +1,10 @@
 basic_settings:
   site_title: Pedro Simões
-  site_tagline: Following curiosity. In love with software.
+  site_tagline: Following curiosity.
   favicon_image: /images/seomis-favicon.png
 
 header_settings:
-  avatar_image: /images/avatar.jpg
+  avatar_image: /images/seomis_rita.jpeg
   logo_image:
   logo_width: 200
 
