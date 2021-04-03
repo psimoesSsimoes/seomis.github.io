@@ -1,17 +1,20 @@
 ---
 title: 'Easy search in VIM'
-date: 2018-06-30 00:00:00
+date: 2020-05-09 00:00:00
 featured_image: '/images/vim_search/vimgrep.gif'
 excerpt: VIM + Functions + ACK == WIN!.
 ---
 
-![](/images/posts/vimgrep.gif)
+![](/images/vim_search/vimgrep.gif)
 
 ## Easy search in VIM
 
  Every developer needs a fast way to search for a current word in multiple files.
 
-As a [vim](https://github.com/vim){:target="_blank"} user the way i used to do it would be in the form of ``` :Ack! < word > < directory_where_i_want_to_search > ``` .
+As a [vim](https://github.com/vim){:target="_blank"} user the way i used to do it would be in the form :
+```
+:Ack! < word > < directory_where_i_want_to_search >
+```
 
 Surely there must be a better way!
 
@@ -29,21 +32,24 @@ endfunction
 
 Let's understand how it works:
 
-> ```let wordUnderCursor = expand("<cword>")```
+```
+let wordUnderCursor = expand("<cword>")
+```
 
-**we start by declaring a variable which will hold the word under cursor**
+we start by declaring a variable which will hold the word under cursor
 
-> ```silent execute "Ack! " . shellescape(wordUnderCursor) . " " . g:var_default```
+```
+silent execute "Ack! " . shellescape(wordUnderCursor) . " " . g:var_default
+```
 
-**we execute the shell command silently (in my case i like to use a code searching tool similar to ack called the_silver_searcher) providing the wordUnderCursor and the directory where we want where we want to search (which is stored in a global variable var_default)**
+we execute the shell command silently (in my case i like to use a code searching tool similar to ack called the_silver_searcher) providing the wordUnderCursor and the directory where we want where we want to search (which is stored in a global variable var_default)
 
-> ``` copen ```
+```
+copen
+redraw!
+```
 
-**we open the quickfix window**
-
-> ``` redraw! ```
-
-**we force a screen refresh**
+we open the quickfix window and we force a screen refresh
 
 Note that you could any grep-like tool you prefer instead of **Ack**.
 
@@ -53,16 +59,16 @@ I also recomend reading **help cword** to get more options. For my vimrc, I need
 
 In my case i find it useful to set it to the **current working directory**. That can be achieved by setting in your vimrc the following line:
 
-> ```let g:var_default = getcwd()```
+```
+let g:var_default = getcwd()
+```
 
 ## How do we call the function quickly?
 
 for that we need a mapping!  That is achieved with the following lines:
 
-> ```
+```
 vnoremap <leader>z :<c-u>call <SID>GrepOperator()<cr>
-```
-```
 noremap <leader>z :<c-u>call <SID>GrepOperator()<cr>
 ```
 
@@ -70,10 +76,8 @@ with these lines i can call the vim function in normal and visual mode. In my ca
 
 To wrap it up, a fast way to navigate the result documents can be done with the following mappings:
 
-> ```
+```
 nnoremap <leader>j :cnext<CR>
-```
-```
 nnoremap <leader>k :cprevious<CR>
 ```
 
@@ -82,7 +86,7 @@ using **< leader >j** , we navigate to the next result.
 using **< leader >k** , we navigate to the previous result.
 
 
-**That's it! Now we have a quick and practical way of searching words in vim!**
+That's it! Now we have a quick and practical way of searching words in vim!
 
 ## Do you have a different/better way of achieving the same result?
 ## I would love to hear about it :)
