@@ -1,11 +1,11 @@
 ---
 title: 'My Advent Of Rust, Day 4'
 date: 2020-12-13 01:00:00
-featured_image: '/images/advent-of-rust/adventofrust.png'
+featured_image: '/images/advent-of-rust/advent_of_rust.png'
 excerpt: Notes on day 4 of advent of code made in Rust.
 ---
 
-![](/images/advent-of-rust/adventofrust.png)
+![](/images/advent-of-rust/advent_of_rust.png)
 
 # I've always considered programming challenges a fun way of experimenting new languages.
 
@@ -33,7 +33,7 @@ I'm sure there would be many ways of doing this but i have chosen:
  let result = fs::read_to_string("input_day_four.txt").unwrap();
  let passports = result.split("\n\n");
 ```
-  
+
 
 so i have copied the input into a file (as a noobie, i prefered not to perform an http request :p ), read it to a String (unwrap to obtain the string is unsafe an discouraged, i know. but since i am controling the input, it is sufficient) and then split it to obtain each passport.
 
