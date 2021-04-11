@@ -1,6 +1,6 @@
 ---
-title: 'Image Dataset for Litter Detection'
-date: 2020-05-17 01:00:00
+title: 'Bash script for Kibana Surrounding Documents'
+date: 2021-04-10 01:00:00
 featured_image: '/images/taco/taco.gif'
 excerpt: Open image dataset of waste in the wild.
 ---
