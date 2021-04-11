@@ -1,7 +1,7 @@
 ---
 title: 'Bash script for Kibana Surrounding Documents'
 date: 2021-04-10 01:00:00
-featured_image: '/images/shell-script/shell-script-logo.jpg'
+featured_image: '/images/taco/shell-script-logo.jpg'
 excerpt: The three chief virtues of a programmer are: Laziness, Impacience and Hubris.
 ---
 
