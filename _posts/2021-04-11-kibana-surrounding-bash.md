@@ -1,3 +1,4 @@
+
 ---
 title: 'Bash script for Kibana Surrounding Documents'
 date: 2021-04-10 01:00:00
