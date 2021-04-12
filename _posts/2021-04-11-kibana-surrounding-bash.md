@@ -33,7 +33,7 @@ Should be simple enough: Open browser developer tools, click the Kibana log link
 
 <div class="gallery" data-columns="1">
 	<img src="/images/elastic-bash/copy_as_curl.jpg">
-	<img src="/images/elastic-bash/surrounding_documents.jpg">
+	<img src="/images/elastic-bash/surrounding_documents.png">
 </div>
 
 
