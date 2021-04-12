@@ -28,14 +28,7 @@ Or so i thought...
 
 ## The basic idea
 
-Should be simple enough: Open browser developer tools, click the Kibana log link of `View Surrounding Documents`, copy as curl. Tune some of the request fields, perform the request and  use [jq](https://github.com/stedolan/jq) to look up the fields i want.
-
-
-<div class="gallery" data-columns="1">
-	<img src="/images/elastic-bash/copy_as_curl.jpg">
-	<img src="/images/elastic-bash/surrounding_documents.png">
-</div>
-
+Should be simple enough: Open browser developer tools, click the Kibana log link of `View Surrounding Documents`, [copy as curl](https://everything.curl.dev/usingcurl/copyas). Tune some of the request fields, perform the request and  use [jq](https://github.com/stedolan/jq) to look up the fields i want.
 
 The original curl (redacted, and without headers) is similar to this one:
 
