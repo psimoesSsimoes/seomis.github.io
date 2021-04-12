@@ -42,8 +42,20 @@ The original curl (redacted, and without headers) is similar to this one:
 
 ```curl
 curl 'https://<some_endpoint>/_msearch?rest_total_hits_as_int=true&ignore_throttled=true'
---data-raw $'{"index":"logstash-default*","ignore_unavailable":true,"preference":1618072435228}\n
-{"size":5,"search_after":[1618071886078,23742571],"sort":[{"@timestamp":{"order":"asc","unmapped_type":"boolean"}},{"_doc":{"order":"desc","unmapped_type":"boolean"}}],"version":true,"_source":{"excludes":[]},"stored_fields":["*"],"script_fields":{},"docvalue_fields":[{"field":"@timestamp","format":"date_time"}],"query":{"bool":{"must":[{"constant_score":{"filter":{"range":{"@timestamp":{"format":"epoch_millis","gte":1618071886078,"lte":1618158286078}}}}}],"filter":[],"should":[],"must_not":[]}},"timeout":"30000ms"}\n{"index":"logstash-default*","ignore_unavailable":true,"preference":1618072435228}\n{"size":5,"search_after":[1618071886078,23742571],"sort":[{"@timestamp":{"order":"desc","unmapped_type":"boolean"}},{"_doc":{"order":"asc","unmapped_type":"boolean"}}],"version":true,"_source":{"excludes":[]},"stored_fields":["*"],"script_fields":{},"docvalue_fields":[{"field":"@timestamp","format":"date_time"}],"query":{"bool":{"must":[{"constant_score":{"filter":{"range":{"@timestamp":{"format":"epoch_millis","lte":1618071886078,"gte":1617985486078}}}}}],"filter":[],"should":[],"must_not":[]}},"timeout":"30000ms"}\n'
+--data-raw $'{"index":"logstash-default*","ignore_unavailable":true,
+"preference":1618072435228}\n{"size":5,"search_after":[1618071886078,23742571],
+"sort":[{"@timestamp":{"order":"asc","unmapped_type":"boolean"}},{"_doc":{"order":"desc","unmapped_type":"boolean"}}],
+"version":true,"_source":{"excludes":[]},"stored_fields":["*"],"script_fields":{},
+"docvalue_fields":[{"field":"@timestamp","format":"date_time"}],
+"query":{"bool":{"must":[{"constant_score":{"filter":{"range":{"@timestamp":{"format":"epoch_millis","gte":1618071886078,"lte":1618158286078}}}}}],
+"filter":[],"should":[],"must_not":[]}},"timeout":"30000ms"}\n{"index":"logstash-default*","ignore_unavailable":true,"preference":1618072435228}\n
+{"size":5,"search_after":[1618071886078,23742571],"sort":[{"@timestamp":{"order":"desc","unmapped_type":"boolean"}},
+{"_doc":{"order":"asc","unmapped_type":"boolean"}}],"version":true,
+"_source":{"excludes":[]},"stored_fields":["*"],"script_fields":{},
+"docvalue_fields":[{"field":"@timestamp","format":"date_time"}],
+"query":{"bool":{"must":[{"constant_score":{"filter":{"range":{
+"@timestamp":{"format":"epoch_millis","lte":1618071886078,"gte":1617985486078}}}}}],
+"filter":[],"should":[],"must_not":[]}},"timeout":"30000ms"}\n'
 ```
 
 Ok, this big curl thing that you probably cannot see in your mobile phone screen, uses [multisearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) to execute several searches with a single API request.
