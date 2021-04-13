@@ -141,4 +141,4 @@ The important fields are the following:
 
 Now it is clear what the curl is doing: it is using the unix timestamp of a particular record to retrieve the 5 previous and following records.
 
-So, if we give it the unix timestamp of the record, we should be able to obtain the neibouring information.
+_So, if we give it the unix timestamp of the record, we should be able to obtain the neibouring information._
