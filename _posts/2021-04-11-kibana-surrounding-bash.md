@@ -33,7 +33,7 @@ Should be simple enough: Open browser developer tools, click the Kibana log link
 The original curl (redacted, and without headers) is similar to this one:
 
 
-```curl
+```
 curl 'https://<some_endpoint>/_msearch?rest_total_hits_as_int=true&ignore_throttled=true'
 --data-raw $'{"index":"logstash-default*","ignore_unavailable":true,
 "preference":1618072435228}\n{"size":5,"search_after":[1618071886078,23742571],
@@ -64,9 +64,9 @@ Body\n
 
 In a quick look i can see that i have two headers and two body, so it is performing two searches.
 
-The header tells us the **index** we are using, **preference** (preference of which shard copies on which to execute the search) and **ignore_unavailable** ( missing or closed indices are not included in the response).
+Each header tells us the **index** we are using, **preference** (preference of which shard copies on which to execute the search) and **ignore_unavailable** ( missing or closed indices are not included in the response).
 
-The body is long have:
+The two bodies have a similar format:
 
 ```json
 {
@@ -128,3 +128,17 @@ The body is long have:
   "timeout": "30000ms"
 }
 ```
+
+This is so much clear!
+
+The important fields are the following:
+
+* size : the number of hits to return
+* search_after: works as a live cursor, where [<offset>,<limit>]
+* sort : we are sorting by timestamp asc
+* query: it's using a range query to return documents within the provided range.
+
+
+Now it is clear what the curl is doing: it is using the unix timestamp of a particular record to retrieve the 5 previous and following records.
+
+So, if we give it the unix timestamp of the record, we should be able to obtain the neibouring information.
