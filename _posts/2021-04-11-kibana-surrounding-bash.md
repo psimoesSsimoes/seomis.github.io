@@ -55,15 +55,16 @@ Ok, this big curl thing that you probably cannot see in your mobile phone screen
 
 The request makes use of the newline delimited JSON (NDJSON) format. Or in simpler terms, it follows the following structure:
 
-
-| Header\n|
-| Body\n|
-| Header\n|
-| Body\n|
+```
+Header\n
+Body\n
+Header\n
+Body\n
+```
 
 In a quick look i can see that i have two headers and two body, so it is performing two searches.
 
-The header tells us the **index** we are using, **preference** (preference of which shard copies on which to execute the search) and ignore_unavailable ( missing or closed indices are not included in the response).
+The header tells us the **index** we are using, **preference** (preference of which shard copies on which to execute the search) and **ignore_unavailable** ( missing or closed indices are not included in the response).
 
 The body is long have:
 
