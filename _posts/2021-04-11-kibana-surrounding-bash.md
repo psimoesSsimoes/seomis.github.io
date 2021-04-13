@@ -134,7 +134,7 @@ This is so much clear!
 The important fields are the following:
 
 * size : the number of hits to return
-* search_after: works as a live cursor, where [<offset>,<limit>]
+* search_after: works as a live cursor, where we have [offset,limit]
 * sort : we are sorting by timestamp asc
 * query: it's using a range query to return documents within the provided range.
 
