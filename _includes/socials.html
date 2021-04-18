@@ -3,7 +3,7 @@
 	{% if url[1] != '' %}
 	<li class="socials__item">
 		<a href="{{ url[1] }}" target="_blank" class="socials__item__link" title="{{ url[0] | remove: '_url' | replace: '-', ' ' | capitalize }}">
-	{% if url[0].include? 'rss' %}
+	{% if url[0].include? "rss" %}
 			<i class="fas fa-{{ url[0] | replace: 'facebook', 'facebook-f' | remove: '_url' }}" aria-hidden="true"></i>
 	{% else %}
 			<i class="fab fa-{{ url[0] | replace: 'facebook', 'facebook-f' | remove: '_url' }}" aria-hidden="true"></i>
