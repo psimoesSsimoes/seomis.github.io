@@ -156,7 +156,7 @@ Now it is clear what the curl is doing: it is using the unix timestamp of a part
 _So, if we give it the unix timestamp of the record, we should be able to obtain the neibouring information._
 
 
-## Now that we understand the request, we need to retrieve the information we are looking for on surrounding docs.
+### Now that we understand the request, we need to retrieve the information we are looking for on surrounding docs.
 
 For that, i have choosen the following [jq](https://github.com/stedolan/jq) filter:
 
@@ -167,7 +167,7 @@ jq '.responses[0].hits.hits[] | ._source.payload.fields.<field_i_am_looking_for>
 we use the first array index of responses and we will return all of the elements of an array **hits**. We use the [Pipe](https://stedolan.github.io/jq/manual/#Basicfilters) operator to run a filter for each of those results. In my case i want to retrieve fields _source.payload.fields.<the field that i am looking for>_.
 
 
-## Good! Now, we are ready to write some bash.
+### Good! Now, we are ready to write some bash.
 
 I want to receive as input three fields:
 
@@ -271,7 +271,7 @@ So all together, the gist can be found here :
 https://gist.github.com/psimoesSsimoes/18d7e478d010994d9f5bb3907516dbf6
 
 
-## And the main lesson i learned : Words of the form $'string' are treated specially. The word expands to string, with backslash-escaped characters replaced as specified by the ANSI C standard
+### And the main lesson i learned : Words of the form $'string' are treated specially. The word expands to string, with backslash-escaped characters replaced as specified by the ANSI C standard
 
 
 This blog was originally posted on [Medium](https://seomisw.medium.com/my-advent-of-rust-day-4-bc3a9e76a85b){:target="_blank"}--be sure to follow and clap!
