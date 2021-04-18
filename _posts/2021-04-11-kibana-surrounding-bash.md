@@ -266,7 +266,9 @@ Did you notice that single **$** after the variable and before the string? It to
 
 But hey! i got it working \m/
 
-So all together, the skeleton of the script can be found here :
+So all together, the gist can be found here :
+
+https://gist.github.com/psimoesSsimoes/18d7e478d010994d9f5bb3907516dbf6
 
 
 ##And the main lesson i learned : Words of the form $'string' are treated specially. The word expands to string, with backslash-escaped characters replaced as specified by the ANSI C standard##
