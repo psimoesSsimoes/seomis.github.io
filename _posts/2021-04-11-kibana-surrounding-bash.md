@@ -273,4 +273,4 @@ So all together, the gist can be found [here](https://gist.github.com/psimoesSsi
 ### And the main lesson i learned : Words of the form $'string' are treated specially. The word expands to string, with backslash-escaped characters replaced as specified by the ANSI C standard
 ---
 
-This blog was originally posted on [Medium](https://link.medium.com/QyA2B23on6){:target="_blank"}--be sure to follow and clap!
+This blog was originally posted on [Medium](https://seomisw.medium.com/bash-elasticsearch-multisearch-5123603af691){:target="_blank"}--be sure to follow and clap!
