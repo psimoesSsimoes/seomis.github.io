@@ -18,7 +18,7 @@ But sometimes you have systems interacting which have **no good log correlation*
 
 You'll find yourself looking in surrounding documents near the log you are interested in, or blindingly looking in some other system logs for some information that helps you understand some situation... and if your systems produce **a lot** of log data, finding the information you want can easily feel like finding a needle on a waystack.
 
-Well... i found myself in this situation this week (；・∀ ・)
+Well... i found myself in this situation this week ¯\(シ)/¯ .
 
 Fortunately, the information i was searching for was always on the surrounding documents of some specific log.
 
@@ -244,7 +244,7 @@ And now we just need to call the curl!
 
 So, until this point i had spent some and less 20 min to do this.
 
-Performing the curl with user input should be the easy part. Except it wasn't :sweat_smile:
+Performing the curl with user input should be the easy part. Except it wasn't :P
 
 All because i didn't knew the meaning of **--data-raw $'{}**.
 
