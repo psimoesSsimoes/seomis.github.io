@@ -20,7 +20,7 @@ You'll find yourself looking in surrounding documents near the log you are inter
 
 Well... i found myself in this situation this week ¯\(シ)/¯ .
 
-Fortunately, the information i was searching for was always on the surrounding documents of some specific log.
+Fortunately, the information i was searching was always on the surrounding documents of some specific log.
 
 > So i thought: Ok, I'll spend 20 min of my weekend automating this.
 
@@ -31,7 +31,7 @@ Or so i thought...
 
 Should be simple enough: Open browser developer tools, click the Kibana log link of `View Surrounding Documents`, [copy as curl](https://everything.curl.dev/usingcurl/copyas). Tune some of the request fields, perform the request and  use [jq](https://github.com/stedolan/jq) to look up the fields i want.
 
-The original curl (redacted, and without headers) is similar to this one:
+The original curl (without headers) is similar to this one:
 
 
 ```html
@@ -54,7 +54,7 @@ curl 'https://<some_endpoint>/_msearch?rest_total_hits_as_int=true&ignore_thrott
 
 Ok, this big curl thing that you probably cannot see in your mobile phone screen, uses [multisearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) to execute several searches with a single API request.
 
-The request makes use of the [newline delimited JSON](http://ndjson.org/) NDJSON format. In simpler terms, it follows the following structure:
+The request makes use of the [newline delimited JSON](http://ndjson.org/) format (NDJSON). In simpler terms, it follows the following structure:
 
 ```html
 Header\n
@@ -170,11 +170,11 @@ we use the first array index of responses and we will return all of the elements
 
 I want to receive as input three fields:
 
-* an unix timestamp which i'll use to look around.
+* an unix timestamp used to look around.
 * the number of records i'll want to look around.
 * the field i am looking for.
 
-To handle cmd input, i've written the following:
+To handle user input, i've written the following:
 
 ```bash
 helpFunction()
@@ -233,7 +233,7 @@ fi
 
 ```
 
-Now that we have the cmd input, we need to calculate the around timestamps:
+With sort input, we need to calculate the around timestamps:
 
 ```bash
 around_1=$(( $argOne + 86400000 ))
@@ -272,3 +272,5 @@ So all together, the gist can be found [here](https://gist.github.com/psimoesSsi
 
 ### And the main lesson i learned : Words of the form $'string' are treated specially. The word expands to string, with backslash-escaped characters replaced as specified by the ANSI C standard
 ---
+
+This blog was originally posted on [Medium](https://link.medium.com/QyA2B23on6){:target="_blank"}--be sure to follow and clap!
