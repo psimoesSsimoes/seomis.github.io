@@ -21,7 +21,7 @@ Surely there must be a better way!
 That way was presented to me by my vim partner in crime, Mr João Seabra.
 He wrote a small [vim function](https://learnvimscriptthehardway.stevelosh.com/chapters/23.html){:target="_blank"} which i find particularly useful for my daily workflow:
 
-```
+```vim
 function! s:GrepOperator()
     let wordUnderCursor = expand("<cword>")
     silent execute "Ack! " . shellescape(wordUnderCursor) . " " . g:var_default
@@ -32,7 +32,7 @@ endfunction
 
 Let's understand how it works:
 
-```
+```vim
 let wordUnderCursor = expand("<cword>")
 ```
 
