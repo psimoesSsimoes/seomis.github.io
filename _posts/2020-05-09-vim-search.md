@@ -38,13 +38,13 @@ let wordUnderCursor = expand("<cword>")
 
 we start by declaring a variable which will hold the word under cursor
 
-```
+```vim
 silent execute "Ack! " . shellescape(wordUnderCursor) . " " . g:var_default
 ```
 
 we execute the shell command silently (in my case i like to use a code searching tool similar to ack called the_silver_searcher) providing the wordUnderCursor and the directory where we want where we want to search (which is stored in a global variable var_default)
 
-```
+```vim
 copen
 redraw!
 ```
@@ -59,7 +59,7 @@ I also recomend reading **help cword** to get more options. For my vimrc, I need
 
 In my case i find it useful to set it to the **current working directory**. That can be achieved by setting in your vimrc the following line:
 
-```
+```vim
 let g:var_default = getcwd()
 ```
 
@@ -67,7 +67,7 @@ let g:var_default = getcwd()
 
 for that we need a mapping!  That is achieved with the following lines:
 
-```
+```vim
 vnoremap <leader>z :<c-u>call <SID>GrepOperator()<cr>
 noremap <leader>z :<c-u>call <SID>GrepOperator()<cr>
 ```
@@ -76,7 +76,7 @@ with these lines i can call the vim function in normal and visual mode. In my ca
 
 To wrap it up, a fast way to navigate the result documents can be done with the following mappings:
 
-```
+```vim
 nnoremap <leader>j :cnext<CR>
 nnoremap <leader>k :cprevious<CR>
 ```
