@@ -12,19 +12,20 @@ excerpt: Trying to automate common searches on ElasticSearch using Bash.
 
 ### Correlating logs on ElasticSearch using Kibana is usually pretty easy.
 
-In Distributed Systems, if **System Y** performs a request to **System X**, you can use attributes like **transaction_id**, **trace_id** and **span_id** to navigate all logs belonging to a particular trace, and vice-versa — for a specific log, see in which context it has been logged, and which parameters the user provided.
+In Distributed Systems, if **System Y** performs a request to **System X**, you can use attributes like **transaction_id**, **trace_id** and **span_id** to navigate all logs belonging to a particular trace, and vice-versa.
 
 But sometimes you have systems interacting which have **no good log correlation**. You could be still in MVP phase, or the system calling is a legacy system that no one want to touch, or even that the logs between systems are not structured in a way that is easy to query data.
 
 You'll find yourself looking in surrounding documents near the log you are interested in, or blindingly looking in some other system logs for some information that helps you understand some situation... and if your systems produce **a lot** of log data, finding the information you want can easily feel like finding a needle on a waystack.
 
-Well... i found myself in this situation this week :sweat_smile:
+Well... i found myself in this situation this week (；・∀ ・)
 
 Fortunately, the information i was searching for was always on the surrounding documents of some specific log.
 
 > So i thought: Ok, I'll spend 20 min of my weekend automating this.
 
 Or so i thought...
+
 ---
 ## The basic idea
 
@@ -53,7 +54,7 @@ curl 'https://<some_endpoint>/_msearch?rest_total_hits_as_int=true&ignore_thrott
 
 Ok, this big curl thing that you probably cannot see in your mobile phone screen, uses [multisearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) to execute several searches with a single API request.
 
-The request makes use of the [newline delimited JSON](http://ndjson.org/) NDJSON format. Or in simpler terms, it follows the following structure:
+The request makes use of the [newline delimited JSON](http://ndjson.org/) NDJSON format. In simpler terms, it follows the following structure:
 
 ```html
 Header\n
@@ -62,7 +63,7 @@ Header\n
 Body\n
 ```
 
-In a quick look i can see that i have two headers and two body, so it is performing **two** searches.
+In a quick look i could see that two headers and two body, so it is performing **two** searches.
 
 Each header contains the following information:
 
@@ -140,8 +141,6 @@ The two bodies have a similar format:
   "timeout": "30000ms"
 }
 ```
-
-This is so much clear!
 
 The important fields are the following:
 
@@ -243,7 +242,7 @@ around_2=$(( $argOne + 1985122 ))
 
 And now we just need to call the curl!
 
-So, until this point i had spent some and less 20 min to do this. performing the curl with user input should be the easy part. Except it wasn't :sweat_smile:
+So, until this point i had spent some and less 20 min to do this. performing the curl with user input should be the easy part. Except it wasn't (；・∀ ・)
 
 All because i didn't knew the meaning of **--data-raw $'{}**.
 
@@ -269,7 +268,5 @@ But hey! i got it working \m/
 So all together, the gist can be found [here](https://gist.github.com/psimoesSsimoes/18d7e478d010994d9f5bb3907516dbf6)
 
 
-## And the main lesson i learned : Words of the form $'string' are treated specially. The word expands to string, with backslash-escaped characters replaced as specified by the ANSI C standard
+### And the main lesson i learned : Words of the form $'string' are treated specially. The word expands to string, with backslash-escaped characters replaced as specified by the ANSI C standard
 ---
-
-This blog was originally posted on [Medium](https://seomisw.medium.com/my-advent-of-rust-day-4-bc3a9e76a85b){:target="_blank"}--be sure to follow and clap!
