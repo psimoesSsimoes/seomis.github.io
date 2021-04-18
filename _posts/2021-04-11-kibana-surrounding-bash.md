@@ -33,7 +33,7 @@ Should be simple enough: Open browser developer tools, click the Kibana log link
 The original curl (redacted, and without headers) is similar to this one:
 
 
-```curl
+```html
 curl 'https://<some_endpoint>/_msearch?rest_total_hits_as_int=true&ignore_throttled=true'
 --data-raw $'{"index":"logstash-default*","ignore_unavailable":true,
 "preference":1618072435228}\n{"size":5,"search_after":[1618071886078,23742571],
@@ -160,7 +160,7 @@ _So, if we give it the unix timestamp of the record, we should be able to obtain
 
 For that, i have choosen the following [jq](https://github.com/stedolan/jq) filter:
 
-```jq
+```
 jq '.responses[0].hits.hits[] | ._source.payload.fields.<field_i_am_looking_for>'
 ```
 
@@ -271,7 +271,7 @@ So all together, the gist can be found here :
 https://gist.github.com/psimoesSsimoes/18d7e478d010994d9f5bb3907516dbf6
 
 
-##And the main lesson i learned : Words of the form $'string' are treated specially. The word expands to string, with backslash-escaped characters replaced as specified by the ANSI C standard##
+## And the main lesson i learned : Words of the form $'string' are treated specially. The word expands to string, with backslash-escaped characters replaced as specified by the ANSI C standard
 
 
 This blog was originally posted on [Medium](https://seomisw.medium.com/my-advent-of-rust-day-4-bc3a9e76a85b){:target="_blank"}--be sure to follow and clap!
