@@ -33,7 +33,7 @@ Should be simple enough: Open browser developer tools, click the Kibana log link
 The original curl (redacted, and without headers) is similar to this one:
 
 
-```
+```curl
 curl 'https://<some_endpoint>/_msearch?rest_total_hits_as_int=true&ignore_throttled=true'
 --data-raw $'{"index":"logstash-default*","ignore_unavailable":true,
 "preference":1618072435228}\n{"size":5,"search_after":[1618071886078,23742571],
@@ -53,18 +53,30 @@ curl 'https://<some_endpoint>/_msearch?rest_total_hits_as_int=true&ignore_thrott
 
 Ok, this big curl thing that you probably cannot see in your mobile phone screen, uses [multisearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) to execute several searches with a single API request.
 
-The request makes use of the newline delimited JSON (NDJSON) format. Or in simpler terms, it follows the following structure:
+The request makes use of the [newline delimited JSON](http://ndjson.org/) NDJSON format. Or in simpler terms, it follows the following structure:
 
-```
+```html
 Header\n
 Body\n
 Header\n
 Body\n
 ```
 
-In a quick look i can see that i have two headers and two body, so it is performing two searches.
+In a quick look i can see that i have two headers and two body, so it is performing **two** searches.
 
-Each header tells us the **index** we are using, **preference** (preference of which shard copies on which to execute the search) and **ignore_unavailable** ( missing or closed indices are not included in the response).
+Each header contains the following information:
+
+```json
+{
+	"index": "logstash-default*",
+	"ignore_unavailable": true,
+	"preference": 12353564645
+}
+```
+
+* index: the index we are using
+* preference: preference of which shard copies on which to execute the search
+* ignore_unavailable: missing or closed indices are not included in the response if true (which is the case).
 
 The two bodies have a similar format:
 
@@ -142,3 +154,122 @@ The important fields are the following:
 Now it is clear what the curl is doing: it is using the unix timestamp of a particular record to retrieve the 5 previous and following records.
 
 _So, if we give it the unix timestamp of the record, we should be able to obtain the neibouring information._
+
+
+## Now that we understand the request, we need to retrieve the information we are looking for on surrounding docs.
+
+For that, i have choosen the following [jq](https://github.com/stedolan/jq) filter:
+
+```jq
+jq '.responses[0].hits.hits[] | ._source.payload.fields.<field_i_am_looking_for>'
+```
+
+we use the first array index of responses and we will return all of the elements of an array **hits**. We use the [Pipe](https://stedolan.github.io/jq/manual/#Basicfilters) operator to run a filter for each of those results. In my case i want to retrieve fields _source.payload.fields.<the field that i am looking for>_.
+
+
+## Good! Now, we are ready to write some bash.
+
+I want to receive as input three fields:
+
+* an unix timestamp which i'll use to look around.
+* the number of records i'll want to look around.
+* the field i am looking for.
+
+To handle cmd input, i've written the following:
+
+```bash
+helpFunction()
+{
+   echo ""
+   echo "Usage: $0 --sort <sort_id> --around <number_of_entries> --field <the field name i am looking for>"
+   echo -e "\t--sort sort field found on json entry"
+   echo -e "\t--size number of surrounding documents"
+   echo -e "\t--field field you are looking"
+   exit 1
+}
+
+ARGUMENT_LIST=(
+    "sort"
+    "around"
+    "field"
+)
+
+
+# read arguments
+opts=$(getopt \
+    --longoptions "$(printf "%s:," "${ARGUMENT_LIST[@]}")" \
+    --name "$(basename "$0")" \
+    --options "" \
+    -- "$@"
+)
+
+eval set --$opts
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --sort)
+            argOne=$2
+            shift 2
+            ;;
+
+        --around)
+            argTwo=$2
+            shift 2
+            ;;
+
+        --field)
+            argThree=$2
+            shift 2
+            ;;
+        --) shift ; break ;;
+    esac
+done
+
+# Print helpFunction in case parameters are empty
+if [ -z "$argOne" ] || [ -z "$argTwo" ]|| [ -z "$argThree" ]
+then
+   echo "Some or all of the parameters are empty";
+   helpFunction
+fi
+
+```
+
+Now that we have the cmd input, we need to calculate the around timestamps:
+
+```bash
+around_1=$(( $argOne + 86400000 ))
+around_2=$(( $argOne + 1985122 ))
+```
+
+And now we just need to call the curl! :grin:
+
+So, until this point i had spent some and less 20 min to do this. performing the curl with user input should be the easy part. Except it wasn't :sweat_smile:
+
+All because i didn't knew the meaning of **--data-raw $'{}**.
+
+The notation $'...' is a special form of quoting a string. Strings that are scanned for [ANSI C like escape sequences](https://www.gnu.org/software/bash/manual/html_node/ANSI_002dC-Quoting.html#ANSI_002dC-Quoting).
+
+So an example of what i was trying to do:
+
+```bash
+curl something -d $'{"somefield1":'$argOne',"somefield2":'$argTwo'}'
+```
+
+when in fact i should be doing:
+
+```bash
+curl something -d $'{"somefield1":'$argOne$',"somefield2":'$argTwo$'}'
+```
+
+Did you notice that single **$** after the variable and before the string? It took me more than an hour to discover this!
+
+
+But hey! i got it working \m/
+
+So all together, the skeleton of the script can be found here :
+
+
+##And the main lesson i learned : Words of the form $'string' are treated specially. The word expands to string, with backslash-escaped characters replaced as specified by the ANSI C standard##
+
+
+This blog was originally posted on [Medium](https://seomisw.medium.com/my-advent-of-rust-day-4-bc3a9e76a85b){:target="_blank"}--be sure to follow and clap!
