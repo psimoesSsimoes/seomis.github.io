@@ -25,7 +25,7 @@ Fortunately, the information i was searching for was always on the surrounding d
 > So i thought: Ok, I'll spend 20 min of my weekend automating this.
 
 Or so i thought...
-
+---
 ## The basic idea
 
 Should be simple enough: Open browser developer tools, click the Kibana log link of `View Surrounding Documents`, [copy as curl](https://everything.curl.dev/usingcurl/copyas). Tune some of the request fields, perform the request and  use [jq](https://github.com/stedolan/jq) to look up the fields i want.
@@ -155,7 +155,7 @@ Now it is clear what the curl is doing: it is using the unix timestamp of a part
 
 _So, if we give it the unix timestamp of the record, we should be able to obtain the neibouring information._
 
-
+---
 ### Now that we understand the request, we need to retrieve the information we are looking for on surrounding docs.
 
 For that, i have choosen the following [jq](https://github.com/stedolan/jq) filter:
@@ -241,7 +241,7 @@ around_1=$(( $argOne + 86400000 ))
 around_2=$(( $argOne + 1985122 ))
 ```
 
-And now we just need to call the curl! :grin:
+And now we just need to call the curl!
 
 So, until this point i had spent some and less 20 min to do this. performing the curl with user input should be the easy part. Except it wasn't :sweat_smile:
 
@@ -266,12 +266,10 @@ Did you notice that single **$** after the variable and before the string? It to
 
 But hey! i got it working \m/
 
-So all together, the gist can be found here :
-
-https://gist.github.com/psimoesSsimoes/18d7e478d010994d9f5bb3907516dbf6
+So all together, the gist can be found [here](https://gist.github.com/psimoesSsimoes/18d7e478d010994d9f5bb3907516dbf6)
 
 
-### And the main lesson i learned : Words of the form $'string' are treated specially. The word expands to string, with backslash-escaped characters replaced as specified by the ANSI C standard
-
+## And the main lesson i learned : Words of the form $'string' are treated specially. The word expands to string, with backslash-escaped characters replaced as specified by the ANSI C standard
+---
 
 This blog was originally posted on [Medium](https://seomisw.medium.com/my-advent-of-rust-day-4-bc3a9e76a85b){:target="_blank"}--be sure to follow and clap!
