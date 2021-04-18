@@ -242,7 +242,9 @@ around_2=$(( $argOne + 1985122 ))
 
 And now we just need to call the curl!
 
-So, until this point i had spent some and less 20 min to do this. performing the curl with user input should be the easy part. Except it wasn't (；・∀ ・)
+So, until this point i had spent some and less 20 min to do this.
+
+Performing the curl with user input should be the easy part. Except it wasn't :sweat_smile:
 
 All because i didn't knew the meaning of **--data-raw $'{}**.
 
