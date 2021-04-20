@@ -24,8 +24,6 @@ Fortunately, the information i was searching was always on the surrounding docum
 
 > So i thought: Ok, I'll spend 20 min of my weekend automating this.
 
-Or so i thought...
-
 ---
 ## The basic idea
 
@@ -63,7 +61,11 @@ Header\n
 Body\n
 ```
 
-In a quick look i could see that two headers and two body, so it is performing **two** searches.
+This is important and justifies why the curl data raw is **--data-raw $'{}'**. instead of **--data-raw '{}'**.
+
+The notation $'...' is a special form of quoting a string. Strings that are scanned for [ANSI C like escape sequences](https://www.gnu.org/software/bash/manual/html_node/ANSI_002dC-Quoting.html#ANSI_002dC-Quoting).
+
+So in a quick look i could see that two headers and two body, so it is performing **two** searches.
 
 Each header contains the following information:
 
@@ -242,35 +244,27 @@ around_2=$(( $argOne + 1985122 ))
 
 And now we just need to call the curl!
 
-So, until this point i had spent some and less 20 min to do this.
+Remeber that the notation $'...' is being use on `data-raw`. That means that each user input variable added to the curl body needs the notations $'...'.
 
-Performing the curl with user input should be the easy part. Except it wasn't :P
-
-All because i didn't knew the meaning of **--data-raw $'{}**.
-
-The notation $'...' is a special form of quoting a string. Strings that are scanned for [ANSI C like escape sequences](https://www.gnu.org/software/bash/manual/html_node/ANSI_002dC-Quoting.html#ANSI_002dC-Quoting).
-
-So an example of what i was trying to do:
-
-```bash
-curl something -d $'{"somefield1":'$argOne',"somefield2":'$argTwo'}'
-```
-
-when in fact i should be doing:
+So this:
 
 ```bash
 curl something -d $'{"somefield1":'$argOne$',"somefield2":'$argTwo$'}'
 ```
 
-Did you notice that single **$** after the variable and before the string? It took me more than an hour to discover this!
+Instead of this:
 
+```bash
+curl something -d $'{"somefield1":'$argOne',"somefield2":'$argTwo'}'
+```
 
-But hey! i got it working \m/
+Did you notice that single **$** after the variable and before the string?
+
 
 So all together, the gist can be found [here](https://gist.github.com/psimoesSsimoes/18d7e478d010994d9f5bb3907516dbf6)
 
 
-### And the main lesson i learned : Words of the form $'string' are treated specially. The word expands to string, with backslash-escaped characters replaced as specified by the ANSI C standard
+### And the main lesson is : Words of the form $'string' are treated specially. The word expands to string, with backslash-escaped characters replaced as specified by the ANSI C standard.
 ---
 
 This blog was originally posted on [Medium](https://seomisw.medium.com/bash-elasticsearch-multisearch-5123603af691){:target="_blank"}--be sure to follow and clap!
