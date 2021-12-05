@@ -16,4 +16,4 @@ featured_image: /images/social.jpg
 </div>
 
 
-Portuguese software developer, based on Costa da Caparica. In love with Rita. Having a blast working for [Worten](https://www.worten.pt). I have a diverse range of interests: outdoor activities like riding my bike, surfing, walking, chilling with friends on the beach. And of course... I love to thinker on my computer :) to the point that i can miss lunch while i am at it!
+Portuguese software developer, based on Costa da Caparica. In love with Rita. Having a blast working for [Easypay](https://www.easypay.pt/en). I have a diverse range of interests: outdoor activities like riding my bike, surfing, walking, chilling with friends on the beach. And of course... I love to thinker on my computer :) to the point that i can miss lunch while i am at it!
