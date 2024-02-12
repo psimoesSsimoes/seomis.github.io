@@ -41,6 +41,9 @@ defaults:
 
 markdown: kramdown
 
+include:
+  - .well-known
+
 kramdown:
   input: GFM
   syntax_highlighter: rouge
