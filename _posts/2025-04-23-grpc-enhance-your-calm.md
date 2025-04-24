@@ -5,6 +5,7 @@ featured_image: '/images/enhance_your_calm/enhance_your_calm.png'
 excerpt: Client (🖥️) sends rapid ❤️ pings → Server (🛡️) blocks with "5m min" shield → "ENHANCE_YOUR_CALM" error badge.
 ---
 
+
 In distributed systems, maintaining stable connections between services is critical. gRPC, built directly on HTTP/2, provides sophisticated connection management mechanisms that need proper configuration. We will explore gRPC connection health management, keepalive mechanisms, and troubleshooting techniques for robust microservice communication.
 
 ## gRPC and HTTP/2: The Foundation
@@ -255,16 +256,13 @@ When a pod rotates out:
 ### Best Practices for Pod Rotation Resilience
 
 1. **Use connection pools to multiple endpoints** - Don't rely on a single connection
-
 2. **Configure appropriate request timeouts** - Prevent requests from hanging during pod termination:
    ```go
    ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
    defer cancel()
    response, err := client.MyMethod(ctx, request)
    ```
-
 3. **Implement circuit breakers** - Protect against cascading failures during mass rotations
-
 4. **Configure proper Kubernetes readiness probes** - Ensure traffic only routes to fully initialized pods:
    ```yaml
    readinessProbe:
@@ -273,7 +271,6 @@ When a pod rotates out:
      initialDelaySeconds: 5
      periodSeconds: 10
    ```
-
 5. **Buffer requests during reconnection periods** - For non-critical traffic, consider queuing requests that can be retried later
 
 ## Handling Reconnection Logic
@@ -359,7 +356,7 @@ Remember these key takeaways:
 
 By following these guidelines, your gRPC services will maintain optimal connectivity through infrastructure changes, network disruptions, and deployment events.
 
-This blog was originally posted on [Medium](){:target="_blank"}--be sure to follow and clap!
+This blog was originally posted on [Medium](https://medium.com/@seomisw/image-dataset-for-litter-detection-7f1cab9e7fa1){:target="_blank"}--be sure to follow and clap!
 
 ---
 

@@ -384,18 +384,14 @@
 <h3 id="best-practices-for-pod-rotation-resilience">Best Practices for Pod Rotation Resilience</h3>
 
 <ol>
-  <li>
-    <p><strong>Use connection pools to multiple endpoints</strong> - Don’t rely on a single connection</p>
-  </li>
+  <li><strong>Use connection pools to multiple endpoints</strong> - Don’t rely on a single connection</li>
   <li><strong>Configure appropriate request timeouts</strong> - Prevent requests from hanging during pod termination:
     <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ctx</span><span class="p">,</span> <span class="n">cancel</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">WithTimeout</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span> <span class="m">3</span><span class="o">*</span><span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">)</span>
 <span class="k">defer</span> <span class="n">cancel</span><span class="p">()</span>
 <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">MyMethod</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
 </code></pre></div>    </div>
   </li>
-  <li>
-    <p><strong>Implement circuit breakers</strong> - Protect against cascading failures during mass rotations</p>
-  </li>
+  <li><strong>Implement circuit breakers</strong> - Protect against cascading failures during mass rotations</li>
   <li><strong>Configure proper Kubernetes readiness probes</strong> - Ensure traffic only routes to fully initialized pods:
     <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">readinessProbe</span><span class="pi">:</span>
   <span class="na">exec</span><span class="pi">:</span>
@@ -497,7 +493,7 @@
 
 <p>By following these guidelines, your gRPC services will maintain optimal connectivity through infrastructure changes, network disruptions, and deployment events.</p>
 
-<p>This blog was originally posted on <a href="" target="_blank">Medium</a>–be sure to follow and clap!</p>
+<p>This blog was originally posted on <a href="https://medium.com/@seomisw/image-dataset-for-litter-detection-7f1cab9e7fa1" target="_blank">Medium</a>–be sure to follow and clap!</p>
 
 <hr />
 
