@@ -56,16 +56,16 @@ social_settings:
   rss_url: 'https://seomis.cc/feed.xml'
 
 color_settings:
-  background_color: '#ffffff'
-  background_alt_color: '#f4f5f6'
-  text_dark_color: '#2A2F36'
-  text_medium_color: '#6C7A89'
-  text_light_color: '#ABB7B7'
-  accent_color: '#ee983d'
-  border_color: '#f7d7b6'
-  overlay_background_color: '#161B21'
-  overlay_text_color: '#ffffff'
-  error_color: '#D64541'
+  background_color: '#ffffff'         # branco puro — fundo principal
+  background_alt_color: '#f9f9f9'     # cinza muito claro — áreas destacadas
+  text_dark_color: '#000000'          # preto — texto principal
+  text_medium_color: '#333333'       # cinza escuro — excelente legibilidade
+  text_light_color: '#666666'        # cinza médio-escuro — subtil mas ainda visível
+  accent_color: '#ff7a00'             # laranja moderno — para destaques
+  border_color: '#e0e0e0'             # cinza claro — linhas divisórias
+  overlay_background_color: '#000000cc' # preto semi-transparente — overlays (ex: modais)
+  overlay_text_color: '#ffffff'       # branco — texto sobre overlays
+  error_color: '#d32f2f'              # vermelho elegante — mensagens de erro
 
 font_settings:
   font_embed: '<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600" rel="stylesheet">'
@@ -93,58 +93,58 @@ font_settings:
     weight: 600
     letter_spacing: 0
   h1:
-    small_size: 27
-    medium_size: 38
-    large_size: 50
+    small_size: 24
+    medium_size: 32
+    large_size: 40
     weight: 600
     letter_spacing: -0.02
     line_height: 1.2
   h2:
-    small_size: 27
-    medium_size: 38
-    large_size: 50
+    small_size: 22
+    medium_size: 28
+    large_size: 36
     weight: 600
     letter_spacing: -0.02
     line_height: 1.2
   h3:
-    small_size: 22
-    medium_size: 25
-    large_size: 30
+    small_size: 18
+    medium_size: 22
+    large_size: 25
     weight: 400
     letter_spacing: -0.02
     line_height: 1.3
   h4:
-    small_size: 17
-    medium_size: 22
-    large_size: 22
+    small_size: 16
+    medium_size: 18
+    large_size: 20
     weight: 400
     letter_spacing: 0
     line_height: 1.6
   h5:
-    small_size: 17
-    medium_size: 20
-    large_size: 20
+    small_size: 13
+    medium_size: 15
+    large_size: 18
     weight: 400
     letter_spacing: 0
     line_height: 1.6
   h6:
-    small_size: 17
-    medium_size: 20
-    large_size: 20
+    small_size: 12
+    medium_size: 14
+    large_size: 16
     weight: 400
     letter_spacing: 0
     line_height: 1.6
   p:
-    small_size: 17
-    medium_size: 19
-    large_size: 22
+    small_size: 16
+    medium_size: 17
+    large_size: 18
     weight: 400
     letter_spacing: 0
     line_height: 1.6
   blockquote:
-    small_size: 25
-    medium_size: 35
-    large_size: 45
+    small_size: 18
+    medium_size: 22
+    large_size: 26
     weight: 300
     letter_spacing: -0.02
     line_height: 1.6
