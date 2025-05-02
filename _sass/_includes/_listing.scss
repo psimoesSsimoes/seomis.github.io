@@ -120,3 +120,16 @@
 	float: right;
 	padding-left: $grid-spacing/2;
 }
+
+// - - - - - - - - - - - - - - - - - -
+
+// Custom excerpt
+
+// - - - - - - - - - - - - - - - - - -
+
+.listing-post__content {
+	p.excerpt {
+		text-align: center;
+	}
+}
+
