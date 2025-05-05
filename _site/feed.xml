@@ -1,4 +1,179 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-02T13:33:23+01:00</updated><id>http://localhost:4000/feed.xml</id><entry><title type="html">Understanding gRPC Keepalive, ENHANCE_YOUR_CALM, and Connection Health</title><link href="http://localhost:4000/blog/grpc-enhance-your-calm" rel="alternate" type="text/html" title="Understanding gRPC Keepalive, ENHANCE_YOUR_CALM, and Connection Health" /><published>2025-04-23T01:00:00+01:00</published><updated>2025-04-23T01:00:00+01:00</updated><id>http://localhost:4000/blog/grpc-enhance-your-calm</id><content type="html" xml:base="http://localhost:4000/blog/grpc-enhance-your-calm"><![CDATA[<p>In distributed systems, maintaining stable connections between services is critical. gRPC, built directly on HTTP/2, provides sophisticated connection management mechanisms that need proper configuration. We will explore gRPC connection health management, keepalive mechanisms, and troubleshooting techniques for robust microservice communication.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-05T22:25:48+01:00</updated><id>http://localhost:4000/feed.xml</id><entry><title type="html">Reading a `pt-query-digest` Report Without Losing Your Mind</title><link href="http://localhost:4000/blog/slow-query-log-interpretation" rel="alternate" type="text/html" title="Reading a `pt-query-digest` Report Without Losing Your Mind" /><published>2025-05-02T01:00:00+01:00</published><updated>2025-05-02T01:00:00+01:00</updated><id>http://localhost:4000/blog/slow-query-log-interpretation</id><content type="html" xml:base="http://localhost:4000/blog/slow-query-log-interpretation"><![CDATA[<p>You’ve run <code class="highlighter-rouge">pt-query-digest</code> on your MySQL slow log. Now you’re staring at a huge wall of text and wondering what to do with it. Here’s a practical breakdown of how to actually make sense of it — and fix slow queries that are dragging your database down.</p>
+
+<hr />
+
+<h2 id="1-start-with-the-summary">1. Start with the Summary</h2>
+
+<p>Right at the top, you’ll see something like:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 1620 total queries
+# 161 unique query patterns
+# Time range: April 17–30, 2025
+# Exec time avg: 22s
+# Rows examined avg: 5.34M
+</code></pre></div></div>
+<p><strong>What this tells you:</strong></p>
+<ul>
+  <li>💀 22 seconds average execution time is alarmingly high.</li>
+  <li>🧐 5.34 million rows examined per query suggests indexing problems.</li>
+</ul>
+
+<p>This section gives you a high-level health check of your workload. If it looks bad, it probably is.</p>
+
+<hr />
+
+<h2 id="2-check-the-profile-section">2. Check the “Profile” Section</h2>
+
+<p>The profile ranks queries by their total response time contribution.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Rank Query ID                            Response time   Calls R/Call   V
+# ==== =================================== =============== ===== ======== =
+#    1 0x3A250BE32D8B29F0                  12340.7 33.8%    381  32.3906  0.42
+#    2 0x4B3D9E81C5C0BC7B                   4313.9 11.8%     11 392.1736  0.01
+</code></pre></div></div>
+<p><strong>How to read this:</strong></p>
+<ul>
+  <li>🔢 Rank: Based on total response time.</li>
+  <li>🧠 Query ID: A fingerprint of the query (use it to search further down).</li>
+  <li>⏱ Response Time: How long this query took in total (and % of the total).</li>
+  <li>🔁 Calls: How many times this query ran.</li>
+  <li>⚠️ R/Call: Average time per execution — high values here are red flags.</li>
+</ul>
+
+<hr />
+
+<h2 id="3-analyze-each-query-section">3. Analyze Each Query Section</h2>
+
+<p>Scroll down for details on each top query. You’ll see blocks like:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Query 1: 381 QPS, 12.34ks total, 33.8% of all time...
+# Rank: 1
+# Time range: 2025-04-17 to 2025-04-30
+#
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          23     381
+# Exec time      33 12341s      1s    160s     32s     70s     24s     28s
+</code></pre></div></div>
+<p>Look for:</p>
+<ul>
+  <li>Execution time patterns — are they spiky?</li>
+  <li>High max or 95th percentile values? That’s trouble.</li>
+  <li>Rows examined vs rows sent — are we reading too much and returning too little?</li>
+</ul>
+
+<p>Then you’ll find:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Tables
+SHOW TABLE STATUS FROM `database` LIKE 'users'\G
+SHOW CREATE TABLE `database`.`users`\G
+EXPLAIN SELECT * FROM users WHERE last_login &lt; '2025-01-01' AND status = 'inactive'\G
+</code></pre></div></div>
+
+<p>Check:</p>
+<ul>
+  <li>Are there missing indexes?</li>
+  <li>Are we scanning the whole table (<code class="highlighter-rouge">type: ALL</code>)?</li>
+  <li>Is MySQL using a key (<code class="highlighter-rouge">key: NULL</code> means no index was used)?</li>
+</ul>
+
+<hr />
+
+<h2 id="4-know-the-red-flags-">4. Know the Red Flags 🚩</h2>
+
+<p>Watch out for:</p>
+
+<ul>
+  <li>⏳ High average time per call with low execution count → likely reporting/batch jobs.</li>
+  <li>🔁 High call counts with moderate execution time → small optimizations can have huge payoff.</li>
+  <li>📊 Rows examined » Rows sent → indexing issues.</li>
+  <li>🔐 High lock time → contention problems.</li>
+  <li>❗ EXPLAIN mentions:
+    <ul>
+      <li><code class="highlighter-rouge">Using filesort</code></li>
+      <li><code class="highlighter-rouge">Using temporary</code></li>
+      <li><code class="highlighter-rouge">type: ALL</code></li>
+      <li><code class="highlighter-rouge">key: NULL</code></li>
+    </ul>
+  </li>
+  <li>🧮 Functions on indexed columns: <code class="highlighter-rouge">DATE(created_at)</code>, <code class="highlighter-rouge">MONTH(...)</code>, etc.</li>
+</ul>
+
+<hr />
+
+<h2 id="5-prioritize-wisely">5. Prioritize Wisely</h2>
+
+<p>Focus on the queries that:</p>
+
+<ul>
+  <li>Take up &gt;10% of total time</li>
+  <li>Are called hundreds or thousands of times</li>
+  <li>Examine huge numbers of rows unnecessarily</li>
+  <li>Lock up tables or create contention</li>
+</ul>
+
+<hr />
+
+<h2 id="6-fix-them-">6. Fix Them 🛠</h2>
+
+<p>Once you’ve picked your top offenders:</p>
+
+<ul>
+  <li>✅ Add or adjust indexes (on WHERE, JOIN, GROUP BY columns)</li>
+  <li>🔄 Rewrite queries for better execution plans</li>
+  <li>💡 Avoid functions in WHERE clauses that disable indexes</li>
+  <li>🧊 Cache results when appropriate</li>
+  <li>🔍 Use <code class="highlighter-rouge">EXPLAIN</code> to check what MySQL is doing behind the scenes</li>
+</ul>
+
+<hr />
+
+<h2 id="bonus-use-grep-to-automate-the-hunt">Bonus: Use Grep to Automate the Hunt</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Profile section</span>
+<span class="nb">grep</span> <span class="nt">-A</span> 10 <span class="s2">"# Profile"</span> slow-queries.txt
+
+<span class="c"># High row scan, low return</span>
+<span class="nb">grep</span> <span class="nt">-A</span> 20 <span class="s2">"Rows examine.*M"</span> slow-queries.txt
+
+<span class="c"># Filesorts or temp tables</span>
+<span class="nb">grep</span> <span class="nt">-A</span> 10 <span class="s2">"Using temporary"</span> slow-queries.txt
+<span class="nb">grep</span> <span class="nt">-A</span> 10 <span class="s2">"Using filesort"</span> slow-queries.txt
+
+<span class="c"># Full table scans</span>
+<span class="nb">grep</span> <span class="nt">-A</span> 10 <span class="s2">"type: ALL"</span> slow-queries.txt
+<span class="nb">grep</span> <span class="nt">-A</span> 10 <span class="s2">"key: NULL"</span> slow-queries.txt
+
+<span class="c"># Lock time issues</span>
+<span class="nb">grep</span> <span class="nt">-A</span> 5 <span class="s2">"Lock time.*[0-9]s"</span> slow-queries.txt
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="tldr-">TL;DR 🧠</h2>
+
+<ul>
+  <li>🔍 Start with the Profile section</li>
+  <li>🚨 Look for high response time or bad EXPLAIN signs</li>
+  <li>⚙️ Focus on top 5–10 offenders</li>
+  <li>🔧 Fix indexes, rewrite bad queries, reduce rows examined</li>
+  <li>Slow queries are normal. Staying blind to them isn’t. Learn the patterns, spot the pain points, and chip away at them. Your database — and your users — will notice.
+    <blockquote>
+      <p><strong>Note:</strong> While tools like <code class="highlighter-rouge">pt-query-digest</code> provide powerful insights, nothing replaces understanding the <strong>context</strong> in which these queries run. Sometimes, there are valid tradeoffs that justify a “slow” query, or cases where taking action could cause more disruption than leaving things as they are—<em>at least for the time being</em>. Use the data to inform your decisions, <strong>but don’t skip the thinking part</strong>.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<hr />
+<h2 id="further-reading">Further Reading</h2>
+
+<p>If you’re interested in diving deeper into query optimization, MySQL performance, and related topics, check out the following resources:</p>
+
+<p><strong><a href="https://www.percona.com/blog/">MySQL Performance Blog</a></strong><br />
+  Percona’s official blog provides deep dives into MySQL performance tuning, optimization tips, and case studies.</p>
+
+<p><strong><a href="https://www.percona.com/doc/percona-toolkit/pt-query-digest.html">pt-query-digest Manual</a></strong><br />
+  Official documentation for <code class="highlighter-rouge">pt-query-digest</code> which explains its features and how to interpret its reports.</p>
+
+<p><strong><a href="https://www.percona.com/software/pmm">Percona Monitoring and Management (PMM)</a></strong>
+  An open source database monitoring, observability, and management tool.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[🐢 A quick guide to decoding pt-query-digest reports and fixing slow MySQL queries.]]></summary></entry><entry><title type="html">Understanding gRPC Keepalive, ENHANCE_YOUR_CALM, and Connection Health</title><link href="http://localhost:4000/blog/grpc-enhance-your-calm" rel="alternate" type="text/html" title="Understanding gRPC Keepalive, ENHANCE_YOUR_CALM, and Connection Health" /><published>2025-04-23T01:00:00+01:00</published><updated>2025-04-23T01:00:00+01:00</updated><id>http://localhost:4000/blog/grpc-enhance-your-calm</id><content type="html" xml:base="http://localhost:4000/blog/grpc-enhance-your-calm"><![CDATA[<p>In distributed systems, maintaining stable connections between services is critical. gRPC, built directly on HTTP/2, provides sophisticated connection management mechanisms that need proper configuration. We will explore gRPC connection health management, keepalive mechanisms, and troubleshooting techniques for robust microservice communication.</p>
 
 <h2 id="grpc-and-http2-the-foundation">gRPC and HTTP/2: The Foundation</h2>
 

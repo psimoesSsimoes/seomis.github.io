@@ -2,15 +2,15 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://localhost:4000/about</loc>
-<lastmod>2025-05-02T13:33:23+01:00</lastmod>
+<lastmod>2025-05-05T22:25:48+01:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/contact</loc>
-<lastmod>2025-05-02T13:33:23+01:00</lastmod>
+<lastmod>2025-05-05T22:25:48+01:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/thanks</loc>
-<lastmod>2025-05-02T13:33:23+01:00</lastmod>
+<lastmod>2025-05-05T22:25:48+01:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/blog/vim-search</loc>
@@ -37,6 +37,10 @@
 <lastmod>2025-04-23T01:00:00+01:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/blog/slow-query-log-interpretation</loc>
+<lastmod>2025-05-02T01:00:00+01:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/project/demo-project</loc>
 <lastmod>2018-06-30T01:00:00+01:00</lastmod>
 </url>
@@ -45,5 +49,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/blog/page2/</loc>
 </url>
 </urlset>
