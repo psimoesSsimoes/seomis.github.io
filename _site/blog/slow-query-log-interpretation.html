@@ -20,17 +20,17 @@
 
 	<!-- Page Info -->
 	<link rel="shortcut icon" href="/images/seomis.jpg">
-	<title>🐢 Reading a `pt-query-digest` Report Without Losing Your Mind – Pedro Simões</title>
+	<title>Reading a `pt-query-digest` Report Without Losing Your Mind – Pedro Simões</title>
 	<meta name="description" content="🐢 A quick guide to decoding pt-query-digest reports and fixing slow MySQL queries.">
 
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="🐢 Reading a `pt-query-digest` Report Without Losing Your Mind – Pedro Simões">
+	<meta name="twitter:title" content="Reading a `pt-query-digest` Report Without Losing Your Mind – Pedro Simões">
 	<meta name="twitter:description" content="🐢 A quick guide to decoding pt-query-digest reports and fixing slow MySQL queries.">
 	<meta name="twitter:image:src" content="http://localhost:4000/">
 
 	<!-- Facebook OpenGraph -->
-	<meta property="og:title" content="🐢 Reading a `pt-query-digest` Report Without Losing Your Mind – Pedro Simões" />
+	<meta property="og:title" content="Reading a `pt-query-digest` Report Without Losing Your Mind – Pedro Simões" />
 	<meta property="og:description" content="🐢 A quick guide to decoding pt-query-digest reports and fixing slow MySQL queries." />
 	<meta property="og:image" content="http://localhost:4000/" />
 
@@ -113,13 +113,13 @@
 	
 	<div class="page">
 
-		<div class="page__content" data-page-title="🐢 Reading a `pt-query-digest` Report Without Losing Your Mind – Pedro Simões">
+		<div class="page__content" data-page-title="Reading a `pt-query-digest` Report Without Losing Your Mind – Pedro Simões">
 
 			<section class="single">
 
 	<div class="wrap">
 
-		<h1>🐢 Reading a `pt-query-digest` Report Without Losing Your Mind</h1>
+		<h1>Reading a `pt-query-digest` Report Without Losing Your Mind</h1>
 		<p class="subtitle">02 May 2025</p>
 
 		<p>You’ve run <code class="highlighter-rouge">pt-query-digest</code> on your MySQL slow log. Now you’re staring at a huge wall of text and wondering what to do with it. Here’s a practical breakdown of how to actually make sense of it — and fix slow queries that are dragging your database down.</p>
@@ -129,14 +129,12 @@
 <h2 id="1-start-with-the-summary">1. Start with the Summary</h2>
 
 <p>Right at the top, you’ll see something like:</p>
-
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 1620 total queries
 # 161 unique query patterns
 # Time range: April 17–30, 2025
 # Exec time avg: 22s
 # Rows examined avg: 5.34M
 </code></pre></div></div>
-
 <p><strong>What this tells you:</strong></p>
 <ul>
   <li>💀 22 seconds average execution time is alarmingly high.</li>
@@ -150,13 +148,11 @@
 <h2 id="2-check-the-profile-section">2. Check the “Profile” Section</h2>
 
 <p>The profile ranks queries by their total response time contribution.</p>
-
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Rank Query ID                            Response time   Calls R/Call   V
 # ==== =================================== =============== ===== ======== =
 #    1 0x3A250BE32D8B29F0                  12340.7 33.8%    381  32.3906  0.42
 #    2 0x4B3D9E81C5C0BC7B                   4313.9 11.8%     11 392.1736  0.01
 </code></pre></div></div>
-
 <p><strong>How to read this:</strong></p>
 <ul>
   <li>🔢 Rank: Based on total response time.</li>
@@ -171,7 +167,6 @@
 <h2 id="3-analyze-each-query-section">3. Analyze Each Query Section</h2>
 
 <p>Scroll down for details on each top query. You’ll see blocks like:</p>
-
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Query 1: 381 QPS, 12.34ks total, 33.8% of all time...
 # Rank: 1
 # Time range: 2025-04-17 to 2025-04-30
@@ -181,7 +176,6 @@
 # Count          23     381
 # Exec time      33 12341s      1s    160s     32s     70s     24s     28s
 </code></pre></div></div>
-
 <p>Look for:</p>
 <ul>
   <li>Execution time patterns — are they spiky?</li>

@@ -1,5 +1,5 @@
 ---
-title: '🐢 Reading a `pt-query-digest` Report Without Losing Your Mind'
+title: 'Reading a `pt-query-digest` Report Without Losing Your Mind'
 date: 2025-05-02 00:00:00
 featured_image: ''
 excerpt: 🐢 A quick guide to decoding pt-query-digest reports and fixing slow MySQL queries.
@@ -12,7 +12,6 @@ You've run `pt-query-digest` on your MySQL slow log. Now you’re staring at a h
 ## 1. Start with the Summary
 
 Right at the top, you’ll see something like:
-
 ```
 # 1620 total queries
 # 161 unique query patterns
@@ -20,7 +19,6 @@ Right at the top, you’ll see something like:
 # Exec time avg: 22s
 # Rows examined avg: 5.34M
 ```
-
 **What this tells you:**
 - 💀 22 seconds average execution time is alarmingly high.
 - 🧐 5.34 million rows examined per query suggests indexing problems.
@@ -32,14 +30,12 @@ This section gives you a high-level health check of your workload. If it looks b
 ## 2. Check the "Profile" Section
 
 The profile ranks queries by their total response time contribution.
-
 ```
 # Rank Query ID                            Response time   Calls R/Call   V
 # ==== =================================== =============== ===== ======== =
 #    1 0x3A250BE32D8B29F0                  12340.7 33.8%    381  32.3906  0.42
 #    2 0x4B3D9E81C5C0BC7B                   4313.9 11.8%     11 392.1736  0.01
 ```
-
 **How to read this:**
 - 🔢 Rank: Based on total response time.
 - 🧠 Query ID: A fingerprint of the query (use it to search further down).
@@ -52,7 +48,6 @@ The profile ranks queries by their total response time contribution.
 ## 3. Analyze Each Query Section
 
 Scroll down for details on each top query. You’ll see blocks like:
-
 ```
 # Query 1: 381 QPS, 12.34ks total, 33.8% of all time...
 # Rank: 1
@@ -63,7 +58,6 @@ Scroll down for details on each top query. You’ll see blocks like:
 # Count          23     381
 # Exec time      33 12341s      1s    160s     32s     70s     24s     28s
 ```
-
 Look for:
 - Execution time patterns — are they spiky?
 - High max or 95th percentile values? That’s trouble.
@@ -170,6 +164,4 @@ If you're interested in diving deeper into query optimization, MySQL performance
 
 **[Percona Monitoring and Management (PMM)](https://www.percona.com/software/pmm)**
   An open source database monitoring, observability, and management tool.
-
-
 
