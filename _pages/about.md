@@ -13,6 +13,7 @@ featured_image: /images/social.jpg
 	<img src="/images/personal/photo4.jpg">
 	<img src="/images/personal/photo5.jpg">
 	<img src="/images/personal/photo6.jpg">
+	<img src="/images/personal/seomis_gui.jpg">
 </div>
 
 
