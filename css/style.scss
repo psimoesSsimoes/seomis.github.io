@@ -124,6 +124,14 @@ $logo-width: {{ site.data.settings.header_settings.logo_width }}px;
 // Grid item
 $grid-spacing: {{ site.data.settings.grid_settings.grid_spacing }}px;
 
+.only-html {
+  display: block;
+}
+
+.only-pdf {
+  display: none;
+}
+
 
 
 // - - - - - - - - - - Global styles

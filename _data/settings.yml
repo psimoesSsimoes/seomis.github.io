@@ -12,8 +12,8 @@ menu_settings:
   menu_items:
     - title: 'Latest'
       url: '/'
-    # - title: 'Projects'
-    #   url: '/projects/'
+    - title: 'Resume'
+      url: '/resume'
     - title: 'About'
       url: '/about'
 
@@ -52,8 +52,9 @@ social_settings:
   soundcloud_url: ''
   spotify_url: ''
   bandcamp_url: ''
-  linkedin_url: ''
+  linkedin_url: 'https://pt.linkedin.com/in/pedro-sim%C3%B5es-909719151'
   rss_url: 'https://seomis.cc/feed.xml'
+  bluesky_url: 'https://bsky.app/profile/its-me-seomis.bsky.social'
 
 color_settings:
   background_color: '#ffffff'         # branco puro — fundo principal
