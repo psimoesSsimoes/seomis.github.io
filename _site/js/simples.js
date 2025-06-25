@@ -104,6 +104,14 @@
 
 				// Change navTarget
 				navTarget = thisTarget;
+        // if contains .pdf, then treat it as external
+        if (thisTarget.indexOf('.pdf') >= 0) {
+          // switch to url without being via History
+          // this is needed for PDF links
+          //
+          window.location = thisTarget;
+          return;
+        }
 				
 				// Switch the URL via History
 				History.pushState(null, docTitle, thisTarget);
