@@ -12,10 +12,9 @@ layout: default
 		{{ page.content }}
 
 		<aside class="author" id="author" aria-label="About the author">
-			<img src="{{ site.data.settings.header_settings.avatar_image | relative_url }}" class="author__img" alt="" width="64" height="64" loading="lazy" decoding="async">
+			<img src="{{ site.data.settings.header_settings.avatar_image | relative_url }}" class="author__img" alt="" width="48" height="48" loading="lazy" decoding="async">
 			<div class="author__body">
 				<p class="author__text">Written by <strong>{{ site.data.settings.basic_settings.site_title }}</strong>, backend team leader at <a href="https://www.easypay.pt/en">Easypay</a>. I build and run payment systems.</p>
-				{% include cta.html resume=true %}
 			</div>
 		</aside>
 

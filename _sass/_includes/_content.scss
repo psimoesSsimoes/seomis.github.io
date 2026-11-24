@@ -325,7 +325,7 @@
 .single .author {
 	display: flex;
 	gap: 16px;
-	align-items: flex-start;
+	align-items: center;
 	margin-top: 48px;
 	padding: 24px 0;
 	border-top: 2px solid $border-color;
@@ -335,15 +335,12 @@
 		max-width: none;
 	}
 
-	.cta {
-		margin-bottom: 0;
-	}
 }
 
 .author__img {
 	flex: none;
-	width: 64px;
-	height: 64px;
+	width: 48px;
+	height: 48px;
 	border-radius: 100%;
 }
 
@@ -384,4 +381,10 @@
 .post-nav__all {
 	grid-column: 1 / -1;
 	justify-self: start;
+}
+
+// Resume: quiet link to the PDF version, under the subtitle
+.single .resume-download {
+	margin-top: 8px;
+	font-size: 15px;
 }

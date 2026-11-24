@@ -22,6 +22,7 @@ grid_settings:
   grid_spacing: 10
 
 social_settings:
+  email_url: 'mailto:seomisw@gmail.com'
   facebook_url: ''
   twitter_url: 'https://twitter.com/seomisw'
   instagram_url: ''
