@@ -1,6 +1,7 @@
 basic_settings:
   site_title: Pedro Simões
   site_tagline: Following curiosity.
+  email: seomisw@gmail.com
   favicon_image: /images/seomis.jpg
 
 header_settings:
@@ -62,14 +63,14 @@ color_settings:
   text_dark_color: '#000000'          # preto — texto principal
   text_medium_color: '#333333'       # cinza escuro — excelente legibilidade
   text_light_color: '#666666'        # cinza médio-escuro — subtil mas ainda visível
-  accent_color: '#ff7a00'             # laranja moderno — para destaques
+  accent_color: '#b85400'             # laranja escuro — 4.9:1 com branco (WCAG AA)
   border_color: '#e0e0e0'             # cinza claro — linhas divisórias
   overlay_background_color: '#000000cc' # preto semi-transparente — overlays (ex: modais)
   overlay_text_color: '#ffffff'       # branco — texto sobre overlays
   error_color: '#d32f2f'              # vermelho elegante — mensagens de erro
 
 font_settings:
-  font_embed: '<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600" rel="stylesheet">'
+  font_embed: '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">'
   title_font: '"Nunito", sans-serif'
   body_font: '"Nunito", sans-serif'
   regular_weight: 400
@@ -154,7 +155,7 @@ font_settings:
     letter_spacing: 0
 
 advanced_settings:
-  ajax_loading: true
+  ajax_loading: false
   analytics_code: ""
   custom_styles: ""
   header_js: ""

@@ -227,8 +227,8 @@ a {
 	}
 
 	&:hover {
-		background: adjust-hue($accent-color,15%);
-		border-color: adjust-hue($accent-color,15%);
+		background: darken($accent-color,8%);
+		border-color: darken($accent-color,8%);
 		color: $background-color;
 	}
 
@@ -273,6 +273,37 @@ a {
 	}
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.button:focus-visible {
+	outline: 3px solid $accent-color;
+	outline-offset: 3px;
+}
+
+.skip-link {
+	position: absolute;
+	top: -100px;
+	left: 10px;
+	z-index: 10;
+	padding: 10px 16px;
+	background: $text-dark-color;
+	color: $background-color;
+
+	&:focus {
+		top: 10px;
+		color: $background-color;
+	}
+}
+
+.icon {
+	display: inline-block;
+	width: auto;
+	height: 1em;
+	vertical-align: -0.125em;
+}
+
 hr {
 	margin: 40px 0;
 	border: 0;
@@ -286,55 +317,6 @@ hr {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Page loading
-
-.page-loader {
-	display: none;
-}
-
-.page {
-	@include transition(all 0.6s cubic-bezier(.87,-.41,.19,1.44));
-}
-
-body.loading {
-
-	.loader {
-		opacity: 1;
-		visibility: visible;
-		@include transition(all 0.4s ease-in-out 1s);
-	}
-
-	.page {
-		opacity: 0;
-		visibility: hidden;
-		@include transition(all 0.4s ease-in-out, transform 0s ease-in-out 0.4s);
-		@include translate(0,20px);
-	}
-
-	.footer {
-		opacity: 0;
-		visibility: hidden;
-		@include transition(all 0.4s ease-in-out);
-	}
-}
-
-.loader {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	@include translate(-50%,-50%);
-	width: 60px;
-	height: 15px;
-
-	opacity: 0;
-	visibility: hidden;
-	@include transition(all 0.2s ease-in-out);
-
-	svg {
-		width: 100%;
-		height: 100%;
-		fill: rgba($text-dark-color,0.2);
-	}
-}
 
 .page,
 .page__content {

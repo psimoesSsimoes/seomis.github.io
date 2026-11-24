@@ -1,17 +1,18 @@
 <ul class="socials">
 	{% for url in site.data.settings.social_settings %}
 	{% if url[1] != '' %}
+	{% assign icon = url[0] | remove: '_url' %}
+	{% case icon %}
+		{% when 'rss' %}{% assign label = 'RSS feed' %}
+		{% when 'linkedin' %}{% assign label = 'LinkedIn' %}
+		{% when 'github' %}{% assign label = 'GitHub' %}
+		{% else %}{% assign label = icon | replace: '-', ' ' | capitalize %}
+	{% endcase %}
 	<li class="socials__item">
-	{% if url[0] == 'rss_url' %}
-		<a href="{{ url[1] }}" target="_blank" class="socials__item__link" title="{{ url[0] | remove: '_url' | replace: '-', ' ' | capitalize }}">
-			<i class="fas fa-{{ url[0] | replace: 'facebook', 'facebook-f' | remove: '_url' }}" aria-hidden="true"></i>
-		</a>
-        {% else %}
-		<a href="{{ url[1] }}" target="_blank" class="socials__item__link" title="{{ url[0] | remove: '_url' | replace: '-', ' ' | capitalize }}">
-			<i class="fab fa-{{ url[0] | replace: 'facebook', 'facebook-f' | remove: '_url' }}" aria-hidden="true"></i>
+		<a href="{{ url[1] }}" class="socials__item__link" aria-label="{{ label }}" title="{{ label }}" rel="me noopener" target="_blank">
+			{% include icons/{{ icon }}.svg %}
 		</a>
 	</li>
-	{% endif %}
 	{% endif %}
 	{% endfor %}
 </ul>

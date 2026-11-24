@@ -1,11 +1,10 @@
 ---
-title: ""
-subtitle:
-description:
-featured_image: /images/demo/demo-landscape.jpg
+title: Resume
+subtitle: Backend Team Leader @ Easypay · Costa da Caparica, Portugal
+description: Pedro Simões, backend team leader at Easypay. Experience, skills and a downloadable CV.
 ---
 
-**CEO @ Afectos a Si - Caparica, PT**
+{% include cta.html %}
 
 Hello, I'm Pedro Simões, a dedicated hacker with a great team spirit, passionate about technology and how it shapes our world.
 
@@ -35,6 +34,9 @@ We made observability a priority — adding tests that mattered, metrics that to
 We shaped the way the team works: from practical processes to real feedback loops that actually improve things.
 
 When the business came with fast-moving or fuzzy problems, we clarified, prioritized, and shipped solid solutions. Nothing flashy — just steady, deliberate progress that made things better.
+
+#### *Managing Partner (non-remunerated)* @ Afectos a Si, Unipessoal Lda
+I own Afectos a Si and act as its managing partner on an unpaid basis, alongside my full-time role at Easypay.
 
 #### *Senior Software Engineer* @ [Worten](https://www.worten.pt/)
 **2020-01 – 2021-10**
@@ -78,4 +80,4 @@ Full-stack developer and system administrator at UNINOVA - Institute for the Dev
 
 ---
 
-[📄 Click here to download my CV (PDF)](/files/pedro_simoes_cv.pdf)
+{% include cta.html %}

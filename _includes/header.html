@@ -3,14 +3,14 @@
 	<div class="wrap">
 
 		{% if site.data.settings.header_settings.avatar_image %}
-		<a href="{{ site.baseurl }}/" class="header__avatar">
-			<img src="{{ site.data.settings.header_settings.avatar_image | relative_url }}" class="header__avatar__img">
+		<a href="{{ site.baseurl }}/" class="header__avatar" tabindex="-1" aria-hidden="true">
+			<img src="{{ site.data.settings.header_settings.avatar_image | relative_url }}" class="header__avatar__img" alt="" width="150" height="150">
 		</a>
 		{% endif %}
 
 		{% if site.data.settings.header_settings.logo_image %}
 		<a href="{{ site.baseurl }}/" class="header__logo">
-			<img src="{{ site.data.settings.header_settings.logo_image | relative_url }}" class="header__logo__img">
+			<img src="{{ site.data.settings.header_settings.logo_image | relative_url }}" class="header__logo__img" alt="{{ site.data.settings.basic_settings.site_title }}">
 		</a>
 		{% else %}
 		<a href="{{ site.baseurl }}/" class="header__title">
@@ -20,15 +20,21 @@
 
 		<p class="header__tagline">{{ site.data.settings.basic_settings.site_tagline }}</p>
 
-		<div class="menu">
+		<nav class="menu" aria-label="Main">
 			<ul class="menu__list">
 				{% for item in site.data.settings.menu_settings.menu_items %}
+				{% assign is_active = false %}
+				{% if item.url == '/' %}
+					{% if paginator %}{% assign is_active = true %}{% endif %}
+				{% elsif page.url == item.url %}
+					{% assign is_active = true %}
+				{% endif %}
 				<li class="menu__list__item">
-					<a href="{{ item.url | relative_url }}" class="menu__list__item__link">{{ item.title }}</a>
+					<a href="{{ item.url | relative_url }}" class="menu__list__item__link{% if is_active %} active-link{% endif %}"{% if is_active %} aria-current="page"{% endif %}>{{ item.title }}</a>
 				</li>
 				{% endfor %}
 			</ul>
-		</div>
+		</nav>
 
 	</div>
 

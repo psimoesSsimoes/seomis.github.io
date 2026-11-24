@@ -1,11 +1,11 @@
 ---
 title: 'Easy search in VIM'
 date: 2020-05-09 00:00:00
-featured_image: '/images/vim_search/vimgrep.gif'
+featured_image: '/images/vim_search/vimgrep.jpg'
 excerpt: VIM + Functions + ACK == WIN!.
 ---
 
-![](/images/vim_search/vimgrep.gif)
+<video src="/images/vim_search/vimgrep.mp4" poster="/images/vim_search/vimgrep.jpg" width="1280" height="720" autoplay loop muted playsinline controls aria-label="Screen recording: the word under the cursor is searched across files in Vim and the matches open in the quickfix list"></video>
 
 ## Easy search in VIM
 

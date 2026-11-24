@@ -5,18 +5,10 @@
 // - - - - - - - - - - - - - - - - - -
 
 .listing-post {
-	margin-top: 50px;
+	margin-top: 32px;
 
 	@include mq(tabletp) {
-		margin-top: 80px;
-	}
-
-	@include mq(tabletl) {
-		margin-top: 90px;
-	}
-
-	@include mq(laptop) {
-		margin-top: 120px;
+		margin-top: 40px;
 	}
 
 	&:first-child {
@@ -24,8 +16,26 @@
 	}
 }
 
+.single .listing-post + hr {
+	margin-top: 32px;
+	margin-bottom: 0;
+
+	@include mq(tabletp) {
+		margin-top: 40px;
+		margin-bottom: 0;
+	}
+}
+
 .listing-post__header {
-	text-align: center;
+	text-align: left;
+}
+
+.listing-post__title {
+	font-size: 22px;
+
+	@include mq(tabletp) {
+		font-size: 26px;
+	}
 }
 
 .listing-post__image {
@@ -52,19 +62,7 @@
 }
 
 .listing-post__content {
-	margin-top: 20px;
-
-	@include mq(tabletp) {
-		margin-top: 25px;
-	}
-
-	@include mq(tabletl) {
-		margin-top: 30px;
-	}
-
-	@include mq(laptop) {
-		margin-top: 40px;
-	}
+	margin-top: 10px;
 
 	p .button {
 		margin-top: 5px;
@@ -76,12 +74,13 @@
 }
 
 .listing-post__subtitle {
-	margin-top: 5px;
+	margin-top: 4px;
+	font-size: 15px;
 	color: $text-light-color;
 }
 
 .pagination {
-	margin-top: 0;
+	margin-top: 40px;
 	padding: 0 20px;
 
 	@include mq(tabletp) {
@@ -121,15 +120,35 @@
 	padding-left: $grid-spacing/2;
 }
 
-// - - - - - - - - - - - - - - - - - -
 
-// Custom excerpt
 
-// - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Intro + CTA
 
-.listing-post__content {
-	p.excerpt {
-		text-align: center;
-	}
+.single .intro__title {
+	text-align: left;
 }
 
+.intro__text {
+	margin-top: 10px;
+}
+
+.single .listing__heading {
+	margin-bottom: 24px;
+	font-size: 15px;
+	font-weight: $bold-weight;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: $text-light-color;
+}
+
+.single .cta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+
+	.button {
+		margin-top: 0;
+	}
+}

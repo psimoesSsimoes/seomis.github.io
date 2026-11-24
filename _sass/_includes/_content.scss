@@ -86,7 +86,7 @@
 		padding: 0;
 	}
 
-	p a {
+	p a:not(.button) {
 		font-weight: $bold-weight;
 		border-bottom: 2px solid $accent-color;
 	}
@@ -154,14 +154,10 @@
 		}
 	}
 
-	.table-wrap {
-		display: block;
-		width: 100%;
-		overflow-x: auto;
-	}
-
 	table {
-		min-width: 600px;
+		display: block;
+		max-width: 100%;
+		overflow-x: auto;
 		border: 2px solid $text-dark-color;
 
 		thead {
@@ -269,9 +265,11 @@
 	}
 }
 
-.image-wrap,
-.video-wrap {
-	position: relative;
+// Images, videos and embeds placed directly in post content
+.single p > img,
+.single p > video,
+.single > .wrap > video {
+	display: block;
 	margin: 20px auto;
 
 	@include mq(tabletp) {
@@ -281,26 +279,21 @@
 	@include mq(laptop) {
 		margin: 40px auto;
 	}
-
-	&:first-child {
-		margin-top: 0;
-	}
 }
 
-.image-wrap img {
-	margin: 0 auto;
+.single p:first-child > img {
+	margin-top: 0;
 }
 
-.video {
-	position: relative;
+.single video {
+	max-width: 100%;
+	height: auto;
+}
+
+.single iframe[src*="youtube"],
+.single iframe[src*="vimeo"] {
+	display: block;
 	width: 100%;
-	height: 0;
-
-	iframe {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
+	height: auto;
+	aspect-ratio: 16 / 9;
 }

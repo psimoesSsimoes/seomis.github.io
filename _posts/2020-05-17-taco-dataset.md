@@ -1,11 +1,11 @@
 ---
 title: 'Image Dataset for Litter Detection'
 date: 2020-05-17 01:00:00
-featured_image: '/images/taco/taco.gif'
+featured_image: '/images/taco/taco.jpg'
 excerpt: Open image dataset of waste in the wild.
 ---
 
-![](/images/taco/taco.gif)
+<video src="/images/taco/taco.mp4" poster="/images/taco/taco.jpg" width="1200" height="296" autoplay loop muted playsinline controls aria-label="TACO website banner, “Trash Annotations in Context”, with litter in grass outlined by detection boxes"></video>
 
 # Today i want to talk a bit about a project from the mind of the idealist and wizard [Pedro Proença](https://pedropro.github.io/).
 
