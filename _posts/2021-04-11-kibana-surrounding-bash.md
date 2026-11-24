@@ -5,7 +5,7 @@ featured_image: '/images/elastic-bash/shell-script-logo.jpg'
 excerpt: Trying to automate common searches on ElasticSearch using Bash.
 ---
 
-![Bash logo](/images/elastic-bash/shell-script-logo.jpg)
+![Bash logo](/images/elastic-bash/shell-script-logo.jpg){: width="1600" height="900"}
 
 
 ---
