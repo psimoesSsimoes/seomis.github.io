@@ -73,8 +73,6 @@ cat > "$TEMP_FILE" << 'EOF'
 
 ---
 
-**CEO @ Afectos a Si - Caparica, PT**
-
 Hello, I'm Pedro Simões, a dedicated hacker with a great team spirit, passionate about technology and how it shapes our world.
 
 Always thinking about building and maintaining robust distributed systems. My expertise spans the full development lifecycle, from initial design and implementation to ongoing monitoring and the strategic planning of our technical roadmap.
@@ -103,6 +101,9 @@ We made observability a priority — adding tests that mattered, metrics that to
 We shaped the way the team works: from practical processes to real feedback loops that actually improve things.
 
 When the business came with fast-moving or fuzzy problems, we clarified, prioritized, and shipped solid solutions. Nothing flashy — just steady, deliberate progress that made things better.
+
+### *Managing Partner (non-remunerated)* @ Afectos a Si, Unipessoal Lda
+I own Afectos a Si and act as its managing partner on an unpaid basis, alongside my full-time role at Easypay.
 
 ### *Senior Software Engineer* @ [Worten](https://www.worten.pt/)
 **2020-01 – 2021-10**

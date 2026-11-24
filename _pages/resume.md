@@ -35,6 +35,9 @@ We shaped the way the team works: from practical processes to real feedback loop
 
 When the business came with fast-moving or fuzzy problems, we clarified, prioritized, and shipped solid solutions. Nothing flashy — just steady, deliberate progress that made things better.
 
+#### *Managing Partner (non-remunerated)* @ Afectos a Si, Unipessoal Lda
+I own Afectos a Si and act as its managing partner on an unpaid basis, alongside my full-time role at Easypay.
+
 #### *Senior Software Engineer* @ [Worten](https://www.worten.pt/)
 **2020-01 – 2021-10**
 Coordinated a team responsible for the implementation of an Identity and Access Management (IAM) system at Worten. This critical system involved strategic planning, integration with existing systems, adherence to regulatory compliance, and management of user groups, roles and permissions. Managed various aspects of the IAM system, including authentication protocols, performance optimization, quality assurance, disaster recovery planning and budget management. My focus on collaboration, communication, and continuous improvement ensured a streamlined process that aligned with organizational goals and industry best practices.
