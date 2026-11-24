@@ -2,7 +2,6 @@
 title: About Me
 description: It's just me, myself and i.
 subtitle: It's just me, myself and i!
-featured_image: /images/social.jpg
 ---
 
 <div class="gallery" data-columns="3">

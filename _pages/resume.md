@@ -2,7 +2,6 @@
 title: ""
 subtitle:
 description:
-featured_image: /images/demo/demo-landscape.jpg
 ---
 
 **CEO @ Afectos a Si - Caparica, PT**
