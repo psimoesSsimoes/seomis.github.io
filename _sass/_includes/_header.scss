@@ -142,3 +142,96 @@
 		border-bottom-color: $accent-color;
 	}
 }
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Compact header (every page but the home page)
+
+.header--compact {
+	padding-top: 16px;
+	text-align: left;
+
+	@include mq(tabletp) {
+		padding-top: 32px;
+	}
+
+	.header__inner {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		column-gap: 12px;
+		row-gap: 8px;
+		margin: 0 auto;
+		padding-bottom: 16px;
+		border-bottom: 2px solid $border-color;
+
+		// Same measure as .single content, so the row lines up with the text.
+		@include mq(tabletl) {
+			max-width: 75%;
+		}
+
+		@include mq(laptop) {
+			max-width: 70%;
+		}
+
+		@include mq(desktop) {
+			max-width: 65%;
+		}
+	}
+
+	.header__avatar {
+		flex: none;
+		width: 32px;
+		margin: 0;
+
+		@include mq(tabletp) {
+			width: 48px;
+			margin: 0;
+		}
+	}
+
+	.header__avatar__img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.header__title {
+		font-size: 18px;
+
+		@include mq(tabletp) {
+			font-size: 24px;
+		}
+
+		@include mq(laptop) {
+			font-size: 24px;
+		}
+	}
+
+	.menu {
+		margin: 0 0 0 auto;
+	}
+
+	.menu__list__item {
+		padding: 0 4px;
+
+		@include mq(tabletp) {
+			padding: 0 10px;
+		}
+	}
+
+	.menu__list__item:last-child {
+		padding-right: 0;
+	}
+
+	.menu__list__item__link {
+		font-size: 15px;
+
+		@include mq(tabletp) {
+			font-size: $menu-small;
+		}
+
+		@include mq(laptop) {
+			font-size: $menu-medium;
+		}
+	}
+}

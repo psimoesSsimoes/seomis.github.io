@@ -1,6 +1,8 @@
-<header class="header">
+{% if page.url == "/" or paginator %}{% assign header_full = true %}{% else %}{% assign header_full = false %}{% endif %}
+<header class="header{% unless header_full %} header--compact{% endunless %}">
 
 	<div class="wrap">
+	<div class="header__inner">
 
 		{% if site.data.settings.header_settings.avatar_image %}
 		<a href="{{ site.baseurl }}/" class="header__avatar" tabindex="-1" aria-hidden="true">
@@ -18,7 +20,7 @@
 		</a>
 		{% endif %}
 
-		<p class="header__tagline">{{ site.data.settings.basic_settings.site_tagline }}</p>
+		{% if header_full %}<p class="header__tagline">{{ site.data.settings.basic_settings.site_tagline }}</p>{% endif %}
 
 		<nav class="menu" aria-label="Main">
 			<ul class="menu__list">
@@ -36,6 +38,7 @@
 			</ul>
 		</nav>
 
+	</div>
 	</div>
 
 </header>
