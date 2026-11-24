@@ -297,3 +297,10 @@
 	height: auto;
 	aspect-ratio: 16 / 9;
 }
+
+// Resume: dates under a role heading
+.single .role-dates {
+	margin-top: 4px;
+	font-size: 15px;
+	color: $text-light-color;
+}
