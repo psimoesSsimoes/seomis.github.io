@@ -1,158 +1,134 @@
 // - - - - - - - - - - - - - - - - - -
 
-// Listing (blog + projects)
+// Home: intro tile + post list tile
 
 // - - - - - - - - - - - - - - - - - -
 
-.listing-post {
-	margin-top: 32px;
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Intro
 
-	@include mq(tabletp) {
-		margin-top: 40px;
-	}
+.intro__photo {
+	width: 72px;
+	height: 72px;
 
-	&:first-child {
-		margin-top: 0;
-	}
-}
-
-.single .listing-post + hr {
-	margin-top: 32px;
-	margin-bottom: 0;
-
-	@include mq(tabletp) {
-		margin-top: 40px;
-		margin-bottom: 0;
+	@include tiled {
+		width: 96px;
+		height: 96px;
 	}
 }
 
-.listing-post__header {
-	text-align: left;
-}
-
-.listing-post__title {
-	margin-top: 0;
-	font-weight: $h2-weight;
-	font-size: 22px;
-
-	@include mq(tabletp) {
-		font-size: 26px;
-	}
-}
-
-.listing-post__image {
+.intro__title {
 	margin-top: 20px;
-	display: block;
-	width: 100%;
-	height: 0;
-	padding-bottom: 56.25%;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-
-	@include mq(tabletp) {
-		margin-top: 25px;
-	}
-
-	@include mq(tabletl) {
-		margin-top: 30px;
-	}
-
-	@include mq(laptop) {
-		margin-top: 40px;
-	}
+	font-size: 1.5rem;
 }
 
-.listing-post__content {
-	margin-top: 10px;
+.intro__text {
+	margin-top: 12px;
+	font-size: 0.9375em;
+}
 
-	p .button {
-		margin-top: 5px;
+// Ways to reach me, as a plain list of names.
+.socials {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 16px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-family: $mono;
+	font-size: 13px;
 
-		@include mq(tabletl) {
-			margin-top: 10px;
+	li {
+		margin: 0;
+	}
+
+	a {
+		color: var(--muted);
+		text-decoration: none;
+
+		&:hover {
+			color: var(--link);
 		}
 	}
 }
 
-.listing-post__subtitle {
-	margin-top: 4px;
-	font-size: 15px;
-	color: $text-light-color;
-}
+// In the footer the list sits on the wallpaper, not in a window.
+.footer .socials a {
+	color: inherit;
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Intro + CTA
-
-// Small photo to the left of the greeting, like a byline.
-.single .intro {
-	display: grid;
-	grid-template-columns: auto 1fr;
-	align-items: start;
-	gap: 16px;
-	margin: 0 auto;
-
-	@include mq(tabletp) {
-		gap: 24px;
-	}
-
-	@include mq(tabletl) {
-		max-width: 75%;
-	}
-
-	@include mq(laptop) {
-		max-width: 70%;
-	}
-
-	@include mq(desktop) {
-		max-width: 65%;
-	}
-
-	h1, p {
-		max-width: none;
+	&:hover {
+		text-decoration: underline;
 	}
 }
 
-.intro__photo {
-	display: block;
-	width: 56px;
-	height: 56px;
-	border-radius: 100%;
+.intro .socials {
+	margin-top: 24px;
+	padding-top: 16px;
+	border-top: 1px solid var(--border);
 
-	@include mq(tabletp) {
-		width: 72px;
-		height: 72px;
+	@include tiled {
+		flex-direction: column;
+		gap: 6px;
 	}
 }
 
-.single .intro__title {
-	font-size: 26px;
 
-	@include mq(tabletp) {
-		font-size: 30px;
-	}
-}
 
-.intro__body {
-	min-width: 0;
-}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Post list
 
-.intro__text {
-	margin-top: 10px;
-}
-
-.single .listing__heading {
-	margin-bottom: 24px;
-	font-size: 18px;
-	font-weight: $bold-weight;
+.listing__heading {
+	margin: 0;
+	font-family: $mono;
+	font-size: 13px;
+	font-weight: 400;
 	letter-spacing: 0;
-	color: $text-light-color;
+	color: var(--muted);
 }
 
-// Less air above the home intro than above a page title.
-.listing.single {
-	padding-top: 32px;
+// One row per post: date in a narrow column, title and excerpt beside it.
+.listing-post {
+	padding: 18px 0;
+	border-bottom: 1px solid var(--border);
 
-	@include mq(tabletp) {
-		padding-top: 48px;
+	&:last-child {
+		padding-bottom: 0;
+		border-bottom: 0;
 	}
+
+	@include wide {
+		display: grid;
+		grid-template-columns: 7.5rem minmax(0, 1fr);
+		column-gap: 16px;
+		align-items: baseline;
+	}
+}
+
+.listing-post__date {
+	margin: 0;
+	font-family: $mono;
+	font-size: 13px;
+	color: var(--muted);
+}
+
+.listing-post__title {
+	margin: 0;
+	font-size: 1.125rem;
+	font-weight: 600;
+	line-height: 1.35;
+
+	a {
+		color: var(--text);
+		text-decoration: none;
+
+		&:hover {
+			color: var(--link);
+		}
+	}
+}
+
+.listing-post__excerpt {
+	margin-top: 4px;
+	max-width: 38rem;
+	font-size: 0.9375em;
+	line-height: 1.5;
+	color: var(--muted);
 }

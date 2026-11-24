@@ -1,0 +1,90 @@
+// - - - - - - - - - - - - - - - - - -
+
+// Colour tokens and wallpapers
+
+// - - - - - - - - - - - - - - - - - -
+
+// Two themes built on theme 011 of i3wm-themer (near-black and copper):
+//
+//   night  dark windows on a dusk wallpaper
+//   day    light windows on the same photo in daylight
+//
+// The bar and the code blocks are dark in both, like a bar and a terminal
+// on a real desktop. The wallpapers are one of my own sunset photos,
+// blurred (images/wallpaper.jpg, images/wallpaper-day.jpg).
+//
+// The system setting picks the theme, unless the visitor chose one with the
+// toggle in the bar (stored as data-theme on <html>).
+
+@mixin night {
+	color-scheme: dark;
+
+	--window: #1e1e20;        // window background
+	--text: #c5c8c6;
+	--title: #f4d8c6;         // page titles, the palette's palest tint
+	--muted: #969896;         // dates, labels, secondary text
+	--border: #3a3a3e;        // unfocused window border, rules
+	--focus: #e39866;         // focused window border, active workspace
+	--on-focus: #1e1e20;      // text on a --focus background
+	--link: #e6a57a;
+	--code-bg: #2b2b2e;       // inline code
+	--shadow: 0 10px 30px rgba(20, 12, 10, 0.5);
+	--desktop: #4a3f48;       // shown while the wallpaper loads
+}
+
+@mixin day {
+	color-scheme: light;
+
+	--window: #f6f4f1;
+	--text: #26262a;
+	--title: #1e1e20;
+	--muted: #625e5a;
+	--border: #d6d1cb;
+	--focus: #b06534;
+	--on-focus: #fffaf5;
+	--link: #9a4f1f;
+	--code-bg: #e8e4de;
+	--shadow: 0 10px 30px rgba(70, 45, 30, 0.22);
+	--desktop: #dcc9bb;
+
+	// On a light page the terminal matches the bar instead of going blacker.
+	--term-bg: #1e1e20;
+	--term-border: #1e1e20;
+}
+
+:root {
+	@include night;
+
+	// Code blocks: a terminal, the same in both themes.
+	--term-bg: #151517;
+	--term-text: #e4e6e4;
+	--term-border: #3a3a3e;
+	--term-thumb: #5c5c61;
+
+	// Copper for keywords as in 011, plus a few other hues so the parts of
+	// a line can be told apart.
+	--syn-comment: #8f928e;
+	--syn-punct: #a9aca8;
+	--syn-keyword: #e08a4f;
+	--syn-string: #b3bd82;
+	--syn-number: #c9a8d2;
+	--syn-function: #e6c684;
+	--syn-field: #e9ab85;
+	--syn-type: #9fbccb;
+	--syn-variable: #e39866;
+}
+
+@media (prefers-color-scheme: light) {
+	:root:not([data-theme="dark"]) {
+		@include day;
+	}
+}
+
+:root[data-theme="light"] {
+	@include day;
+}
+
+// The bar keeps the night colours whatever the theme.
+.bar {
+	@include night;
+}

@@ -2,12 +2,16 @@
 layout: default
 ---
 
-<article class="single">
+{% assign minutes = page.content | strip_html | number_of_words | divided_by: 200 | at_least: 1 %}
+<article class="window single">
 
-	<div class="wrap">
+	<div class="window__body">
 
 		<h1>{{ page.title | markdownify | remove: '<p>' | remove: '</p>' | strip }}</h1>
-		<p class="subtitle"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_long_string }}</time></p>
+		<p class="meta">
+			<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_long_string }}</time>
+			<span>{{ minutes }} min read</span>
+		</p>
 
 		{{ page.content }}
 
@@ -18,16 +22,16 @@ layout: default
 			</div>
 		</aside>
 
-		<nav class="post-nav" aria-label="More posts">
-			{% if page.previous %}
-			<a href="{{ page.previous.url | relative_url }}" class="post-nav__link post-nav__link--prev" rel="prev"><span class="post-nav__label">Previous post</span>{{ page.previous.title | markdownify | remove: '<p>' | remove: '</p>' | strip }}</a>
-			{% endif %}
-			{% if page.next %}
-			<a href="{{ page.next.url | relative_url }}" class="post-nav__link post-nav__link--next" rel="next"><span class="post-nav__label">Next post</span>{{ page.next.title | markdownify | remove: '<p>' | remove: '</p>' | strip }}</a>
-			{% endif %}
-			<a href="{{ '/' | relative_url }}" class="post-nav__all">All posts</a>
-		</nav>
-
 	</div>
+
+	<nav class="window__status post-nav" aria-label="More posts">
+		{% if page.previous %}
+		<a href="{{ page.previous.url | relative_url }}" class="post-nav__link post-nav__link--prev" rel="prev"><span class="post-nav__label">Previous post</span>{{ page.previous.title | markdownify | remove: '<p>' | remove: '</p>' | strip }}</a>
+		{% endif %}
+		{% if page.next %}
+		<a href="{{ page.next.url | relative_url }}" class="post-nav__link post-nav__link--next" rel="next"><span class="post-nav__label">Next post</span>{{ page.next.title | markdownify | remove: '<p>' | remove: '</p>' | strip }}</a>
+		{% endif %}
+		<a href="{{ '/' | relative_url }}" class="post-nav__all">All posts</a>
+	</nav>
 
 </article>

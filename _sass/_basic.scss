@@ -4,20 +4,49 @@
 
 // - - - - - - - - - - - - - - - - - -
 
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Basics
-
-html, body {
-	height: 100%;
+html {
+	// Anchors land below the sticky bar.
+	scroll-padding-top: $bar-height + 16px;
 }
 
 body {
-	background: $background-color;
-	font-family: $body-font;
-	font-weight: $regular-weight;
-	font-style: normal;
-	line-height: 1;
-	color: $text-medium-color;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background: var(--desktop);
+	position: relative;
+	font-family: $sans;
+	font-size: 17px;
+	font-weight: 400;
+	line-height: 1.65;
+	color: var(--text);
+
+	@include wide {
+		font-size: 18px;
+	}
+}
+
+// The wallpaper. Fixed, so windows scroll over it.
+body::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	background: var(--desktop) url("../images/wallpaper.jpg") center / cover no-repeat;
+}
+
+// Day theme: the same photo in daylight. (Same selectors as in _tokens.)
+@media (prefers-color-scheme: light) {
+	:root:not([data-theme="dark"]) body::before {
+		background-image: url("../images/wallpaper-day.jpg");
+	}
+}
+
+:root[data-theme="light"] body::before {
+	background-image: url("../images/wallpaper-day.jpg");
 }
 
 
@@ -25,442 +54,133 @@ body {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Typography
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: $title-font;
-	color: $text-dark-color;
-
-	&:first-child {
-		margin-top: 0;
-	}
-}
-
-h1, h2, h3, h4, h5, h6 {
+	font-weight: 600;
+	line-height: 1.25;
 
 	code {
-		font-size: 0.85em;
-		font-weight: 500;
+		font-size: 0.9em;
 	}
 }
 
-h1, .h1 {
-	font-size: $h1-small;
-	font-weight: $h1-weight;
-	line-height: $h1-lineheight;
-	letter-spacing: $h1-spacing;
+h1 {
+	color: var(--title);
+	font-size: 1.75rem;
+	letter-spacing: -0.015em;
 
-	@include mq(tabletp) {
-		font-size: $h1-medium;
-	}
-
-	@include mq(laptop) {
-		font-size: $h1-large;
-	}
-
-	a {
-		font-weight: $h1-weight;
+	@include tiled {
+		font-size: 2.125rem;
 	}
 }
 
-h2, .h2 {
-	margin-top: 40px;
-	font-size: $h2-small;
-	font-weight: $h2-weight;
-	line-height: $h2-lineheight;
-	letter-spacing: $h2-spacing;
+h2 {
+	margin-top: 2.25em;
+	font-size: 1.375rem;
+	letter-spacing: -0.01em;
 
-	@include mq(tabletp) {
-		font-size: $h2-medium;
-	}
-
-	@include mq(laptop) {
-		font-size: $h2-large;
-	}
-
-	a {
-		font-weight: $h2-weight;
+	@include tiled {
+		font-size: 1.5rem;
 	}
 }
 
-h3, .h3 {
-	margin-top: 40px;
-	font-size: $h3-small;
-	font-weight: $h3-weight;
-	line-height: $h3-lineheight;
-	letter-spacing: $h3-spacing;
+h3 {
+	margin-top: 2em;
+	font-size: 1.125rem;
 
-	@include mq(tabletp) {
-		font-size: $h3-medium;
-	}
-
-	@include mq(laptop) {
-		font-size: $h3-large;
+	@include tiled {
+		font-size: 1.1875rem;
 	}
 }
 
-h4, .h4 {
-	margin-top: 25px;
-	font-size: $h4-small;
-	font-weight: $h4-weight;
-	line-height: $h4-lineheight;
-	letter-spacing: $h4-spacing;
-
-	@include mq(tabletp) {
-		font-size: $h4-medium;
-	}
-
-	@include mq(laptop) {
-		font-size: $h4-large;
-	}
+h4, h5, h6 {
+	margin-top: 1.75em;
+	font-size: 1rem;
 }
 
-h5, .h5 {
-	margin-top: 15px;
-	font-size: $h5-small;
-	font-weight: $h5-weight;
-	line-height: $h5-lineheight;
-	letter-spacing: $h5-spacing;
-
-	@include mq(tabletp) {
-		font-size: $h5-medium;
-	}
-
-	@include mq(laptop) {
-		font-size: $h5-large;
-	}
-}
-
-h6, .h6 {
-	margin-top: 15px;
-	font-size: $h6-small;
-	font-weight: $h6-weight;
-	line-height: $h6-lineheight;
-	letter-spacing: $h6-spacing;
-
-	@include mq(tabletp) {
-		font-size: $h6-medium;
-	}
-
-	@include mq(laptop) {
-		font-size: $h6-large;
-	}
-}
-
-p, ul, ol {
-	margin-top: 15px;
-	font-size: $p-small;
-	font-weight: $p-weight;
-	line-height: $p-lineheight;
-	letter-spacing: $p-spacing;
-
-	@include mq(tabletp) {
-		font-size: $p-medium;
-	}
-
-	@include mq(laptop) {
-		font-size: $p-large;
-	}
-
-	strong {
-		font-weight: $bold-weight;
-		color: $text-dark-color;
-	}
-
-	&:first-child {
-		margin-top: 0;
-	}
+p, ul, ol, dl {
+	margin-top: 1em;
 }
 
 ul, ol {
-	padding-left: 1.25em;
+	padding-left: 1.4em;
+
+	ul, ol {
+		margin-top: 0.25em;
+	}
 }
 
-blockquote {
-	margin-top: 15px;
-	font-family: $title-font;
-	font-size: $blockquote-small;
-	font-weight: $blockquote-weight;
-	letter-spacing: $blockquote-spacing;
-	line-height: $blockquote-lineheight;
+li + li {
+	margin-top: 0.3em;
+}
 
-	@include mq(tabletp) {
-		font-size: $blockquote-medium;
-	}
+li::marker {
+	color: var(--muted);
+}
 
-	@include mq(laptop) {
-		font-size: $blockquote-large;
-	}
-
-	p {
-		font-size: $blockquote-small;
-		font-weight: $blockquote-weight;
-		letter-spacing: $blockquote-spacing;
-		line-height: $blockquote-lineheight;
-
-		@include mq(tabletp) {
-			font-size: $blockquote-medium;
-		}
-
-		@include mq(laptop) {
-			font-size: $blockquote-large;
-		}
-	}
+strong, b {
+	font-weight: 600;
 }
 
 a {
-	text-decoration: none;
-	color: $text-dark-color;
-	font-weight: $bold-weight;
-	@include transition(all 0.15s ease-in-out);
+	color: var(--link);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.2em;
 
 	&:hover {
-		color: $accent-color;
+		text-decoration-thickness: 2px;
 	}
 }
 
-.button {
-	display: inline-block;
-	padding: 9px 10px 10px;
-	font-size: 13px;
-	line-height: 1;
-	border: 2px solid $accent-color;
-	border-radius: 3px;
-	background: $accent-color;
-	color: $background-color;
-	font-weight: $button-weight;
-	letter-spacing: $button-spacing;
-	cursor: pointer;
-
-	@include mq(tabletp) {
-		padding: 11px 20px 12px;
-		font-size: 15px;
-	}
-
-	&:hover {
-		background: darken($accent-color,8%);
-		border-color: darken($accent-color,8%);
-		color: $background-color;
-	}
-
-	svg {
-		margin-right: 5px;
-
-		&:last-child {
-			margin-right: 0;
-			margin-left: 5px;
-		}
-
-		@include mq(tabletp) {
-			margin-right: 8px;
-
-			&:last-child {
-				margin-right: 0;
-				margin-left: 8px;
-			}
-		}
-	}
+blockquote {
+	margin-top: 1.5em;
+	padding-left: 1em;
+	border-left: 2px solid var(--focus);
+	color: var(--muted);
 }
 
-.button--large {
-	padding: 15px 20px 16px;
-	font-size: 13px;
-
-	@include mq(tabletp) {
-		padding: 19px 40px 20px;
-		font-size: 17px;
-	}
+hr {
+	margin: 2.5em 0;
+	border: 0;
+	height: 1px;
+	background: var(--border);
 }
 
-.button--light {
-	background: transparent;
-	border-color: $text-dark-color;
-	color: $text-dark-color;
-
-	&:hover {
-		background: $accent-color;
-		border-color: $accent-color;
-		color: $background-color;
-	}
+code, pre, kbd, samp {
+	font-family: $mono;
+	// Show the characters as typed: no "!=" or "->" ligatures.
+	font-variant-ligatures: none;
 }
 
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-.button:focus-visible {
-	outline: 3px solid $accent-color;
-	outline-offset: 3px;
+:focus-visible {
+	outline: 2px solid var(--focus);
+	outline-offset: 2px;
+}
+
+::selection {
+	background: var(--focus);
+	color: var(--on-focus);
 }
 
 .skip-link {
 	position: absolute;
 	top: -100px;
-	left: 10px;
-	z-index: 10;
-	padding: 10px 16px;
-	background: $text-dark-color;
-	color: $background-color;
+	left: $gap;
+	z-index: 30;
+	padding: 6px 12px;
+	background: var(--focus);
+	color: var(--on-focus);
+	font-family: $mono;
+	font-size: 14px;
 
 	&:focus {
-		top: 10px;
-		color: $background-color;
+		top: $gap;
 	}
 }
 
-.icon {
-	display: inline-block;
-	width: auto;
-	height: 1em;
-	vertical-align: -0.125em;
-}
-
-hr {
-	margin: 40px 0;
-	border: 0;
-	height: 2px;
-	background: $border-color;
-}
-
-::selection 	 { background: $accent-color; color: $background-color; }
-::-moz-selection { background: $accent-color; color: $background-color; }
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Page loading
-
-.page,
-.page__content {
-	float: left;
-	clear: both;
-	width: 100%;
-}
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Page sections
-
-.featured-image {
-	position: relative;
-	width: 100%;
-	height: 0;
-	padding-bottom: 56.25%;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-
-	@include mq(tabletl) {
-		position: fixed;
-		z-index: 10;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		height: auto;
-		padding-bottom: 0;
-		width: 30%;
-	}
-}
-
-section {
-	margin-top: 40px;
-
-	@include mq(tabletp) {
-		margin-top: 50px;
-	}
-
-	@include mq(tabletl) {
-		margin-top: 60px;
-	}
-
-	@include mq(laptop) {
-		margin-top: 80px;
-	}
-}
-
-.wrap {
-	position: relative;
-	margin: 0 auto;
-	padding: 0 20px;
-
-	@include mq(tabletp) {
-		padding: 0 80px;
-	}
-
-	@include mq(tabletl) {
-		padding: 0 120px;
-	}
-
-	@include mq(laptop) {
-		padding: 0 140px;
-	}
-
-	@include mq(desktop) {
-		padding: 0 180px;
-	}
-}
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Buy CTA
-
-.buy-cta {
-	position: fixed;
-	bottom: 0;
-	right: 0;
-}
-
-.buy-cta__link {
+.only-html {
 	display: block;
-	position: relative;
-	width: 40px;
-	height: 40px;
-	background: #dc5b5d;
-
-	@include mq(tabletp) {
-		width: 60px;
-		height: 60px;
-	}
-
-	svg {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 20px;
-		height: 20px;
-		@include translate(-50%,-50%);
-		fill: #fff;
-
-		@include mq(tabletp) {
-			width: 30px;
-			height: 30px;
-		}
-	}
-
-	&:hover {
-
-		.buy-cta__text {
-			@include translate(0,0);
-			opacity: 1;
-		}
-	}
 }
 
-.buy-cta__text {
-	position: absolute;
-	top: 0;
-	right: 40px;
-	background: #dc5b5d;
-	padding: 14px 10px 13px 17px;
-	color: #fff;
-	font-size: 13px;
-	line-height: 1;
-	white-space: nowrap;
-
-	@include transition(all 0.15s ease-in-out);
-	@include translate(0,20px);
-	opacity: 0;
-
-	@include mq(tabletp) {
-		right: 60px;
-		padding: 22px 14px 23px 25px;
-		font-size: 15px;
-		@include translate(0,30px);
-	}
+.only-pdf {
+	display: none;
 }

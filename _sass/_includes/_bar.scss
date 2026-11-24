@@ -1,47 +1,131 @@
 // - - - - - - - - - - - - - - - - - -
 
-// Socials
+// Bar: workspaces on the left (the site navigation), modules on the right
 
 // - - - - - - - - - - - - - - - - - -
 
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Socials
-
-.socials {
+.bar {
+	position: sticky;
+	top: 0;
+	z-index: 20;
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 8px;
+	align-items: stretch;
+	justify-content: space-between;
+	min-height: 40px;
+	background: var(--window);
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+	font-family: $mono;
+	font-size: 14px;
+	line-height: 1;
+
+	@include tiled {
+		min-height: $bar-height;
+		font-size: 13px;
+	}
+}
+
+.bar nav {
+	display: flex;
+}
+
+.bar__workspaces,
+.bar__modules {
+	display: flex;
+	align-items: stretch;
 	list-style: none;
 	margin: 0;
 	padding: 0;
-}
 
-.socials__item {
-	margin: 0;
-}
-
-.socials__item__link {
-	position: relative;
-	display: block;
-	width: 44px;
-	height: 44px;
-	border-radius: 100%;
-	background: $text-light-color;
-	font-size: 20px;
-	line-height: 1;
-	color: $background-color;
-
-	svg {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		@include translate(-50%,-52%);
+	li {
+		display: flex;
+		margin: 0;
 	}
+}
+
+.bar__workspace,
+.bar__module {
+	display: flex;
+	align-items: center;
+	padding: 0 12px;
+	border: 0;
+	background: none;
+	color: var(--text);
+	text-decoration: none;
+	cursor: pointer;
 
 	&:hover {
-		background: $accent-color;
-		color: $background-color;
+		background: var(--border);
+	}
+
+	&:focus-visible {
+		outline-offset: -2px;
+	}
+}
+
+.bar__workspace__number {
+	margin-right: 0.6em;
+	color: var(--muted);
+}
+
+// The focused workspace is a filled block, as in i3bar.
+.bar__workspace--focused {
+	background: var(--focus);
+	color: var(--on-focus);
+	font-weight: 600;
+
+	&:hover {
+		background: var(--focus);
+	}
+
+	.bar__workspace__number {
+		color: inherit;
+		font-weight: 400;
+	}
+}
+
+.bar__module {
+	color: var(--muted);
+
+	&:hover {
+		color: var(--text);
+	}
+}
+
+// Reading progress on posts: a filled block, centred like the clock in the
+// reference bar. On a phone it sits on the right instead. Needs JS.
+.bar__progress {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 5ch;
+	padding: 0 12px;
+	background: var(--focus);
+	color: var(--on-focus);
+	font-weight: 600;
+
+	&[hidden] {
+		display: none;
+	}
+
+	@include tiled {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+// The theme toggle needs JS; site.js reveals it.
+.bar__module--theme[hidden] {
+	display: none;
+}
+
+// The feed link is also in the footer, so it can go when space is short.
+.bar__module--optional {
+	display: none;
+
+	@include tiled {
+		display: flex;
 	}
 }
