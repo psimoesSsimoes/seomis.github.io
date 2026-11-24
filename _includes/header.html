@@ -1,10 +1,9 @@
-{% if page.url == "/" %}{% assign header_full = true %}{% else %}{% assign header_full = false %}{% endif %}
-<header class="header{% unless header_full %} header--compact{% endunless %}">
+<header class="header">
 
 	<div class="wrap">
 	<div class="header__inner">
 
-		{% if site.data.settings.header_settings.avatar_image %}
+		{% if site.data.settings.header_settings.avatar_image and page.url != "/" %}
 		<a href="{{ site.baseurl }}/" class="header__avatar" tabindex="-1" aria-hidden="true">
 			<img src="{{ site.data.settings.header_settings.avatar_image | relative_url }}" class="header__avatar__img" alt="" width="150" height="150">
 		</a>
@@ -19,8 +18,6 @@
 			{{ site.data.settings.basic_settings.site_title }}
 		</a>
 		{% endif %}
-
-		{% if header_full %}<p class="header__tagline">{{ site.data.settings.basic_settings.site_tagline }}</p>{% endif %}
 
 		<nav class="menu" aria-label="Main">
 			<ul class="menu__list">

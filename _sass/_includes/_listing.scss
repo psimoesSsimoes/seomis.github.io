@@ -83,16 +83,62 @@
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Intro + CTA
 
+// Photo beside the greeting on tablet and up, above it on phones.
+.single .intro {
+	display: grid;
+	gap: 20px;
+	margin: 0 auto;
+
+	@include mq(tabletp) {
+		grid-template-columns: 1fr auto;
+		align-items: center;
+		gap: 40px;
+	}
+
+	@include mq(tabletl) {
+		max-width: 75%;
+	}
+
+	@include mq(laptop) {
+		max-width: 70%;
+	}
+
+	@include mq(desktop) {
+		max-width: 65%;
+	}
+
+	h1, p {
+		max-width: none;
+	}
+}
+
+.intro__photo {
+	display: block;
+	width: 88px;
+	height: 88px;
+	border-radius: 100%;
+
+	@include mq(tabletp) {
+		grid-column: 2;
+		grid-row: 1;
+		width: 160px;
+		height: 160px;
+	}
+}
+
+.intro__body {
+	min-width: 0;
+}
+
 .intro__text {
 	margin-top: 10px;
 }
 
 .single .listing__heading {
 	margin-bottom: 24px;
-	font-size: 15px;
+	font-size: 18px;
 	font-weight: $bold-weight;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
+	letter-spacing: 0;
 	color: $text-light-color;
 }
 
