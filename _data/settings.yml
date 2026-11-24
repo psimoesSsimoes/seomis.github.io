@@ -62,7 +62,7 @@ color_settings:
   text_dark_color: '#000000'          # preto — texto principal
   text_medium_color: '#333333'       # cinza escuro — excelente legibilidade
   text_light_color: '#666666'        # cinza médio-escuro — subtil mas ainda visível
-  accent_color: '#ff7a00'             # laranja moderno — para destaques
+  accent_color: '#b85400'             # laranja escuro — 4.9:1 com branco (WCAG AA)
   border_color: '#e0e0e0'             # cinza claro — linhas divisórias
   overlay_background_color: '#000000cc' # preto semi-transparente — overlays (ex: modais)
   overlay_text_color: '#ffffff'       # branco — texto sobre overlays

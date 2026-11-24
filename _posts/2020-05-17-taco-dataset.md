@@ -5,7 +5,7 @@ featured_image: '/images/taco/taco.gif'
 excerpt: Open image dataset of waste in the wild.
 ---
 
-![](/images/taco/taco.gif)
+![TACO website banner, “Trash Annotations in Context”, with litter in grass outlined by detection boxes](/images/taco/taco.gif)
 
 # Today i want to talk a bit about a project from the mind of the idealist and wizard [Pedro Proença](https://pedropro.github.io/).
 

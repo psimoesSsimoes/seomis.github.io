@@ -5,7 +5,7 @@ featured_image: '/images/vim_search/vimgrep.gif'
 excerpt: VIM + Functions + ACK == WIN!.
 ---
 
-![](/images/vim_search/vimgrep.gif)
+![Screen recording: the word under the cursor is searched across files in Vim and the matches open in the quickfix list](/images/vim_search/vimgrep.gif)
 
 ## Easy search in VIM
 

@@ -5,7 +5,7 @@ featured_image: '/images/golang-transport/HTTPNego3.png'
 excerpt: Understanding golang transport behavior for http content negotiation.
 ---
 
-![](/images/golang-transport/HTTPNego3.png)
+![Diagram of HTTP content negotiation: the client asks for a URL, the server lists representations by language, type and encoding, and returns the chosen one](/images/golang-transport/HTTPNego3.png)
 ---
 
 ### I had a very (seemingly) simple task. Write a reverse proxy to a document store.

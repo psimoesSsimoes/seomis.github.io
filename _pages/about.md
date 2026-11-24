@@ -5,13 +5,13 @@ subtitle: It's just me, myself and i!
 ---
 
 <div class="gallery" data-columns="3">
-	<a href="/images/personal/seomis_e_rita.jpeg"><img src="/images/personal/seomis_e_rita.jpeg"></a>
-	<a href="/images/personal/photo1.jpg"><img src="/images/personal/photo1.jpg"></a>
-	<a href="/images/personal/photo2.jpg"><img src="/images/personal/photo2.jpg"></a>
-	<a href="/images/personal/photo3.jpg"><img src="/images/personal/photo3.jpg"></a>
-	<a href="/images/personal/photo4.jpg"><img src="/images/personal/photo4.jpg"></a>
-	<a href="/images/personal/photo5.jpg"><img src="/images/personal/photo5.jpg"></a>
-	<a href="/images/personal/photo6.jpg"><img src="/images/personal/photo6.jpg"></a>
+	<a href="/images/personal/seomis_e_rita.jpeg"><img src="/images/personal/seomis_e_rita.jpeg" alt="Pedro and Rita waving under a carved wooden sign reading “Montanhas de Amor” in a stone mountain village"></a>
+	<a href="/images/personal/photo1.jpg"><img src="/images/personal/photo1.jpg" alt="Sunset over the sea from an empty beach"></a>
+	<a href="/images/personal/photo2.jpg"><img src="/images/personal/photo2.jpg" alt="Tilted shot of a wooden boardwalk running toward the setting sun"></a>
+	<a href="/images/personal/photo3.jpg"><img src="/images/personal/photo3.jpg" alt="Selfie of Pedro and Rita on a seaside pier, a bicycle and a bridge behind them"></a>
+	<a href="/images/personal/photo4.jpg"><img src="/images/personal/photo4.jpg" alt="Motorbike parked on a cobbled square in front of pale yellow buildings"></a>
+	<a href="/images/personal/photo5.jpg"><img src="/images/personal/photo5.jpg" alt="Bicycle leaning against a pine tree on a hilltop overlooking distant mountains"></a>
+	<a href="/images/personal/photo6.jpg"><img src="/images/personal/photo6.jpg" alt="Someone doing a handstand in an infinity pool at dusk, village lights in the background"></a>
 </div>
 
 

@@ -227,8 +227,8 @@ a {
 	}
 
 	&:hover {
-		background: adjust-hue($accent-color,15%);
-		border-color: adjust-hue($accent-color,15%);
+		background: darken($accent-color,8%);
+		border-color: darken($accent-color,8%);
 		color: $background-color;
 	}
 
@@ -269,6 +269,30 @@ a {
 	&:hover {
 		background: $accent-color;
 		border-color: $accent-color;
+		color: $background-color;
+	}
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.button:focus-visible {
+	outline: 3px solid $accent-color;
+	outline-offset: 3px;
+}
+
+.skip-link {
+	position: absolute;
+	top: -100px;
+	left: 10px;
+	z-index: 10;
+	padding: 10px 16px;
+	background: $text-dark-color;
+	color: $background-color;
+
+	&:focus {
+		top: 10px;
 		color: $background-color;
 	}
 }
