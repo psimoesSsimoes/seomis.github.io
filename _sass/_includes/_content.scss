@@ -81,7 +81,8 @@
 		padding: 0;
 	}
 
-	p a:not(.button) {
+	p a:not(.button),
+	li a:not(.button) {
 		font-weight: $bold-weight;
 		border-bottom: 2px solid $accent-color;
 	}

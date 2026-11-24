@@ -2,7 +2,7 @@
 title: 'Understanding gRPC Keepalive, ENHANCE_YOUR_CALM, and Connection Health'
 date: 2025-04-23 00:00:00
 featured_image: '/images/enhance_your_calm/enhance_your_calm.jpg'
-excerpt: Client (🖥️) sends rapid ❤️ pings → Server (🛡️) blocks with "5m min" shield → "ENHANCE_YOUR_CALM" error badge.
+excerpt: Why a gRPC server answers over-eager client keepalive pings with ENHANCE_YOUR_CALM, and how to tune keepalive so connections stay healthy.
 ---
 
 
