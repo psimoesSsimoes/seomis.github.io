@@ -23,7 +23,7 @@ description: Pedro Simões is a weirdo from Costa da Caparica Portugal. Curious 
 		<article class="listing-post">
 
 			<div class="listing-post__header">
-				<h2 class="listing-post__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+				<h2 class="listing-post__title"><a href="{{ post.url | relative_url }}">{{ post.title | markdownify | remove: '<p>' | remove: '</p>' | strip }}</a></h2>
 				<p class="listing-post__subtitle">{{ post.date | date_to_long_string }}</p>
 			</div>
 
