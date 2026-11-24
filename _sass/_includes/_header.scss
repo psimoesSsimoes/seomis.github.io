@@ -1,48 +1,61 @@
 // - - - - - - - - - - - - - - - - - -
 
-// Header + menu
+// Header + menu: one row (avatar, name, nav) aligned to the text column
 
 // - - - - - - - - - - - - - - - - - -
 
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Header
-
 .header {
-	padding-top: 30px;
-	text-align: center;
+	padding-top: 16px;
 
 	@include mq(tabletp) {
-		padding-top: 60px;
+		padding-top: 32px;
+	}
+}
+
+.header__inner {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	column-gap: 12px;
+	row-gap: 8px;
+	margin: 0 auto;
+	padding-bottom: 16px;
+	border-bottom: 2px solid $border-color;
+
+	// Same measure as .single content, so the row lines up with the text.
+	@include mq(tabletl) {
+		max-width: 75%;
 	}
 
 	@include mq(laptop) {
-		padding-top: 80px;
+		max-width: 70%;
+	}
+
+	@include mq(desktop) {
+		max-width: 65%;
 	}
 }
 
 .header__avatar {
-	display: block;
-	margin: 0 auto 20px;
+	flex: none;
+	width: 32px;
 	border-radius: 100%;
-	width: 100px;
 	overflow: hidden;
-	margin-bottom: 20px;
 
 	@include mq(tabletp) {
-		width: 150px;
-		margin-bottom: 25px;
+		width: 48px;
 	}
+}
 
-	&:hover {
-		@include scale(1.05);
-	}
+.header__avatar__img {
+	display: block;
+	width: 100%;
+	height: auto;
 }
 
 .header__logo {
 	display: block;
 	width: $logo-width;
-	margin: 0 auto;
 }
 
 .header__logo__img {
@@ -52,7 +65,7 @@
 
 .header__title {
 	font-family: $title-font;
-	font-size: $sitetitle-small;
+	font-size: 18px;
 	font-weight: $sitetitle-weight;
 	letter-spacing: $sitetitle-spacing;
 	line-height: 1;
@@ -63,29 +76,7 @@
 	}
 
 	@include mq(tabletp) {
-		font-size: $sitetitle-medium;
-	}
-
-	@include mq(laptop) {
-		font-size: $sitetitle-large;
-	}
-}
-
-.header__tagline {
-	margin-top: 10px;
-	font-family: $body-font;
-	font-size: $sitetagline-small;
-	font-weight: $sitetagline-weight;
-	letter-spacing: $sitetagline-spacing;
-	line-height: $sitetagline-lineheight;
-
-	@include mq(tabletp) {
-		margin-top: 15px;
-		font-size: $sitetagline-medium;
-	}
-
-	@include mq(laptop) {
-		font-size: $sitetagline-large;
+		font-size: 24px;
 	}
 }
 
@@ -94,11 +85,7 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Menu
 
 .menu {
-	margin-top: 10px;
-
-	@include mq(laptop) {
-		margin-top: 15px;
-	}
+	margin-left: auto;
 }
 
 .menu__list {
@@ -109,19 +96,19 @@
 
 .menu__list__item {
 	display: inline-block;
-	padding: 0 5px;
+	padding: 0 4px;
 
 	@include mq(tabletp) {
-		padding: 0 8px;
+		padding: 0 10px;
 	}
 
-	@include mq(laptop) {
-		padding: 0 12px;
+	&:last-child {
+		padding-right: 0;
 	}
 }
 
 .menu__list__item__link {
-	font-size: $menu-small;
+	font-size: 15px;
 	font-weight: $menu-weight;
 	color: $text-dark-color;
 	border-bottom: 2px solid transparent;
@@ -131,107 +118,14 @@
 	}
 
 	@include mq(tabletp) {
-		font-size: $menu-medium;
+		font-size: $menu-small;
 	}
 
 	@include mq(laptop) {
-		font-size: $menu-large;
+		font-size: $menu-medium;
 	}
-	
+
 	&.active-link {
 		border-bottom-color: $accent-color;
-	}
-}
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Compact header (every page but the home page)
-
-.header--compact {
-	padding-top: 16px;
-	text-align: left;
-
-	@include mq(tabletp) {
-		padding-top: 32px;
-	}
-
-	.header__inner {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		column-gap: 12px;
-		row-gap: 8px;
-		margin: 0 auto;
-		padding-bottom: 16px;
-		border-bottom: 2px solid $border-color;
-
-		// Same measure as .single content, so the row lines up with the text.
-		@include mq(tabletl) {
-			max-width: 75%;
-		}
-
-		@include mq(laptop) {
-			max-width: 70%;
-		}
-
-		@include mq(desktop) {
-			max-width: 65%;
-		}
-	}
-
-	.header__avatar {
-		flex: none;
-		width: 32px;
-		margin: 0;
-
-		@include mq(tabletp) {
-			width: 48px;
-			margin: 0;
-		}
-	}
-
-	.header__avatar__img {
-		display: block;
-		width: 100%;
-		height: auto;
-	}
-
-	.header__title {
-		font-size: 18px;
-
-		@include mq(tabletp) {
-			font-size: 24px;
-		}
-
-		@include mq(laptop) {
-			font-size: 24px;
-		}
-	}
-
-	.menu {
-		margin: 0 0 0 auto;
-	}
-
-	.menu__list__item {
-		padding: 0 4px;
-
-		@include mq(tabletp) {
-			padding: 0 10px;
-		}
-	}
-
-	.menu__list__item:last-child {
-		padding-right: 0;
-	}
-
-	.menu__list__item__link {
-		font-size: 15px;
-
-		@include mq(tabletp) {
-			font-size: $menu-small;
-		}
-
-		@include mq(laptop) {
-			font-size: $menu-medium;
-		}
 	}
 }
