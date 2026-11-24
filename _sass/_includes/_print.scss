@@ -1,0 +1,72 @@
+// - - - - - - - - - - - - - - - - - -
+
+// Print: dark text on white, no desktop
+
+// - - - - - - - - - - - - - - - - - -
+
+@media print {
+	:root {
+		color-scheme: light;
+
+		--window: #fff;
+		--text: #111;
+		--title: #000;
+		--muted: #444;
+		--border: #ccc;
+		--link: #111;
+		--code-bg: #f4f4f4;
+		--term-bg: #f4f4f4;
+		--term-text: #111;
+		--term-border: #ccc;
+		--term-thumb: #ccc;
+
+		--syn-comment: #666;
+		--syn-punct: #333;
+		--syn-keyword: #8a3b12;
+		--syn-string: #4a5d00;
+		--syn-number: #5d3a78;
+		--syn-function: #111;
+		--syn-field: #8a3b12;
+		--syn-type: #1f4e63;
+		--syn-variable: #8a3b12;
+	}
+
+	body {
+		background: #fff;
+		font-size: 11pt;
+	}
+
+	body::before,
+	.bar,
+	.footer,
+	.window__status,
+	.skip-link {
+		display: none;
+	}
+
+	.desktop {
+		padding: 0;
+	}
+
+	.window {
+		max-width: none;
+		border: 0;
+		box-shadow: none;
+	}
+
+	.window__body {
+		padding: 0;
+
+		> * {
+			max-width: none;
+		}
+	}
+
+	h2, h3 {
+		break-after: avoid;
+	}
+
+	pre {
+		white-space: pre-wrap;
+	}
+}

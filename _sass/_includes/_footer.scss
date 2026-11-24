@@ -1,44 +1,32 @@
 // - - - - - - - - - - - - - - - - - -
 
-// Footer
+// Footer: sits on the desktop, below the windows
 
 // - - - - - - - - - - - - - - - - - -
 
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Footer
-
 .footer {
-	@include transition(all 0.6s cubic-bezier(.87,-.41,.19,1.44));
-	padding: 30px 0;
-	text-align: center;
-
-	@include mq(tabletp) {
-		padding: 60px 0;
-	}
-
-	@include mq(laptop) {
-		padding: 80px 0;
-	}
-}
-
-.footer__copyright {
-	display: block;
-	margin-top: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 24px;
+	justify-content: space-between;
+	width: 100%;
+	margin: 0 auto;
+	padding: 20px;
+	font-family: $mono;
 	font-size: 13px;
-	color: $text-light-color;
+	line-height: 1.5;
+	color: var(--text);
 
-	@include mq(tabletp) {
-		margin-top: 20px;
+	@include tiled {
+		max-width: 72rem;
+		padding: 6px 0 20px;
 	}
 
-	a {
-		margin-left: 10px;
-		color: $text-light-color;
-		font-weight: $regular-weight;
-
-		&:hover {
-			color: $text-medium-color;
-		}
+	// The footer sits straight on the wallpaper, so each piece gets a
+	// bar-coloured block behind it to stay readable.
+	> span,
+	.socials {
+		padding: 4px 10px;
+		background: var(--window);
 	}
 }

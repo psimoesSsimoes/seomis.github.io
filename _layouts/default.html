@@ -26,10 +26,12 @@
 	<meta property="og:description" content="{% if page.description %}{{ page.description | strip_html | xml_escape }}{% else %}{{ page.excerpt | strip_html | xml_escape }}{% endif %}" />
 	<meta property="og:image" content="{{ page.featured_image | default: '/images/social-card.jpg' | absolute_url }}" />
 
-	{% if site.data.settings.font_settings.font_embed %}
-	<!-- Font Embed Code -->
-	{{ site.data.settings.font_settings.font_embed }}
-	{% endif %}
+	<!-- Theme: apply a saved choice before first paint; otherwise the system setting decides -->
+	<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+
+	<!-- Fonts: self-hosted, see css/style.scss -->
+	<link rel="preload" href="{{ '/fonts/ibm-plex-sans-latin-400-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="{{ '/fonts/jetbrains-mono-latin-400-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
 	<!-- Styles -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,16 +64,11 @@
 	{% include header.html %}
 
 
-	
-	<div class="page">
+	<main class="desktop" id="main">
 
-		<main class="page__content" id="main">
+		{{ content }}
 
-			{{ content }}
-
-		</main>
-
-	</div>
+	</main>
 
 
 	{% include footer.html %}

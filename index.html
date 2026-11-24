@@ -4,41 +4,45 @@ title: Curious about all things. In love with software.
 description: Pedro Simões is a weirdo from Costa da Caparica Portugal. Curious about all things. In love with software and giving its best @Easypay.
 ---
 
-<section class="listing single">
+<div class="tiles">
 
-	<div class="wrap">
+	<section class="window window--aside intro" aria-label="About me">
 
-		<div class="intro">
+		<div class="window__body">
+
 			<img src="{{ site.data.settings.header_settings.avatar_image | relative_url }}" class="intro__photo" alt="Pedro Simões" width="160" height="160">
-			<div class="intro__body">
-				<h1 class="intro__title">Hi, I'm Pedro.</h1>
-				<p class="intro__text">I lead the backend team at <a href="https://www.easypay.pt/en">Easypay</a>, where we build and run payment systems. Here I write about what I dig into along the way: gRPC, MySQL performance, HTTP and everyday tooling.</p>
-			</div>
+			<h1 class="intro__title">Hi, I'm Pedro.</h1>
+			<p class="intro__text">I lead the backend team at <a href="https://www.easypay.pt/en">Easypay</a>, where we build and run payment systems. Here I write about what I dig into along the way: gRPC, MySQL performance, HTTP and everyday tooling.</p>
+
+			{% include socials.html %}
+
 		</div>
 
-		<hr>
+	</section>
 
-		<h2 class="listing__heading">Latest posts</h2>
+	<section class="window window--main listing">
 
-		{% for post in site.posts %}
+		<div class="window__body">
 
-		<article class="listing-post">
+			<h2 class="listing__heading">Latest posts</h2>
 
-			<div class="listing-post__header">
-				<h3 class="listing-post__title"><a href="{{ post.url | relative_url }}">{{ post.title | markdownify | remove: '<p>' | remove: '</p>' | strip }}</a></h3>
-				<p class="listing-post__subtitle"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_long_string }}</time></p>
-			</div>
+			{% for post in site.posts %}
 
-			<div class="listing-post__content">
-				<p class="excerpt">{{ post.excerpt }}</p>
-			</div>
+			<article class="listing-post">
 
-		</article>
+				<p class="listing-post__date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time></p>
 
-		<hr>
+				<div class="listing-post__body">
+					<h3 class="listing-post__title"><a href="{{ post.url | relative_url }}">{{ post.title | markdownify | remove: '<p>' | remove: '</p>' | strip }}</a></h3>
+					<p class="listing-post__excerpt">{{ post.excerpt | strip_html | strip }}</p>
+				</div>
 
-		{% endfor %}
+			</article>
 
-	</div>
+			{% endfor %}
 
-</section>
+		</div>
+
+	</section>
+
+</div>

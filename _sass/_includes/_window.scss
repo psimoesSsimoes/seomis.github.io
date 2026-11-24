@@ -1,0 +1,119 @@
+// - - - - - - - - - - - - - - - - - -
+
+// Desktop + windows
+
+// - - - - - - - - - - - - - - - - - -
+
+// The desktop is the area under the bar. On a phone there is no tiling:
+// a window fills the screen and has no gaps or side borders, which is what
+// i3 does with a single window when smart_gaps is on.
+
+.desktop {
+	flex: 1;
+	width: 100%;
+
+	@include tiled {
+		padding: $gap;
+	}
+}
+
+.window {
+	background: var(--window);
+	border-bottom: 1px solid var(--border);
+
+	@include tiled {
+		margin: 0 auto;
+		max-width: 50rem;
+		border: 1px solid var(--focus);
+		box-shadow: var(--shadow);
+	}
+}
+
+.window__body {
+	padding: 32px 20px 40px;
+
+	@include tiled {
+		padding: 56px 48px 64px;
+	}
+
+	// Everything in a window sits in one reading column.
+	> * {
+		max-width: $measure;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	> :first-child {
+		margin-top: 0;
+	}
+}
+
+// Status strip along the bottom edge of a window.
+.window__status {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px 32px;
+	justify-content: space-between;
+	padding: 14px 20px;
+	border-top: 1px solid var(--border);
+	font-family: $mono;
+	font-size: 13px;
+	line-height: 1.5;
+
+	@include tiled {
+		padding: 12px 16px;
+	}
+}
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Tiles (home)
+
+// Two windows side by side. Only one is focused at a time, and the border
+// colour is the only thing that says which.
+
+.tiles {
+	@include tiled {
+		display: grid;
+		grid-template-columns: 19rem minmax(0, 1fr);
+		gap: $gap;
+		// Each window takes its own height, so wallpaper shows below the short one.
+		align-items: start;
+		margin: 0 auto;
+		max-width: 72rem;
+	}
+
+	.window {
+		max-width: none;
+		margin: 0;
+	}
+
+	.window__body {
+		@include tiled {
+			padding: 32px;
+		}
+
+		> * {
+			max-width: none;
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+}
+
+@include tiled {
+	.tiles .window--aside {
+		border-color: var(--border);
+	}
+
+	// Focus follows the mouse (and the keyboard).
+	.tiles .window--aside:hover,
+	.tiles .window--aside:focus-within {
+		border-color: var(--focus);
+	}
+
+	.tiles:has(.window--aside:hover) .window--main,
+	.tiles:has(.window--aside:focus-within) .window--main {
+		border-color: var(--border);
+	}
+}

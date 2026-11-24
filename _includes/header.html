@@ -1,41 +1,25 @@
-<header class="header">
+<header class="bar">
 
-	<div class="wrap">
-	<div class="header__inner">
+	<nav aria-label="Main">
+		<ul class="bar__workspaces">
+			{% for item in site.data.settings.menu_settings.menu_items %}
+			{% assign is_current = false %}
+			{% if page.url == item.url %}{% assign is_current = true %}{% endif %}
+			{% assign is_focused = is_current %}
+			{% if item.url == '/' and page.collection == 'posts' %}{% assign is_focused = true %}{% endif %}
+			<li>
+				<a href="{{ item.url | relative_url }}" class="bar__workspace{% if is_focused %} bar__workspace--focused{% endif %}"{% if is_current %} aria-current="page"{% endif %}><span class="bar__workspace__number" aria-hidden="true">{{ forloop.index }}</span>{{ item.title }}</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</nav>
 
-		{% if site.data.settings.header_settings.avatar_image and page.url != "/" %}
-		<a href="{{ site.baseurl }}/" class="header__avatar" tabindex="-1" aria-hidden="true">
-			<img src="{{ site.data.settings.header_settings.avatar_image | relative_url }}" class="header__avatar__img" alt="" width="150" height="150">
-		</a>
+	<ul class="bar__modules">
+		{% if page.collection == 'posts' %}
+		<li><span class="bar__progress" data-progress aria-hidden="true" hidden></span></li>
 		{% endif %}
-
-		{% if site.data.settings.header_settings.logo_image %}
-		<a href="{{ site.baseurl }}/" class="header__logo">
-			<img src="{{ site.data.settings.header_settings.logo_image | relative_url }}" class="header__logo__img" alt="{{ site.data.settings.basic_settings.site_title }}">
-		</a>
-		{% else %}
-		<a href="{{ site.baseurl }}/" class="header__title">
-			{{ site.data.settings.basic_settings.site_title }}
-		</a>
-		{% endif %}
-
-		<nav class="menu" aria-label="Main">
-			<ul class="menu__list">
-				{% for item in site.data.settings.menu_settings.menu_items %}
-				{% assign is_active = false %}
-				{% if item.url == '/' %}
-					{% if page.url == '/' %}{% assign is_active = true %}{% endif %}
-				{% elsif page.url == item.url %}
-					{% assign is_active = true %}
-				{% endif %}
-				<li class="menu__list__item">
-					<a href="{{ item.url | relative_url }}" class="menu__list__item__link{% if is_active %} active-link{% endif %}"{% if is_active %} aria-current="page"{% endif %}>{{ item.title }}</a>
-				</li>
-				{% endfor %}
-			</ul>
-		</nav>
-
-	</div>
-	</div>
+		<li><a href="{{ '/feed.xml' | relative_url }}" class="bar__module bar__module--optional">rss</a></li>
+		<li><button type="button" class="bar__module bar__module--theme" data-theme-toggle hidden></button></li>
+	</ul>
 
 </header>
