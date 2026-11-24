@@ -69,7 +69,7 @@ color_settings:
   error_color: '#d32f2f'              # vermelho elegante — mensagens de erro
 
 font_settings:
-  font_embed: '<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600" rel="stylesheet">'
+  font_embed: '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">'
   title_font: '"Nunito", sans-serif'
   body_font: '"Nunito", sans-serif'
   regular_weight: 400
