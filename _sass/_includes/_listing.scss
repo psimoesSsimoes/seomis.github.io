@@ -21,6 +21,18 @@
 	font-size: 1.5rem;
 }
 
+.intro__tagline {
+	margin-top: 4px;
+	font-family: $mono;
+	font-size: 13px;
+	color: var(--muted);
+
+	// On wider screens the bar shows it.
+	@include tiled {
+		display: none;
+	}
+}
+
 .intro__text {
 	margin-top: 12px;
 	font-size: 0.9375em;

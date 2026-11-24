@@ -14,6 +14,10 @@
 		</ul>
 	</nav>
 
+	{% unless page.collection == 'posts' %}
+	<p class="bar__tagline">{{ site.data.settings.basic_settings.site_tagline }}</p>
+	{% endunless %}
+
 	<ul class="bar__modules">
 		{% if page.collection == 'posts' %}
 		<li><span class="bar__progress" data-progress aria-hidden="true" hidden></span></li>
