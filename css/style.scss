@@ -8,6 +8,28 @@
 
 
 
+// - - - - - - - - - - Fonts
+
+// Nunito (SIL OFL 1.1, see /fonts/OFL.txt), Latin subset, self-hosted.
+// The upright file is a variable font that covers every weight we use.
+@font-face {
+	font-family: "Nunito";
+	font-style: normal;
+	font-weight: 200 1000;
+	font-display: swap;
+	src: url("../fonts/nunito-latin.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Nunito";
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url("../fonts/nunito-latin-italic.woff2") format("woff2");
+}
+
+
+
 // - - - - - - - - - - Variables
 
 
