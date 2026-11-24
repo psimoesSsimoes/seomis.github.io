@@ -4,7 +4,7 @@ subtitle: Backend Team Leader @ Easypay · Costa da Caparica, Portugal
 description: Pedro Simões, backend team leader at Easypay. Experience, skills and a downloadable CV.
 ---
 
-{% include cta.html %}
+<p class="resume-download"><a href="{{ '/files/pedro_simoes_cv.pdf' | relative_url }}" download>Download as PDF</a></p>
 
 Hello, I'm Pedro Simões, a dedicated hacker with a great team spirit, passionate about technology and how it shapes our world.
 
@@ -88,7 +88,3 @@ Full-stack developer and system administrator at UNINOVA - Institute for the Dev
 ### Bachelor's Degree in Computer Engineering · [Universidade de Lisboa](https://www.fct.unl.pt/en)
 2013 – 2016
 {: .role-dates}
-
----
-
-{% include cta.html %}
