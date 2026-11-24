@@ -32,7 +32,7 @@ Should be simple enough: Open browser developer tools, click the Kibana log link
 The original curl (without headers) is similar to this one:
 
 
-```html
+```bash
 curl 'https://<some_endpoint>/_msearch?rest_total_hits_as_int=true&ignore_throttled=true'
 --data-raw $'{"index":"logstash-default*","ignore_unavailable":true,
 "preference":1618072435228}\n{"size":5,"search_after":[1618071886078,23742571],
@@ -54,7 +54,7 @@ Ok, this big curl thing that you probably cannot see in your mobile phone screen
 
 The request makes use of the [newline delimited JSON](http://ndjson.org/) format (NDJSON). In simpler terms, it follows the following structure:
 
-```html
+```text
 Header\n
 Body\n
 Header\n
@@ -161,7 +161,7 @@ _So, if we give it the unix timestamp of the record, we should be able to obtain
 
 For that, i have choosen the following [jq](https://github.com/stedolan/jq) filter:
 
-```
+```bash
 jq '.responses[0].hits.hits[] | ._source.payload.fields.<field_i_am_looking_for>'
 ```
 
