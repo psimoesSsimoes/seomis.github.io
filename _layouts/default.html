@@ -4,15 +4,7 @@
 
 <head>
 
-
-	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-	{{ site.data.settings.basic_settings.site_title }}
-
-	Simples Theme by https://jekyllthemes.io
-	Premium + free Jekyll themes for your blog or website.
-
-	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	{% assign plain_title = page.title | remove: '`' %}{% if page.url == "/" %}{% capture meta_title %}{{ site.data.settings.basic_settings.site_title }} – {{ plain_title }}{% endcapture %}{% else %}{% capture meta_title %}{{ plain_title }} – {{ site.data.settings.basic_settings.site_title }}{% endcapture %}{% endif %}
 
 
 	<meta charset="utf-8">
@@ -20,24 +12,26 @@
 
 	<!-- Page Info -->
 	<link rel="shortcut icon" href="{{ site.data.settings.basic_settings.favicon_image | relative_url }}">
-	<title>{% if page.url == "/" %}{{ site.data.settings.basic_settings.site_title }} – {{ page.title }}{% else %}{{ page.title }} – {{ site.data.settings.basic_settings.site_title }}{% endif %}</title>
+	<title>{{ meta_title | xml_escape }}</title>
 	<meta name="description" content="{% if page.description %}{{ page.description | strip_html | xml_escape }}{% else %}{{ page.excerpt | strip_html | xml_escape }}{% endif %}">
 
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="{% if page.url == "/" %}{{ site.data.settings.basic_settings.site_title }} – {{ page.title }}{% else %}{{ page.title }} – {{ site.data.settings.basic_settings.site_title }}{% endif %}">
+	<meta name="twitter:title" content="{{ meta_title | xml_escape }}">
 	<meta name="twitter:description" content="{% if page.description %}{{ page.description | strip_html | xml_escape }}{% else %}{{ page.excerpt | strip_html | xml_escape }}{% endif %}">
 	<meta name="twitter:image:src" content="{{ page.featured_image | default: '/images/social-card.jpg' | absolute_url }}">
 
 	<!-- Facebook OpenGraph -->
-	<meta property="og:title" content="{% if page.url == "/" %}{{ site.data.settings.basic_settings.site_title }} – {{ page.title }}{% else %}{{ page.title }} – {{ site.data.settings.basic_settings.site_title }}{% endif %}" />
+	<meta property="og:title" content="{{ meta_title | xml_escape }}" />
 	<meta property="og:description" content="{% if page.description %}{{ page.description | strip_html | xml_escape }}{% else %}{{ page.excerpt | strip_html | xml_escape }}{% endif %}" />
 	<meta property="og:image" content="{{ page.featured_image | default: '/images/social-card.jpg' | absolute_url }}" />
 
-	{% if site.data.settings.font_settings.font_embed %}
-	<!-- Font Embed Code -->
-	{{ site.data.settings.font_settings.font_embed }}
-	{% endif %}
+	<!-- Theme: apply a saved choice before first paint; otherwise the system setting decides -->
+	<script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+
+	<!-- Fonts: self-hosted, see css/style.scss -->
+	<link rel="preload" href="{{ '/fonts/ibm-plex-sans-latin-400-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="{{ '/fonts/jetbrains-mono-latin-400-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
 	<!-- Styles -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,16 +64,11 @@
 	{% include header.html %}
 
 
-	
-	<div class="page">
+	<main class="desktop" id="main">
 
-		<main class="page__content" id="main">
+		{{ content }}
 
-			{{ content }}
-
-		</main>
-
-	</div>
+	</main>
 
 
 	{% include footer.html %}

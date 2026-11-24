@@ -1,0 +1,151 @@
+// - - - - - - - - - - - - - - - - - -
+
+// Bar: workspaces on the left (the site navigation), modules on the right
+
+// - - - - - - - - - - - - - - - - - -
+
+.bar {
+	position: sticky;
+	top: 0;
+	z-index: 20;
+	display: flex;
+	align-items: stretch;
+	justify-content: space-between;
+	min-height: 40px;
+	background: var(--window);
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+	font-family: $mono;
+	font-size: 14px;
+	line-height: 1;
+
+	@include tiled {
+		min-height: $bar-height;
+		font-size: 13px;
+	}
+}
+
+.bar nav {
+	display: flex;
+}
+
+.bar__workspaces,
+.bar__modules {
+	display: flex;
+	align-items: stretch;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		display: flex;
+		margin: 0;
+	}
+}
+
+.bar__workspace,
+.bar__module {
+	display: flex;
+	align-items: center;
+	padding: 0 12px;
+	border: 0;
+	background: none;
+	color: var(--text);
+	text-decoration: none;
+	cursor: pointer;
+
+	&:hover {
+		background: var(--border);
+	}
+
+	&:focus-visible {
+		outline-offset: -2px;
+	}
+}
+
+.bar__workspace__number {
+	margin-right: 0.6em;
+	color: var(--muted);
+}
+
+// The focused workspace is a filled block, as in i3bar.
+.bar__workspace--focused {
+	background: var(--focus);
+	color: var(--on-focus);
+	font-weight: 600;
+
+	&:hover {
+		background: var(--focus);
+	}
+
+	.bar__workspace__number {
+		color: inherit;
+		font-weight: 400;
+	}
+}
+
+.bar__module {
+	color: var(--muted);
+
+	&:hover {
+		color: var(--text);
+	}
+}
+
+// The site tagline, centred in the bar where a window title would go.
+// Posts show reading progress there instead. No room for it on a phone,
+// where the home intro carries it.
+.bar__tagline {
+	display: none;
+
+	@include tiled {
+		display: flex;
+		align-items: center;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		margin: 0;
+		color: var(--muted);
+		white-space: nowrap;
+	}
+}
+
+// Reading progress on posts: a filled block, centred like the clock in the
+// reference bar. On a phone it sits on the right instead. Needs JS.
+.bar__progress {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 5ch;
+	padding: 0 12px;
+	background: var(--focus);
+	color: var(--on-focus);
+	font-weight: 600;
+
+	&[hidden] {
+		display: none;
+	}
+
+	@include tiled {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+// The theme toggle needs JS; site.js reveals it.
+.bar__module--theme[hidden] {
+	display: none;
+}
+
+// The feed link is also in the footer, so it can go when space is short.
+.bar__module--optional {
+	display: none;
+
+	@include tiled {
+		display: flex;
+	}
+}

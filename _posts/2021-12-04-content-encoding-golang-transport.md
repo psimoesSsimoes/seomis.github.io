@@ -17,7 +17,7 @@ However an unexpected behavior made me dig deep about http content negotiation m
 The original code (using [gin](https://github.com/gin-gonic/gin)) was as simple as:
 
 
-```html
+```go
 	remote:= some_remote_host
 	proxy := httputil.NewSingleHostReverseProxy(remote)
 	proxy.Director = func(req *http.Request) {
@@ -36,7 +36,7 @@ Via http 1.1, the reverse proxy worked ( the document was displayed correctly ) 
 
 
 
-```html
+```text
 httputil: ReverseProxy read error during body copy: unexpected EOF
 
 2021/12/04 16:47:40 [Recovery] 2021/12/04 - 16:47:40 panic recovered:
@@ -62,7 +62,7 @@ Two unanswered questions:
 Looking at httputil reverseproxy copyBuffer source code, we understand why the content is still displayed:
 
 
-```html
+```go
 // copyBuffer returns any write errors or non-EOF read errors, and the amount
 // of bytes written.
 func (p *ReverseProxy) copyBuffer(dst io.Writer, src io.Reader, buf []byte) (int64, error) {
@@ -109,7 +109,7 @@ The [Accept-Encoding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/
 
 The request headers from the browser that performed the call are the following:
 
-```html
+```text
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
 
 Accept-Language: pt-PT,pt;q=0.8,en;q=0.5,en-US;q=0.3
@@ -123,7 +123,7 @@ Reverse proxy is using http.DefaultTransport which on [line 2190](https://github
 
 Gzip Reader implementation can be seen below:
 
-```html
+```go
 // Read implements io.Reader, reading uncompressed bytes from its underlying Reader.
 func (z *Reader) Read(p []byte) (n int, err error) {
 	if z.err != nil {
@@ -177,7 +177,7 @@ Surely, if we requested file in gzip format, it must comply with [gzip spec](htt
 
 However... Several prints later... We confirm that the server didn't comply with the given 'Accept-Encoding' of the client!
 
-```html
+```go
 // readHeader reads the GZIP header according to section 2.3.1.
 // This method does not set z.err.
 func (z *Reader) readHeader() (hdr Header, err error) {
@@ -214,7 +214,7 @@ Unfortunately, this approach does nothing.
 
 The default choice of [http.DefaultTransport](https://go.dev/src/net/http/transport.go#L2546) is still gzip as seen below :
 
-```html
+```go
 	// Ask for a compressed version if the caller didn't set their
 	// own value for Accept-Encoding. We only attempt to
 	// uncompress the gzip stream if we were the layer that

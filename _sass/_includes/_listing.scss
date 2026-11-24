@@ -1,154 +1,146 @@
 // - - - - - - - - - - - - - - - - - -
 
-// Listing (blog + projects)
+// Home: intro tile + post list tile
 
 // - - - - - - - - - - - - - - - - - -
 
-.listing-post {
-	margin-top: 32px;
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Intro
 
-	@include mq(tabletp) {
-		margin-top: 40px;
-	}
+.intro__photo {
+	width: 72px;
+	height: 72px;
 
-	&:first-child {
-		margin-top: 0;
-	}
-}
-
-.single .listing-post + hr {
-	margin-top: 32px;
-	margin-bottom: 0;
-
-	@include mq(tabletp) {
-		margin-top: 40px;
-		margin-bottom: 0;
+	@include tiled {
+		width: 96px;
+		height: 96px;
 	}
 }
 
-.listing-post__header {
-	text-align: left;
-}
-
-.listing-post__title {
-	font-size: 22px;
-
-	@include mq(tabletp) {
-		font-size: 26px;
-	}
-}
-
-.listing-post__image {
+.intro__title {
 	margin-top: 20px;
-	display: block;
-	width: 100%;
-	height: 0;
-	padding-bottom: 56.25%;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+	font-size: 1.5rem;
+}
 
-	@include mq(tabletp) {
-		margin-top: 25px;
-	}
+.intro__tagline {
+	margin-top: 4px;
+	font-family: $mono;
+	font-size: 13px;
+	color: var(--muted);
 
-	@include mq(tabletl) {
-		margin-top: 30px;
-	}
-
-	@include mq(laptop) {
-		margin-top: 40px;
+	// On wider screens the bar shows it.
+	@include tiled {
+		display: none;
 	}
 }
 
-.listing-post__content {
-	margin-top: 10px;
+.intro__text {
+	margin-top: 12px;
+	font-size: 0.9375em;
+}
 
-	p .button {
-		margin-top: 5px;
+// Ways to reach me, as a plain list of names.
+.socials {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 16px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-family: $mono;
+	font-size: 13px;
 
-		@include mq(tabletl) {
-			margin-top: 10px;
+	li {
+		margin: 0;
+	}
+
+	a {
+		color: var(--muted);
+		text-decoration: none;
+
+		&:hover {
+			color: var(--link);
 		}
 	}
 }
 
-.listing-post__subtitle {
+// In the footer the list sits on the wallpaper, not in a window.
+.footer .socials a {
+	color: inherit;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.intro .socials {
+	margin-top: 24px;
+	padding-top: 16px;
+	border-top: 1px solid var(--border);
+
+	@include tiled {
+		flex-direction: column;
+		gap: 6px;
+	}
+}
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Post list
+
+.listing__heading {
+	margin: 0;
+	font-family: $mono;
+	font-size: 13px;
+	font-weight: 400;
+	letter-spacing: 0;
+	color: var(--muted);
+}
+
+// One row per post: date in a narrow column, title and excerpt beside it.
+.listing-post {
+	padding: 18px 0;
+	border-bottom: 1px solid var(--border);
+
+	&:last-child {
+		padding-bottom: 0;
+		border-bottom: 0;
+	}
+
+	@include wide {
+		display: grid;
+		grid-template-columns: 7.5rem minmax(0, 1fr);
+		column-gap: 16px;
+		align-items: baseline;
+	}
+}
+
+.listing-post__date {
+	margin: 0;
+	font-family: $mono;
+	font-size: 13px;
+	color: var(--muted);
+}
+
+.listing-post__title {
+	margin: 0;
+	font-size: 1.125rem;
+	font-weight: 600;
+	line-height: 1.35;
+
+	a {
+		color: var(--text);
+		text-decoration: none;
+
+		&:hover {
+			color: var(--link);
+		}
+	}
+}
+
+.listing-post__excerpt {
 	margin-top: 4px;
-	font-size: 15px;
-	color: $text-light-color;
-}
-
-.pagination {
-	margin-top: 40px;
-	padding: 0 20px;
-
-	@include mq(tabletp) {
-		padding: 0 80px;
-	}
-
-	@include mq(tabletl) {
-		padding: 0 120px;
-	}
-
-	@include mq(laptop) {
-		padding: 0 140px;
-	}
-
-	@include mq(desktop) {
-		padding: 0 180px;
-	}
-}
-
-.pagination__prev,
-.pagination__next {
-	width: 50%;
-
-	.button {
-		display: block;
-		text-align: center;
-	}
-}
-
-.pagination__prev {
-	float: left;
-	padding-right: $grid-spacing/2;
-}
-
-.pagination__next {
-	float: right;
-	padding-left: $grid-spacing/2;
-}
-
-
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Intro + CTA
-
-.single .intro__title {
-	text-align: left;
-}
-
-.intro__text {
-	margin-top: 10px;
-}
-
-.single .listing__heading {
-	margin-bottom: 24px;
-	font-size: 15px;
-	font-weight: $bold-weight;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-	color: $text-light-color;
-}
-
-.single .cta {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 10px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-
-	.button {
-		margin-top: 0;
-	}
+	max-width: 38rem;
+	font-size: 0.9375em;
+	line-height: 1.5;
+	color: var(--muted);
 }

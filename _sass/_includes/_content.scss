@@ -1,293 +1,153 @@
 // - - - - - - - - - - - - - - - - - -
 
-// Single page/post/project
+// Reading area: post and page content
 
 // - - - - - - - - - - - - - - - - - -
 
+// Kept deliberately plain. The i3 look stops at the window border.
+
 .single {
-	margin-top: 0;
-	padding: 40px 0;
-
-	@include mq(tabletp) {
-		padding: 60px 0;
-	}
-
-	@include mq(laptop) {
-		padding: 80px 0;
-	}
-
-	h1 {
-		text-align: center;
-	}
 
 	.subtitle {
-		margin-top: 5px;
-		text-align: center;
-		color: $text-light-color;
+		margin-top: 8px;
+		color: var(--muted);
 	}
 
-	h1, h2, h3, h4, h5, h6, p, ul, ol {
-		margin-left: auto;
-		margin-right: auto;
-
-		@include mq(tabletp) {
-		}
-
-		@include mq(tabletl) {
-			max-width: 75%;
-		}
-
-		@include mq(laptop) {
-			max-width: 70%;
-		}
-
-		@include mq(desktop) {
-			max-width: 65%;
-		}
+	// Post date and reading time, under the title.
+	.meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 24px;
+		margin-top: 12px;
+		font-family: $mono;
+		font-size: 14px;
+		color: var(--muted);
 	}
 
-	hr {
-		margin: 20px auto;
-
-		@include mq(tabletp) {
-			margin-top: 40px;
-			margin-bottom: 40px;
-			width: auto;
-		}
-
-		@include mq(tabletl) {
-			max-width: 75%;
-		}
-
-		@include mq(laptop) {
-			max-width: 70%;
-		}
-
-		@include mq(desktop) {
-			max-width: 65%;
-		}
+	.subtitle + *,
+	.meta + * {
+		margin-top: 2em;
 	}
 
-	blockquote,
-	figure {
-		margin: 20px auto;
-
-		@include mq(tabletp) {
-			margin: 30px auto;
-		}
-
-		@include mq(laptop) {
-			margin: 40px auto;
-		}
-	}
-
-	blockquote p {
-		max-width: 100%;
-		padding: 0;
-	}
-
-	p a:not(.button) {
-		font-weight: $bold-weight;
-		border-bottom: 2px solid $accent-color;
-	}
-
-	p .button {
-		margin-top: 10px;
-	}
-
-	ul, ol {
-		ul, ol {
-			max-width: 100%;
-			padding-left: 25px;
-		}
+	:not(pre) > code {
+		padding: 0.1em 0.35em;
+		background: var(--code-bg);
+		font-size: 0.875em;
+		overflow-wrap: break-word;
 	}
 
 	.highlighter-rouge,
-	table {
-		margin: 20px auto;
-		width: 100%;
+	table,
+	figure {
+		margin-top: 1.75em;
+		margin-bottom: 1.75em;
+	}
 
-		@include mq(tabletp) {
-			margin: 30px auto;
-		}
-
-		@include mq(tabletl) {
-			max-width: 75%;
-		}
-
-		@include mq(laptop) {
-			margin: 40px auto;
-			max-width: 70%;
-		}
-
-		@include mq(desktop) {
-			max-width: 65%;
+	// Code blocks run almost the full width of the window, which leaves room
+	// for 80 columns of code on a desktop screen.
+	.window__body > .highlighter-rouge {
+		@include tiled {
+			max-width: none;
+			margin-left: -32px;
+			margin-right: -32px;
 		}
 	}
 
-	.highlight {
-		display: block;
-		padding: 0;
-		line-height: 1.5;
-		font-size: $p-small*0.85;
-		line-height: $p-lineheight;
-		overflow: auto;
-
-		@include mq(tabletp) {
-			font-size: $p-medium*0.85;
-		}
-
-		@include mq(laptop) {
-			font-size: $p-large*0.85;
-		}
-
-		.highlight {
-			padding: 20px;
-
-			@include mq(tabletp) {
-				padding: 30px;
-			}
-
-			@include mq(laptop) {
-				padding: 40px;
-			}
-		}
-	}
-
-	table {
-		display: block;
-		max-width: 100%;
+	pre.highlight,
+	pre:not([class]) {
+		padding: 16px 18px;
+		background-color: var(--term-bg);
+		border: 1px solid var(--term-border);
+		color: var(--term-text);
+		font-size: 13.5px;
+		line-height: 1.7;
 		overflow-x: auto;
-		border: 2px solid $text-dark-color;
+		tab-size: 4;
 
-		thead {
-			background: $text-dark-color;
-			color: $background-color;
-			text-align: left;
-			font-weight: $bold-weight;
+		// When a line is longer than the block, a shadow on the cut-off
+		// edge says there is more, and the scrollbar stays visible.
+		background-image:
+			linear-gradient(to right, var(--term-bg), var(--term-bg)),
+			linear-gradient(to left, var(--term-bg), var(--term-bg)),
+			linear-gradient(to right, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0)),
+			linear-gradient(to left, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+		background-position: left center, right center, left center, right center;
+		background-repeat: no-repeat;
+		background-size: 28px 100%, 28px 100%, 18px 100%, 18px 100%;
+		background-attachment: local, local, scroll, scroll;
 
-			th {
-				font-weight: $bold-weight;
-			}
+		scrollbar-width: thin;
+		scrollbar-color: var(--term-thumb) transparent;
+
+		&::-webkit-scrollbar {
+			height: 10px;
 		}
+
+		&::-webkit-scrollbar-thumb {
+			background: var(--term-thumb);
+			border: 3px solid var(--term-bg);
+		}
+
+		@include tiled {
+			padding: 22px 24px;
+			font-size: 14.5px;
+		}
+	}
+
+	table {
+		display: block;
+		width: 100%;
+		overflow-x: auto;
+		font-size: 0.9em;
+		line-height: 1.5;
 
 		th, td {
-			padding: 10px;
-			font-size: $p-small;
-			font-weight: $p-weight;
-
-			@include mq(tabletp) {
-				padding: 15px;
-				font-size: $p-medium;
-			}
-
-			@include mq(laptop) {
-				padding: 20px;
-			}
+			padding: 8px 12px;
+			border: 1px solid var(--border);
+			text-align: left;
+			vertical-align: top;
 		}
-		
-		tr {
 
-			&:nth-child(2n) {
-				background: $background-alt-color;
-			}
+		th {
+			background: var(--code-bg);
+			font-weight: 600;
 		}
 	}
 
 	sup a.footnote {
-		display: inline-block;
-		margin-left: 5px;
-		min-width: 16px;
-		height: 16px;
-		border-radius: 100%;
-		border-bottom: none;
-		padding: 1px 3px;
-		background: $background-alt-color;
-		font-size: 10px;
-		text-align: center;
-		color: $text-light-color;
-
-		&:hover {
-			background: $text-light-color;
-			color: $background-color;
-		}
+		margin-left: 2px;
+		font-family: $mono;
+		font-size: 0.8em;
+		text-decoration: none;
 	}
 
 	.footnotes {
-		margin-top: 40px;
-
-		@include mq(tabletp) {
-			margin-top: 60px;
-		}
-
-		@include mq(laptop) {
-			margin-top: 80px;
-		}
-
-		ol {
-			list-style: none;
-			counter-reset: footnotes;
-
-			li {
-				margin-top: 5px;
-				font-size: 13px;
-				counter-increment: footnotes;
-
-				&:before {
-					content: counter(footnotes);
-				    box-sizing: border-box;
-					display: inline-block;
-					margin-right: 3px;
-					width: 20px;
-					height: 20px;
-					border-radius: 100%;
-					border-bottom: none;
-					padding: 2px 3px;
-					background: $background-alt-color;
-					font-size: 11px;
-					font-weight: $bold-weight;
-					text-align: center;
-					color: $text-light-color;
-				}
-				
-				p {
-					display: inline;
-					max-width: 100%;
-					font-size: 13px;
-
-					a.reversefootnote {
-						border-bottom: 0;
-						vertical-align: sub;
-					}
-				}
-			}
-		}
+		margin-top: 3em;
+		padding-top: 1em;
+		border-top: 1px solid var(--border);
+		font-size: 0.875em;
+		color: var(--muted);
 	}
 }
 
 // Images, videos and embeds placed directly in post content
 .single p > img,
-.single p > video,
-.single > .wrap > video {
+.single video {
 	display: block;
-	margin: 20px auto;
-
-	@include mq(tabletp) {
-		margin: 30px auto;
-	}
-
-	@include mq(laptop) {
-		margin: 40px auto;
-	}
-}
-
-.single p:first-child > img {
-	margin-top: 0;
+	margin-top: 1.75em;
+	margin-bottom: 1.75em;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .single video {
 	max-width: 100%;
 	height: auto;
+}
+
+.single .window__body > video {
+	max-width: $measure;
+	width: 100%;
 }
 
 .single iframe[src*="youtube"],
@@ -296,4 +156,94 @@
 	width: 100%;
 	height: auto;
 	aspect-ratio: 16 / 9;
+}
+
+// Resume: dates under a role heading
+.single .role-dates {
+	margin-top: 4px;
+	font-family: $mono;
+	font-size: 14px;
+	color: var(--muted);
+}
+
+// Resume: quiet link to the PDF version, under the subtitle
+.single .resume-download {
+	margin-top: 12px;
+	font-family: $mono;
+	font-size: 14px;
+}
+
+// 404: the way back
+.button {
+	display: inline-block;
+	padding: 6px 14px;
+	border: 1px solid var(--focus);
+	font-family: $mono;
+	font-size: 14px;
+	color: var(--text);
+	text-decoration: none;
+
+	&:hover {
+		background: var(--focus);
+		color: var(--on-focus);
+	}
+}
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Post footer
+
+.single .author {
+	display: flex;
+	gap: 16px;
+	align-items: center;
+	margin-top: 3em;
+	padding-top: 1.5em;
+	border-top: 1px solid var(--border);
+	font-size: 0.9375em;
+	color: var(--muted);
+
+	p {
+		margin: 0;
+	}
+
+	strong {
+		color: var(--text);
+	}
+}
+
+.author__img {
+	flex: none;
+	width: 48px;
+	height: 48px;
+}
+
+.author__body {
+	min-width: 0;
+}
+
+// Previous / next post, in the window's status strip.
+.post-nav__link {
+	display: block;
+	max-width: 22rem;
+	color: var(--text);
+	text-decoration: none;
+
+	&:hover {
+		color: var(--link);
+	}
+
+	&--next {
+		margin-left: auto;
+		text-align: right;
+	}
+}
+
+.post-nav__label {
+	display: block;
+	color: var(--muted);
+}
+
+.post-nav__all {
+	flex-basis: 100%;
 }

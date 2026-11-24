@@ -2,7 +2,7 @@
 title: 'Reading a `pt-query-digest` Report Without Losing Your Mind'
 date: 2025-05-02 00:00:00
 featured_image: ''
-excerpt: 🐢 A quick guide to decoding pt-query-digest reports and fixing slow MySQL queries.
+excerpt: A quick guide to decoding pt-query-digest reports and fixing slow MySQL queries.
 ---
 
 You've run `pt-query-digest` on your MySQL slow log. Now you’re staring at a huge wall of text and wondering what to do with it. Here's a practical breakdown of how to actually make sense of it — and fix slow queries that are dragging your database down.

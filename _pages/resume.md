@@ -4,7 +4,7 @@ subtitle: Backend Team Leader @ Easypay · Costa da Caparica, Portugal
 description: Pedro Simões, backend team leader at Easypay. Experience, skills and a downloadable CV.
 ---
 
-{% include cta.html %}
+<p class="resume-download"><a href="{{ '/files/pedro_simoes_cv.pdf' | relative_url }}" download>Download as PDF</a></p>
 
 Hello, I'm Pedro Simões, a dedicated hacker with a great team spirit, passionate about technology and how it shapes our world.
 
@@ -20,10 +20,11 @@ If you're looking for someone who transforms teams through dedication and techni
 
 ---
 
-### 👨‍💻 Professional Experience
+## Professional experience
 
-#### *Backend Team Leader* @[Easypay](https://www.easypay.pt/en)
-**2021-11 – Present**
+### Backend Team Leader · [Easypay](https://www.easypay.pt/en)
+2021-11 – Present
+{: .role-dates}
 
 We’ve spent our time making a complex system more stable, more predictable, and easier to work with.
 
@@ -35,21 +36,30 @@ We shaped the way the team works: from practical processes to real feedback loop
 
 When the business came with fast-moving or fuzzy problems, we clarified, prioritized, and shipped solid solutions. Nothing flashy — just steady, deliberate progress that made things better.
 
-#### *Managing Partner (non-remunerated)* @ Afectos a Si, Unipessoal Lda
+### Managing Partner (non-remunerated) · Afectos a Si, Unipessoal Lda
+Alongside Easypay
+{: .role-dates}
+
 I own Afectos a Si and act as its managing partner on an unpaid basis, alongside my full-time role at Easypay.
 
-#### *Senior Software Engineer* @ [Worten](https://www.worten.pt/)
-**2020-01 – 2021-10**
+### Senior Software Engineer · [Worten](https://www.worten.pt/)
+2020-01 – 2021-10
+{: .role-dates}
+
 Coordinated a team responsible for the implementation of an Identity and Access Management (IAM) system at Worten. This critical system involved strategic planning, integration with existing systems, adherence to regulatory compliance, and management of user groups, roles and permissions. Managed various aspects of the IAM system, including authentication protocols, performance optimization, quality assurance, disaster recovery planning and budget management. My focus on collaboration, communication, and continuous improvement ensured a streamlined process that aligned with organizational goals and industry best practices.
 
-#### *Software Engineer* @ [Aubay](https://aubay.pt/)
-**2017-01 – 2019-12**
+### Software Engineer · [Aubay](https://aubay.pt/)
+2017-01 – 2019-12
+{: .role-dates}
+
 Contracted by Worten, I was an essential member of a high-performing three-person team responsible for the development and maintenance of critical back-end infrastructure for the Worten platform. This involved creating and implementing key components such as the Payment Gateway and Shopping Cart Rule System, both of which are live and fully operational in production today. My role focused on the implementation, continuous performance optimization, and real-time troubleshooting of these systems.
 
 By ensuring they remain reliable, scalable, and efficient, me and my collegues played a key part in maintaining the smooth operation of the e-commerce platform, providing a seamless experience for millions of customers. It was a valuable experience, and I learned a great deal along the way!
 
-#### *Software Engineer* @ [UNINOVA](https://www.uninova.pt/)
-**2014-03 – 2016-12**
+### Software Engineer · [UNINOVA](https://www.uninova.pt/)
+2014-03 – 2016-12
+{: .role-dates}
+
 Full-stack developer and system administrator at UNINOVA - Institute for the Development of New Technologies, contributing to multiple research and development projects in industrial automation and software systems.
 
 **Key responsibilities and achievements:**
@@ -61,7 +71,7 @@ Full-stack developer and system administrator at UNINOVA - Institute for the Dev
 
 ---
 
-### 🛠️ Proficient in
+## Proficient in
 - **Languages**: Go, Rust, Elixir, Ruby, Python, Lua
 - **Frameworks/Runtimes**: Gin, Node.js
 - **Databases**: PostgreSQL, Redis, Kafka, SQLite, MySQL, DynamoDB
@@ -73,11 +83,8 @@ Full-stack developer and system administrator at UNINOVA - Institute for the Dev
 
 ---
 
-### 🎓 Academic Background
+## Academic background
 
-#### Bachelor's Degree in Computer Engineering  @ [Universidade de Lisboa](https://www.fct.unl.pt/en)
- 2013 - 2016
-
----
-
-{% include cta.html %}
+### Bachelor's Degree in Computer Engineering · [Universidade de Lisboa](https://www.fct.unl.pt/en)
+2013 – 2016
+{: .role-dates}

@@ -30,3 +30,97 @@
 		dialog.showModal();
 	});
 }());
+
+
+// Reading progress in the bar, on posts: how far through the article the
+// bottom of the screen is.
+(function () {
+	'use strict';
+
+	var out = document.querySelector('[data-progress]');
+	var article = document.querySelector('article .window__body');
+	if (!out || !article) return;
+
+	var queued = false;
+
+	function update() {
+		queued = false;
+		var rect = article.getBoundingClientRect();
+		var done = (window.innerHeight - rect.top) / rect.height;
+		out.textContent = Math.round(Math.max(0, Math.min(1, done)) * 100) + '%';
+	}
+
+	function queue() {
+		if (queued) return;
+		queued = true;
+		window.requestAnimationFrame(update);
+	}
+
+	window.addEventListener('scroll', queue, { passive: true });
+	window.addEventListener('resize', queue);
+	update();
+	out.hidden = false;
+}());
+
+
+// Theme toggle in the bar. The system setting decides until the visitor
+// picks a theme; the choice is kept in localStorage and applied in <head>.
+(function () {
+	'use strict';
+
+	var button = document.querySelector('[data-theme-toggle]');
+	if (!button || !window.matchMedia) return;
+
+	var root = document.documentElement;
+	var system = window.matchMedia('(prefers-color-scheme: dark)');
+
+	function current() {
+		return root.getAttribute('data-theme') || (system.matches ? 'dark' : 'light');
+	}
+
+	// The button names the theme it switches to.
+	function label() {
+		var other = current() === 'dark' ? 'light' : 'dark';
+		button.textContent = other;
+		button.setAttribute('aria-label', 'Switch to ' + other + ' theme');
+	}
+
+	button.addEventListener('click', function () {
+		var next = current() === 'dark' ? 'light' : 'dark';
+		root.setAttribute('data-theme', next);
+		try { localStorage.setItem('theme', next); } catch (e) {}
+		label();
+	});
+
+	if (system.addEventListener) system.addEventListener('change', label);
+
+	label();
+	button.hidden = false;
+}());
+
+
+// Richer code colours. Rouge tags most identifiers as plain names (.n),
+// so tell them apart by what follows: "name(" is a call, "name:" a field,
+// "name{" a type literal. Only adds classes; without JS the code is
+// still highlighted, just with fewer colours.
+(function () {
+	'use strict';
+
+	var names = document.querySelectorAll('pre.highlight .n, pre.highlight .nx');
+
+	for (var i = 0; i < names.length; i++) {
+		var name = names[i];
+		var next = name.nextSibling;
+		// Skip when whitespace sits between the name and the next token.
+		if (!next || next.nodeType !== 1) continue;
+
+		var text = next.textContent;
+		if (next.className === 'p' && text.charAt(0) === '(') {
+			name.classList.add('nf');
+		} else if (next.className === 'p' && text.charAt(0) === '{') {
+			name.classList.add('nc');
+		} else if (next.className === 'o' && text === ':') {
+			name.classList.add('na');
+		}
+	}
+}());

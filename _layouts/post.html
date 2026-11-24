@@ -2,15 +2,36 @@
 layout: default
 ---
 
-<section class="single">
+{% assign minutes = page.content | strip_html | number_of_words | divided_by: 200 | at_least: 1 %}
+<article class="window single">
 
-	<div class="wrap">
+	<div class="window__body">
 
-		<h1>{{ page.title }}</h1>
-		<p class="subtitle">{{ page.date | date_to_long_string }}</p>
+		<h1>{{ page.title | markdownify | remove: '<p>' | remove: '</p>' | strip }}</h1>
+		<p class="meta">
+			<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_long_string }}</time>
+			<span>{{ minutes }} min read</span>
+		</p>
 
 		{{ page.content }}
 
+		<aside class="author" id="author" aria-label="About the author">
+			<img src="{{ site.data.settings.header_settings.avatar_image | relative_url }}" class="author__img" alt="" width="48" height="48" loading="lazy" decoding="async">
+			<div class="author__body">
+				<p class="author__text">Written by <strong>{{ site.data.settings.basic_settings.site_title }}</strong>, backend team leader at <a href="https://www.easypay.pt/en">Easypay</a>. I build and run payment systems.</p>
+			</div>
+		</aside>
+
 	</div>
 
-</section>
+	<nav class="window__status post-nav" aria-label="More posts">
+		{% if page.previous %}
+		<a href="{{ page.previous.url | relative_url }}" class="post-nav__link post-nav__link--prev" rel="prev"><span class="post-nav__label">Previous post</span>{{ page.previous.title | markdownify | remove: '<p>' | remove: '</p>' | strip }}</a>
+		{% endif %}
+		{% if page.next %}
+		<a href="{{ page.next.url | relative_url }}" class="post-nav__link post-nav__link--next" rel="next"><span class="post-nav__label">Next post</span>{{ page.next.title | markdownify | remove: '<p>' | remove: '</p>' | strip }}</a>
+		{% endif %}
+		<a href="{{ '/' | relative_url }}" class="post-nav__all">All posts</a>
+	</nav>
+
+</article>

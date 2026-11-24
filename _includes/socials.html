@@ -5,13 +5,13 @@
 	{% case icon %}
 		{% when 'rss' %}{% assign label = 'RSS feed' %}
 		{% when 'linkedin' %}{% assign label = 'LinkedIn' %}
+		{% when 'email' %}{% assign label = 'Email' %}
 		{% when 'github' %}{% assign label = 'GitHub' %}
+		{% when 'twitter' %}{% assign label = 'X (Twitter)' %}
 		{% else %}{% assign label = icon | replace: '-', ' ' | capitalize %}
 	{% endcase %}
-	<li class="socials__item">
-		<a href="{{ url[1] }}" class="socials__item__link" aria-label="{{ label }}" title="{{ label }}" rel="me noopener" target="_blank">
-			{% include icons/{{ icon }}.svg %}
-		</a>
+	<li>
+		<a href="{{ url[1] }}" aria-label="{{ label }}" {% unless icon == 'email' %}rel="me noopener" target="_blank"{% endunless %}>{{ icon }}</a>
 	</li>
 	{% endif %}
 	{% endfor %}

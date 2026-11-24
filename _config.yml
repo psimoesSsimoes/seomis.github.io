@@ -9,9 +9,6 @@ collections:
   posts:
     output: true
     permalink: /blog/:slug
-  projects:
-    output: true
-    permalink: /project/:slug
 
 defaults:
   - scope:
@@ -28,16 +25,24 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-  - scope:
-      path: ""
-      type: "projects"
-    values:
-      layout: "project"
 
 markdown: kramdown
 
 include:
   - .well-known
+
+# Build and CV tooling: kept in the repo, not published.
+exclude:
+  - Makefile
+  - scripts
+  - templates
+  - images/social-icons
+  - _pages/resume_pdf.md
+  - _README.md
+  - _LICENSE.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
 
 highlighter: rouge
 
@@ -51,10 +56,7 @@ sass:
   style: compressed
 
 plugins:
-  - jekyll-paginate
   - jekyll-sitemap
   - jemoji
   - jekyll-feed
 
-paginate: 6
-paginate_path: "/blog/page:num/"

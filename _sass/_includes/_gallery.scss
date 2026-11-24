@@ -8,57 +8,44 @@
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Grid
 
+// Square thumbnails on a grid, so rows stay even whatever the photos' shapes.
 .gallery {
-	margin: 20px auto;
-	column-count: 2;
-	column-gap: $grid-spacing;
-
-	@include mq(tabletp) {
-		margin: 30px auto;
-	}
-
-	@include mq(laptop) {
-		margin: 40px auto;
-	}
-
-	&:first-child {
-		margin-top: 0;
-	}
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: $gap;
+	margin-top: 1.75em;
+	margin-bottom: 1.75em;
 
 	&[data-columns="1"] {
-		column-count: 1;
+		grid-template-columns: 1fr;
 	}
 
-	@include mq(tabletp) {
+	@include tiled {
 		&[data-columns="3"],
 		&[data-columns="4"],
 		&[data-columns="5"],
 		&[data-columns="6"] {
-			column-count: 3;
+			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 
-	@include mq(tabletl) {
-		&[data-columns="4"] { column-count: 4; }
-		&[data-columns="5"] { column-count: 5; }
-		&[data-columns="6"] { column-count: 6; }
-	}
-
-	> a,
-	> img {
-		display: block;
-		margin-bottom: $grid-spacing;
-		break-inside: avoid;
+	@include wide {
+		&[data-columns="4"] { grid-template-columns: repeat(4, 1fr); }
+		&[data-columns="5"] { grid-template-columns: repeat(5, 1fr); }
+		&[data-columns="6"] { grid-template-columns: repeat(6, 1fr); }
 	}
 
 	> a {
+		display: block;
 		cursor: zoom-in;
 	}
 
 	img {
 		display: block;
 		width: 100%;
-		height: auto;
+		height: 100%;
+		aspect-ratio: 1;
+		object-fit: cover;
 	}
 }
 
@@ -93,10 +80,9 @@
 	right: 12px;
 	width: 44px;
 	height: 44px;
-	border: 0;
-	border-radius: 100%;
-	background: $background-color;
-	color: $text-dark-color;
+	border: 1px solid var(--focus);
+	background: var(--window);
+	color: var(--text);
 	font-size: 28px;
 	line-height: 1;
 	cursor: pointer;
