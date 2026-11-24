@@ -1,35 +1,67 @@
+// - - - - - - - - - - - - - - - - - -
+
+// Syntax highlighting (Rouge)
+
+// - - - - - - - - - - - - - - - - - -
+
+// Rouge marks most Go identifiers as plain names, which leaves blocks
+// nearly one colour. js/site.js adds .nf / .na / .nc to names from what
+// follows them (a call, a field, a type literal); the rules below colour both
+// Rouge's own classes and those.
+
 .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
+
 .highlight, .highlight .w {
-  color: #444444;
+	color: var(--term-text);
 }
-.highlight .cp {
-  color: #CC00A3;
+
+// Comments
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+	color: var(--syn-comment);
 }
-.highlight .cs {
-  color: #CC00A3;
+
+// Punctuation and operators step back a little
+.highlight .p, .highlight .o, .highlight .pi {
+	color: var(--syn-punct);
 }
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1 {
-  color: #FF0000;
+
+// Keywords
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv, .highlight .ow, .highlight .sa, .highlight .cp, .highlight .nd {
+	color: var(--syn-keyword);
 }
-.highlight .kc {
-  color: #C34E00;
+
+// Types, classes, packages
+.highlight .kt, .highlight .nc, .highlight .nn {
+	color: var(--syn-type);
 }
-.highlight .kd {
-  color: #0000FF;
-}
-.highlight .kr {
-  color: #007575;
-}
-.highlight .k, .highlight .kn, .highlight .kp, .highlight .kt, .highlight .kv {
-  color: #0000FF;
-}
+
+// Strings
 .highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .sr, .highlight .s1, .highlight .ss {
-  color: #009C00;
+	color: var(--syn-string);
 }
-.highlight .sa {
-  color: #0000FF;
+
+// Numbers and constants
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx, .highlight .kc, .highlight .no {
+	color: var(--syn-number);
 }
-.highlight .nb, .highlight .bp {
-  color: #C34E00;
+
+// Functions and builtins
+.highlight .nf, .highlight .fm, .highlight .nb, .highlight .bp {
+	color: var(--syn-function);
 }
+
+// Fields, keys, attributes, tags
+.highlight .na, .highlight .nl, .highlight .nt {
+	color: var(--syn-field);
+}
+
+// Variables
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi {
+	color: var(--syn-variable);
+}
+
+// Diffs and errors
+.highlight .gd { color: var(--syn-variable); }
+.highlight .gi { color: var(--syn-string); }
+.highlight .gh, .highlight .gu { color: var(--syn-comment); }
