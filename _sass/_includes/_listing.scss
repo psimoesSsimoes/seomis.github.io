@@ -119,3 +119,36 @@
 	float: right;
 	padding-left: $grid-spacing/2;
 }
+
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Intro + CTA
+
+.single .intro__title {
+	text-align: left;
+}
+
+.intro__text {
+	margin-top: 10px;
+}
+
+.single .listing__heading {
+	margin-bottom: 24px;
+	font-size: 15px;
+	font-weight: $bold-weight;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: $text-light-color;
+}
+
+.single .cta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+
+	.button {
+		margin-top: 0;
+	}
+}

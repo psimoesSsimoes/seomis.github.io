@@ -1,6 +1,7 @@
 basic_settings:
   site_title: Pedro Simões
   site_tagline: Following curiosity.
+  email: seomisw@gmail.com
   favicon_image: /images/seomis.jpg
 
 header_settings:
