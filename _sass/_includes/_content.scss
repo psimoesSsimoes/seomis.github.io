@@ -304,3 +304,87 @@
 	font-size: 15px;
 	color: $text-light-color;
 }
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Post footer
+
+.single .author,
+.single .post-nav {
+	margin-left: auto;
+	margin-right: auto;
+
+	@include mq(tabletl) {
+		max-width: 75%;
+	}
+
+	@include mq(laptop) {
+		max-width: 70%;
+	}
+
+	@include mq(desktop) {
+		max-width: 65%;
+	}
+}
+
+.single .author {
+	display: flex;
+	gap: 16px;
+	align-items: flex-start;
+	margin-top: 48px;
+	padding: 24px 0;
+	border-top: 2px solid $border-color;
+	border-bottom: 2px solid $border-color;
+
+	p {
+		max-width: none;
+	}
+
+	.cta {
+		margin-bottom: 0;
+	}
+}
+
+.author__img {
+	flex: none;
+	width: 64px;
+	height: 64px;
+	border-radius: 100%;
+}
+
+.author__body {
+	min-width: 0;
+}
+
+.single .post-nav {
+	display: grid;
+	gap: 16px;
+	margin-top: 32px;
+
+	@include mq(tabletp) {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.post-nav__link {
+	display: block;
+	line-height: 1.4;
+
+	@include mq(tabletp) {
+		&--next {
+			grid-column: 2;
+			text-align: right;
+		}
+	}
+}
+
+.post-nav__label {
+	display: block;
+	margin-bottom: 4px;
+	font-size: 14px;
+	font-weight: $regular-weight;
+	color: $text-light-color;
+}
+
+.post-nav__all {
+	grid-column: 1 / -1;
+	justify-self: start;
+}
