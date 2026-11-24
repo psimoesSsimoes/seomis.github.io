@@ -6,6 +6,7 @@
 		{% when 'rss' %}{% assign label = 'RSS feed' %}
 		{% when 'linkedin' %}{% assign label = 'LinkedIn' %}
 		{% when 'github' %}{% assign label = 'GitHub' %}
+		{% when 'twitter' %}{% assign label = 'X (Twitter)' %}
 		{% else %}{% assign label = icon | replace: '-', ' ' | capitalize %}
 	{% endcase %}
 	<li class="socials__item">
