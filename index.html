@@ -8,7 +8,6 @@ description: Pedro Simões is a weirdo from Costa da Caparica Portugal. Curious 
 
 	<div class="wrap">
 
-		{% if paginator.page == 1 %}
 		<div class="intro">
 			<h1 class="intro__title">Hi, I'm Pedro.</h1>
 			<p class="intro__text">I lead the backend team at <a href="https://www.easypay.pt/en">Easypay</a>, where we build and run payment systems. Here I write about what I dig into along the way: gRPC, MySQL performance, HTTP and everyday tooling.</p>
@@ -18,9 +17,8 @@ description: Pedro Simões is a weirdo from Costa da Caparica Portugal. Curious 
 		<hr>
 
 		<h2 class="listing__heading">Latest posts</h2>
-		{% endif %}
 
-		{% for post in paginator.posts %}
+		{% for post in site.posts %}
 
 		<article class="listing-post">
 
@@ -35,29 +33,10 @@ description: Pedro Simões is a weirdo from Costa da Caparica Portugal. Curious 
 
 		</article>
 
-        <hr> 
+		<hr>
 
 		{% endfor %}
 
 	</div>
 
 </section>
-
-{% if paginator.total_pages > 1 %}
-
-<section class="pagination">
-
-	{% if paginator.previous_page %}
-	<div class="pagination__prev">
-		<a href="{{ paginator.previous_page_path | relative_url }}" class="button button--large">{% include icons/angle-left.svg %} <span>Newer Posts</span></a>
-	</div>
-	{% endif %}
-	{% if paginator.next_page %}
-	<div class="pagination__next">
-		<a href="{{ paginator.next_page_path | relative_url }}" class="button button--large"><span>Older Posts</span> {% include icons/angle-right.svg %}</a>
-	</div>
-	{% endif %}
-
-</section>
-
-{% endif %}

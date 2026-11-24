@@ -1,4 +1,4 @@
-{% if page.url == "/" or paginator %}{% assign header_full = true %}{% else %}{% assign header_full = false %}{% endif %}
+{% if page.url == "/" %}{% assign header_full = true %}{% else %}{% assign header_full = false %}{% endif %}
 <header class="header{% unless header_full %} header--compact{% endunless %}">
 
 	<div class="wrap">
@@ -27,7 +27,7 @@
 				{% for item in site.data.settings.menu_settings.menu_items %}
 				{% assign is_active = false %}
 				{% if item.url == '/' %}
-					{% if paginator %}{% assign is_active = true %}{% endif %}
+					{% if page.url == '/' %}{% assign is_active = true %}{% endif %}
 				{% elsif page.url == item.url %}
 					{% assign is_active = true %}
 				{% endif %}
