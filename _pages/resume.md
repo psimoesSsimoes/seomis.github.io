@@ -79,6 +79,7 @@ By ensuring they remain reliable, scalable, and efficient, me and my collegues p
 Full-stack developer and system administrator at UNINOVA - Institute for the Development of New Technologies, contributing to multiple research and development projects in industrial automation and software systems.
 
 **Key responsibilities and achievements:**
+
 - **System Administration**: Successfully migrated legacy servers to modern software stacks.
 - **Containerization**: Led the migration of multiple applications to Docker, streamlining deployment processes and reducing infrastructure overhead
 - **Ruby Development**: Architected and developed the Algerian Teacher Electronics Card System, a nationwide identification and certification platform serving thousands of educators
@@ -89,13 +90,13 @@ Full-stack developer and system administrator at UNINOVA - Institute for the Dev
 
 ## Proficient in
 - **Languages**: Go, Rust, Elixir, Ruby, Python, Lua
-- **Frameworks/Runtimes**: Gin, Node.js
-- **Databases**: PostgreSQL, Redis, Kafka, SQLite, MySQL, DynamoDB
-- **DevOps & Containerization**: Docker, Kubernetes, GitHub Actions, Continuous Integration, Continuous Delivery
-- **Operating Systems**: Ubuntu, Alpine Linux
-- **Tools & Technologies**: Git, WebAssembly, HTTP/2, Vim/Neovim
-- **AI Assistance** : Local LLM, ChatGPT, GPT4 , Copilot, Claude, Gemini
-- **Other Skills**: Technical Writing
+- **Backend**: gRPC and Protocol Buffers, REST, Kafka, event-driven design
+- **Data**: MySQL, PostgreSQL, Redis, DynamoDB, SQLite
+- **Infrastructure**: AWS, Docker, Kubernetes, ArgoCD, Terraform, CI/CD with GitHub Actions and Concourse
+- **Observability**: Prometheus, Grafana, Loki, Sentry, New Relic
+- **Agentic development**: Claude Code (skills, hooks, plugins), MCP servers, RAG, self-hosted AI assistants
+- **Tools**: Git, Linux, Vim/Neovim, WebAssembly, HTTP/2
+- **Other**: Technical writing, mentoring
 
 ---
 
