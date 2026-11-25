@@ -10,7 +10,7 @@ Hello, I'm Pedro Simões, a dedicated hacker with a great team spirit, passionat
 
 Always thinking about building and maintaining robust distributed systems. My expertise spans the full development lifecycle, from initial design and implementation to ongoing monitoring and the strategic planning of our technical roadmap.
 
-I build software with honesty and openness at my core. No corporate speak—just straightforward communication and genuine effort. When I commit to something, I pour myself into making it exceptional.
+I build software with honesty and openness at my core. No corporate speak—just straightforward communication and genuine effort. When I commit to something, I pour myself into trying to make it exceptional.
 
 What truly energizes me is collaborating with talented, dedicated people tackling difficult problems together. I genuinely believe that when a group of individuals works hard while maintaining a positive, fun spirit, that combination is where innovation truly happens.
 
@@ -26,15 +26,31 @@ If you're looking for someone who transforms teams through dedication and techni
 2021-11 – Present
 {: .role-dates}
 
+<div class="role-period role-period--now" markdown="1">
+#### After agentic development
+2024 – Present
+{: .role-dates}
+
+We made the case to management that agentic development was where our work was heading, and got the room to do it properly instead of as a side experiment. Then we redesigned how we build software around it. We wrote down what used to live in people’s heads, so newcomers and agents learn the same rules, and turned our day-to-day work (picking up a ticket, agreeing a plan, building it test-first, opening the pull request) into shared tools we improve together. Deploys, rollbacks, incident digging and Jira upkeep got the same care. Today we can hand a ticket to an agent much like we’d hand it to a colleague.
+
+We didn’t keep it to engineering. We set up our own AI assistant for the whole company, connected to our documentation, with plain rules about what never goes into it and what still needs a person to decide. We plugged it into our own systems through MCP, so it reads our documentation and looks up CRM records with each person’s own permissions. We also built an MCP server for our payments API, so merchants can manage payments from their own AI assistant. Our operators were among the first to lean on it, and we helped our compliance team bring it into their KYC work. We built a support assistant that drafts replies from our help articles for the team to review and send, with personal data masked before anything reaches a model. We continue looking for the places where LLMs genuinely help the business, one concrete problem at a time.
+
+People stay in charge. What changed most is where our attention goes: less on the routine, more on design, review, and helping each other get good at this new way of working.
+
+</div>
+
+<div class="role-period" markdown="1">
+#### Before agentic development
+2021-11 – 2023
+{: .role-dates}
+
 We’ve spent our time making a complex system more stable, more predictable, and easier to work with.
 
-We implemented proper shutdown handling, enforced atomic operations where failure wasn’t an option, and built third-party integrations that could scale without drama.
+We implemented proper shutdown handling, enforced atomic operations where failure wasn’t an option, and built third-party integrations that could scale without drama. We made observability a priority — tests that mattered, metrics that told the truth, and error reporting that helped instead of overwhelmed. We added idempotency and request tracing so our distributed flows are traceable and trustworthy. We dug into access patterns, fixed what hurt performance or reliability, and made thoughtful trade-offs when the perfect fix wasn’t worth the cost.
 
-We made observability a priority — adding tests that mattered, metrics that told the truth, and error reporting that helped instead of overwhelmed. We added idempotency and request tracing to make our distributed flows traceable and trustworthy. We dug into access patterns, found what hurt performance or reliability, fixed what we could, and made thoughtful trade-offs when the perfect fix wasn’t worth the cost. We invested in each other — through code reviews, mentoring, and honest technical conversations.
+We invested in each other through code reviews, mentoring and honest technical conversations, and shaped the way the team works: practical processes and feedback loops that actually improve things. When the business came with fast-moving or fuzzy problems, we clarified, prioritized, and shipped solid solutions. Nothing flashy — just steady, deliberate progress that made things better.
 
-We shaped the way the team works: from practical processes to real feedback loops that actually improve things.
-
-When the business came with fast-moving or fuzzy problems, we clarified, prioritized, and shipped solid solutions. Nothing flashy — just steady, deliberate progress that made things better.
+</div>
 
 ### Managing Partner (non-remunerated) · Afectos a Si, Unipessoal Lda
 Alongside Easypay
