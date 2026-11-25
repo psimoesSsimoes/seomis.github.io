@@ -32,8 +32,8 @@
 }());
 
 
-// Reading progress in the bar, on posts: how far through the article the
-// bottom of the screen is.
+// Reading progress in the bar, on posts: 0% at the top of the page, 100%
+// once the end of the article is on screen.
 (function () {
 	'use strict';
 
@@ -45,8 +45,9 @@
 
 	function update() {
 		queued = false;
-		var rect = article.getBoundingClientRect();
-		var done = (window.innerHeight - rect.top) / rect.height;
+		var scrolled = window.pageYOffset;
+		var end = article.getBoundingClientRect().bottom + scrolled - window.innerHeight;
+		var done = end > 0 ? scrolled / end : 1;
 		out.textContent = Math.round(Math.max(0, Math.min(1, done)) * 100) + '%';
 	}
 
