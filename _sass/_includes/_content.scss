@@ -324,3 +324,22 @@
 .post-nav__all {
 	flex-basis: 100%;
 }
+
+// Resume: a role split into periods. Each period hangs under the role like a
+// window border: the past one unfocused, the current one in the focus colour.
+//   <div class="role-period" markdown="1"> #### Name / dates {: .role-dates} ... </div>
+.single .role-period {
+	margin-top: 1.75em;
+	padding-left: 18px;
+	border-left: 2px solid var(--border);
+
+	h4 {
+		margin-top: 0;
+		font-size: 1em;
+		color: var(--title);
+	}
+
+	&--now {
+		border-left-color: var(--focus);
+	}
+}
