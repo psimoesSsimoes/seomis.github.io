@@ -130,6 +130,83 @@
 	}
 }
 
+// A note to the reader, set apart from the article: an unfocused window
+// inside the focused one, with its own title bar. In a post:
+//   <aside class="note" aria-label="Note" markdown="1"> ... </aside>
+.single .note {
+	margin-top: 1.75em;
+	margin-bottom: 1.75em;
+	padding-bottom: 14px;
+	border: 1px solid var(--border);
+	font-size: 0.9375em;
+
+	&::before {
+		content: "note";
+		display: block;
+		padding: 5px 16px;
+		border-bottom: 1px solid var(--border);
+		background: var(--code-bg);
+		font-family: $mono;
+		font-size: 13px;
+		line-height: 1.5;
+		color: var(--muted);
+	}
+
+	> * {
+		margin: 12px 16px 0;
+	}
+}
+
+// Questions to ask before acting, each with its reason and where to look.
+// A plain list, not a table: the content is prose, and a table squeezes it
+// into narrow columns. In a post:
+//   <dl class="checks">
+//     <dt markdown="span">Question?</dt>
+//     <dd markdown="span">Why it matters.</dd>
+//     <dd class="checks__where" markdown="span">Where to look</dd>
+//   </dl>
+.single .checks {
+	margin-top: 1.75em;
+	margin-bottom: 1.75em;
+	border-top: 1px solid var(--border);
+
+	dt {
+		margin-top: 0;
+		padding-top: 18px;
+		color: var(--title);
+		font-weight: 600;
+		line-height: 1.45;
+	}
+
+	dd {
+		margin: 6px 0 0;
+	}
+
+	.checks__where {
+		margin-top: 8px;
+		padding-bottom: 18px;
+		border-bottom: 1px solid var(--border);
+		font-family: $mono;
+		font-size: 13.5px;
+		line-height: 1.6;
+		color: var(--muted);
+		overflow-wrap: anywhere;
+
+		&::before {
+			content: "look at  ";
+			white-space: pre;
+			color: var(--focus);
+		}
+
+		code {
+			padding: 0;
+			background: none;
+			font-size: inherit;
+			color: var(--text);
+		}
+	}
+}
+
 // Images, videos and embeds placed directly in post content
 .single p > img,
 .single video {
